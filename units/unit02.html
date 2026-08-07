@@ -1465,17 +1465,21 @@
     function showRelay(){
       const tape = $('relay-tape');
       const labels = $('relay-labels');
+      // 清除之前新增的標記（保留原本的 tape-fill）
+      tape.querySelectorAll('.relay-marker').forEach(m => m.remove());
       labels.innerHTML = '';
+      // 每隔 2 位選手標一次數字：0、2、4、6、8、10
       for (let i = 0; i <= 5; i++){
         const pct = i/5*100;
-        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i}</div>`;
+        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i*2}</div>`;
       }
-      // Add markers
-      for (let i=0;i<=10;i++){
+      // 標出 10 位選手的位置
+      for (let i=1;i<=10;i++){
         const pct = i/10*100;
         const mark = document.createElement('div');
+        mark.className = 'relay-marker';
         mark.style.cssText = `position:absolute; left:${pct}%; top:10px; transform:translateX(-50%); width:20px; height:20px; background:var(--accent); border-radius:50%; color:white; font-size:0.7rem; display:flex; align-items:center; justify-content:center;`;
-        mark.textContent = i+1;
+        mark.textContent = i;
         tape.appendChild(mark);
       }
     }
@@ -1565,11 +1569,11 @@
       const correctStep = '2';
       const correctAns = '2/39';
       if (step === correctStep && fracEqual(parseFrac(ans), parseFrac(correctAns))){
-        showFeedback('err-fb', true, '正確！步驟二錯了：1/3 顛倒應該變成 3/1，不是 1/3 變 3 1/3。正確答案是 2/39。');
+        showFeedback('err-fb', true, '正確！步驟二錯了：被除數 1/3 應該保持不變，除數 13/2 顛倒成 2/13，所以應該是 1/3 × 2/13 ＝ 2/39。');
       } else if (step !== correctStep){
         showFeedback('err-fb', false, '步驟一是對的（帶分數化成假分數）。請再檢查步驟二。');
       } else {
-        showFeedback('err-fb', false, '步驟二判斷對了，但答案還要再算一次。提示：除數 13/2 顛倒成 2/13，被除數 1/3 保持不變。');
+        showFeedback('err-fb', false, '步驟二判斷對了，但答案還要再算一次。提示：被除數 1/3 保持不變，除數 13/2 顛倒成 2/13。');
       }
     }
 
