@@ -323,7 +323,7 @@
     .nl-line { position: absolute; top: 28px; left: 0; right: 0; height: 3px; background: #ddd; border-radius: 2px; }
     .nl-tick { position: absolute; top: 22px; width: 3px; height: 14px; background: #999; border-radius: 2px; }
     .nl-label { position: absolute; top: 40px; font-size: 0.75rem; color: #666; transform: translateX(-50%); }
-    .nl-marker { position: absolute; top: 14px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; transform: translateX(-50%); transition: all 0.3s; }
+    .nl-marker { position: absolute; top: 14px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: white; transform: translateX(-50%); transition: all 0.3s; }
     .nl-marker.a { background: var(--blue); }
     .nl-marker.b { background: var(--accent); }
 
@@ -1231,7 +1231,7 @@
       }
       multiples.forEach(t => {
         const pct = t / maxTime * 100;
-        html += `<div class="nl-marker ${cls}" style="left:${pct}%; top:6px;">${label}</div>`;
+        html += `<div class="nl-marker ${cls}" style="left:${pct}%; top:4px;" title="第 ${t} 分鐘">${t}</div>`;
       });
       html += '</div></div>';
       return html;
