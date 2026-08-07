@@ -812,6 +812,7 @@
       <div class="problem-card">
         <div class="problem-text"><strong>挑戰 1：置物櫃魔術</strong><br>學校走廊有 1～30 號置物櫃，全部關著。30 位同學輪流操作：第 1 位把全部櫃子打開，第 2 位把 2 的倍數號碼的櫃子「狀態切換」（開變關、關變開），第 3 位把 3 的倍數號碼切換……以此類推。最後哪些號碼的櫃子是開著的？</div>
         <div class="interactive-area">
+          <div id="locker-status" style="text-align:center; font-size:1.05rem; font-weight:600; color:var(--primary); min-height:32px; margin-bottom:10px;">按「模擬一次」開始</div>
           <div id="locker-grid" class="locker-grid"></div>
           <div class="btn-group" style="justify-content:center;">
             <button class="btn btn-sm btn-primary" onclick="simulateLockers()">模擬一次</button>
@@ -1378,6 +1379,7 @@
         grid.appendChild(div);
       }
       $('locker-result').innerHTML = '';
+      $('locker-status').textContent = '按「模擬一次」開始';
     }
     function resetLockers() { initLockers(); }
     async function simulateLockers() {
@@ -1385,16 +1387,31 @@
       // 全部關閉
       lockers.forEach(l => l.classList.remove('open', 'highlight'));
       const state = new Array(31).fill(false);
+      $('locker-result').innerHTML = '';
       for (let student = 1; student <= 30; student++) {
+        if (student === 1) {
+          $('locker-status').innerHTML = `第 <strong>${student}</strong> 位同學：打開全部櫃子`;
+        } else {
+          $('locker-status').innerHTML = `第 <strong>${student}</strong> 位同學：切換 ${student} 的倍數號碼`;
+        }
+        // 先高亮這一輪會被切換的櫃子
+        for (let n = student; n <= 30; n += student) {
+          const el = document.querySelector(`.locker[data-n="${n}"]`);
+          if (el) el.classList.add('highlight');
+        }
+        await delay(600);
+        // 執行切換
         for (let n = student; n <= 30; n += student) {
           state[n] = !state[n];
           const el = document.querySelector(`.locker[data-n="${n}"]`);
           if (el) {
             el.classList.toggle('open', state[n]);
+            el.classList.remove('highlight');
           }
         }
-        await delay(80);
+        await delay(400);
       }
+      $('locker-status').textContent = '模擬完成！';
       // 高亮完全平方數
       const openNums = [];
       for (let n = 1; n <= 30; n++) {
