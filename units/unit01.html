@@ -1003,20 +1003,17 @@
     function renderSD() {
       const disp = $('short-division-display');
       const btns = $('sd-buttons');
-      let current = sdState.value;
-      sdState.steps.forEach(s => current /= s);
       let html = '';
-      sdState.steps.forEach((d, i) => {
-        const before = i === 0 ? sdState.value : sdState.value / sdState.steps.slice(0, i).reduce((a,b)=>a*b,1);
-        const after = before / d;
-        html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${before}</span></div>`;
-        if (isPrime(after)) {
-          html += `<div class="sd-row"><span class="sd-divisor"></span><span class="sd-res" style="color:var(--green); font-weight:700;">${after}</span></div>`;
-        }
+      let current = sdState.value;
+      // 依序畫出每一個除法步驟：除數 | 被除數
+      sdState.steps.forEach(d => {
+        html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${current}</span></div>`;
+        current /= d;
       });
-      if (sdState.steps.length === 0) {
-        html += `<div class="sd-row"><span class="sd-divisor">?</span><span class="sd-num">${current}</span></div>`;
-      }
+      // 最後一列顯示目前的商（可能是下一個被除數，也可能是已完成的質數）
+      const finalClass = isPrime(current) ? 'sd-res' : 'sd-num';
+      const finalDivisor = sdState.steps.length > 0 ? '' : '?';
+      html += `<div class="sd-row"><span class="sd-divisor">${finalDivisor}</span><span class="${finalClass}">${current}</span></div>`;
       disp.innerHTML = html;
       btns.innerHTML = '';
       if (isPrime(current)) {
@@ -1025,8 +1022,7 @@
         return;
       }
       $('sd-feedback').className = 'feedback';
-      const primes = [2,3,5,7,11];
-      primes.forEach(p => {
+      [2,3,5,7,11].forEach(p => {
         if (current % p === 0) {
           const b = document.createElement('button');
           b.className = 'btn btn-sm btn-accent';
