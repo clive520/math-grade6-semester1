@@ -586,12 +586,16 @@
 
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">➗ 短除法練習</h3>
-        <p>短除法就是反覆用質數去除，直到商變成質數為止。試試看 48：</p>
+        <p>短除法就是反覆用質數去除，直到商變成質數為止。輸入一個數字來試試看：</p>
+        <div style="text-align:center; margin:14px 0;">
+          <input type="number" id="sd-input" value="48" min="4" max="500" style="width:100px;">
+          <button class="btn btn-sm btn-primary" onclick="initShortDivision()">開始</button>
+          <button class="btn btn-sm" onclick="initShortDivision()">重置</button>
+        </div>
         <div style="text-align:center;">
           <div id="short-division-display" class="short-division"></div>
           <div class="btn-group" style="justify-content:center;" id="sd-buttons"></div>
           <div id="sd-feedback" class="feedback"></div>
-          <button class="btn btn-sm" onclick="initShortDivision()" style="margin-top:8px;">重置</button>
         </div>
       </div>
 
@@ -1084,14 +1088,19 @@
     // 短除法（質因數分解）
     let sdState = { value: 48, steps: [] };
     function initShortDivision() {
-      sdState = { value: 48, steps: [] };
+      let val = +$('sd-input').value;
+      if (val < 4) val = 4;
+      if (val > 500) val = 500;
+      $('sd-input').value = val;
+      sdState = { value: val, steps: [] };
       renderSD();
     }
     function renderSD() {
       const disp = $('short-division-display');
       const btns = $('sd-buttons');
+      const target = sdState.value;
       let html = '';
-      let current = sdState.value;
+      let current = target;
       // 依序畫出每一個除法步驟：除數 | 被除數
       sdState.steps.forEach(d => {
         html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${current}</span></div>`;
@@ -1105,11 +1114,11 @@
       btns.innerHTML = '';
       if (isPrime(current)) {
         $('sd-feedback').className = 'feedback correct';
-        $('sd-feedback').textContent = `完成！48 ＝ ${sdState.steps.concat([current]).join(' × ')}`;
+        $('sd-feedback').textContent = `完成！${target} ＝ ${sdState.steps.concat([current]).join(' × ')}`;
         return;
       }
       $('sd-feedback').className = 'feedback';
-      [2,3,5,7,11].forEach(p => {
+      [2,3,5,7,11,13,17,19].forEach(p => {
         if (current % p === 0) {
           const b = document.createElement('button');
           b.className = 'btn btn-sm btn-accent';

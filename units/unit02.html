@@ -1,89 +1,1240 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>分數除法 - 六上數學自學網</title>
+  <title>第2單元：分數除法 - 六上數學自學網</title>
   <style>
+    :root {
+      --primary: #2c5f8a;
+      --primary-light: #e8f4f8;
+      --accent: #f5846e;
+      --accent2: #f5a623;
+      --green: #7bc67e;
+      --purple: #b39ddb;
+      --pink: #e88eb5;
+      --blue: #6ec6f5;
+      --cyan: #4dd0e1;
+      --text: #333;
+      --text-light: #666;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --success: #4caf50;
+      --error: #ef5350;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      padding: 20px;
+      padding-bottom: 40px;
     }
-    .container { max-width: 800px; margin: 0 auto; }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+    .top-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
     .back-link {
-      display: inline-block;
-      color: #2c5f8a;
+      color: var(--primary);
       text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 14px;
       border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      background: var(--primary-light);
+      white-space: nowrap;
     }
-    .back-link:hover { background: #e8f0f8; }
-    header {
+    .back-link:hover { background: #d8eaf2; }
+    .progress-wrap { flex: 1; }
+    .progress-label { font-size: 0.75rem; color: #888; margin-bottom: 4px; }
+    .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--blue), var(--cyan)); transition: width 0.5s; border-radius: 4px; }
+    .stars { font-size: 1.2rem; color: #ffd54f; }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+    header.hero {
       text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 36px 24px;
+      background: linear-gradient(135deg, #fff 0%, #e8f7ff 100%);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(110,198,245,0.2), transparent 70%);
+      border-radius: 50%;
     }
     .unit-badge {
       display: inline-block;
-      background: BADGE_COLOR;
+      background: var(--blue);
       color: white;
-      padding: 6px 20px;
+      padding: 6px 18px;
       border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       margin-bottom: 12px;
     }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
+    header.hero h1 { font-size: 1.9rem; color: #2c3e50; margin-bottom: 8px; }
+    header.hero .tag { color: #888; font-size: 1rem; }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed #eee;
     }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
+    .section-number {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .section-title h2 { font-size: 1.35rem; color: #2c3e50; margin-bottom: 4px; }
+    .section-title p { font-size: 0.9rem; color: #888; }
+    .concept-box {
+      background: #f8faff;
+      border-left: 4px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 16px 0;
       line-height: 1.8;
     }
-    footer {
-      text-align: center;
+    .concept-box strong { color: var(--primary); }
+    .tip-box {
+      background: #fff8e1;
+      border-left: 4px solid var(--accent2);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #6d5c28;
+      margin: 12px 0;
+    }
+
+    .interactive-area {
+      background: #fafafa;
+      border-radius: 16px;
       padding: 20px;
-      color: #aaa;
+      margin: 18px 0;
+    }
+    .hint {
+      background: #fff8e1;
+      border-left: 4px solid var(--accent2);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #6d5c28;
+      margin: 12px 0;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: #1e4568; box-shadow: 0 4px 12px rgba(44,95,138,0.25); }
+    .btn-accent { background: var(--accent); color: white; }
+    .btn-accent:hover { background: #e06b52; }
+    .btn-green { background: var(--green); color: white; }
+    .btn-green:hover { background: #5da85f; }
+    .btn-blue { background: var(--blue); color: white; }
+    .btn-blue:hover { background: #4aa8e0; }
+    .btn-sm { padding: 7px 14px; font-size: 0.9rem; }
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+
+    input[type="number"], input[type="text"] {
+      width: 90px;
+      padding: 10px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      text-align: center;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .input-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+    .frac-input { width: 60px !important; }
+
+    .feedback {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-top: 12px;
+      font-weight: 600;
+      display: none;
+    }
+    .feedback.correct { background: #e8f5e9; color: #2e7d32; display: block; }
+    .feedback.wrong { background: #ffebee; color: #c62828; display: block; }
+    .feedback.info { background: #e3f2fd; color: #1565c0; display: block; }
+
+    .problem-card {
+      background: #fafafa;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    .problem-text { font-size: 1.05rem; line-height: 1.8; margin-bottom: 14px; }
+    .problem-answer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    /* Fraction display */
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 4px;
+      font-weight: 600;
+    }
+    .fraction .num { border-bottom: 2px solid #333; padding: 0 4px; }
+    .fraction .den { padding: 0 4px; }
+    .fraction.mixed { margin-right: 8px; }
+    .fraction.mixed .whole { margin-right: 4px; }
+
+    /* Visual bars */
+    .bar-wrap {
+      background: #e8e8e8;
+      border-radius: 8px;
+      height: 36px;
+      margin: 12px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      border-radius: 8px 0 0 8px;
+      transition: width 0.6s;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      color: white;
       font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .bar-segment {
+      position: absolute;
+      top: 0; bottom: 0;
+      border-right: 2px dashed rgba(0,0,0,0.2);
+    }
+
+    /* Fraction grid (chocolate etc) */
+    .frac-grid {
+      display: grid;
+      gap: 4px;
+      justify-content: center;
+      margin: 16px auto;
+      width: fit-content;
+    }
+    .frac-cell {
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      background: #f0f0f0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #666;
+      transition: all 0.3s;
+    }
+    .frac-cell.on { background: var(--accent); color: white; }
+    .frac-cell.mark { box-shadow: inset 0 0 0 3px var(--primary); }
+
+    /* Tape / number line */
+    .tape {
+      position: relative;
+      height: 48px;
+      background: #e3f2fd;
+      border-radius: 8px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+    .tape-fill {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      border-radius: 8px 0 0 8px;
+    }
+    .tape-tick {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: rgba(0,0,0,0.25);
+    }
+    .tape-label {
+      position: absolute;
+      top: 52px;
+      font-size: 0.8rem;
+      color: #666;
+      transform: translateX(-50%);
+    }
+
+    /* Bottle / container visuals */
+    .container-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 16px 0;
+    }
+    .bottle {
+      width: 44px; height: 70px;
+      border: 3px solid var(--primary);
+      border-radius: 4px 4px 14px 14px;
+      position: relative;
+      background: white;
+    }
+    .bottle::before {
+      content: "";
+      position: absolute;
+      top: -10px; left: 50%; transform: translateX(-50%);
+      width: 18px; height: 10px;
+      border: 3px solid var(--primary);
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .bottle-fill {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--blue);
+      border-radius: 0 0 11px 11px;
+      transition: height 0.4s;
+    }
+
+    /* Area model */
+    .area-model {
+      display: grid;
+      gap: 2px;
+      justify-content: center;
+      margin: 16px auto;
+      width: fit-content;
+      background: #e0e0e0;
+      padding: 4px;
+      border-radius: 8px;
+    }
+    .area-cell {
+      width: 28px; height: 28px;
+      background: white;
+      border-radius: 4px;
+    }
+    .area-cell.on { background: var(--green); }
+    .area-cell.target { background: var(--accent); }
+
+    /* Quiz options */
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+    .quiz-option {
+      padding: 14px 16px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .quiz-option:hover { border-color: var(--primary); background: #f8fafc; }
+    .quiz-option.selected { border-color: var(--primary); background: #e8f4f8; }
+    .quiz-option.correct { border-color: var(--success); background: #e8f5e9; }
+    .quiz-option.wrong { border-color: var(--error); background: #ffebee; }
+
+    .number-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 16px 0; }
+    .number-cell {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: white;
+      border: 2px solid #e8e8e8;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    .number-cell:hover { transform: scale(1.08); border-color: var(--primary); }
+    .number-cell.selected { background: #fff3e0; border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(245,164,35,0.35); }
+    .number-cell.correct { background: #e8f5e9; border-color: var(--success); color: #2e7d32; }
+    .number-cell.wrong { background: #ffebee; border-color: var(--error); color: #c62828; }
+
+    details { margin: 12px 0; }
+    summary {
+      background: var(--primary-light);
+      padding: 12px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    details[open] summary { border-radius: 10px 10px 0 0; }
+    .solution-content {
+      background: #f8faff;
+      padding: 16px;
+      border-radius: 0 0 10px 10px;
+      line-height: 1.8;
+    }
+
+    footer { text-align: center; padding: 30px 20px; color: #aaa; font-size: 0.85rem; }
+    .completion {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #fff8e1, #e8f5e9);
+      border-radius: 20px;
+      margin: 24px 0;
+    }
+    .completion.show { display: block; }
+    .completion h2 { color: #2e7d32; font-size: 1.5rem; margin-bottom: 10px; }
+    .confetti {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999;
+    }
+
+    .mini-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0; }
+    .mini-card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      border: 2px solid #f0f0f0;
+      transition: all 0.2s;
+    }
+    .mini-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+    .mini-card .icon { font-size: 1.8rem; margin-bottom: 6px; }
+    .mini-card .title { font-weight: 700; color: #2c3e50; margin-bottom: 4px; }
+    .mini-card .desc { font-size: 0.85rem; color: #888; }
+
+    .step-box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+      border: 2px solid #f0f0f0;
+    }
+    .step-title { font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+
+    @media (max-width: 500px) {
+      .number-grid { grid-template-columns: repeat(4, 1fr); }
+      .frac-cell { width: 24px; height: 24px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #6ec6f5;">第 2 單元</div>
-      <h1>分數除法</h1>
-      <p class="tag">分數 ÷ 分數</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">🧮</div>
-      <p>內容建置中，敬請期待！</p>
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="../index.html" class="back-link">← 回單元列表</a>
+      <div class="progress-wrap">
+        <div class="progress-label">學習進度 <span id="progress-text">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="stars" id="star-display">⭐ 0</div>
     </div>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="unit-badge">第 2 單元</div>
+      <h1>分數除法</h1>
+      <p class="tag">最簡分數 · 同分母除法 · 異分母除法 · 應用問題 · 被除數與商的關係</p>
+    </header>
+
+    <!-- 暖身：德國能量巧克力 -->
+    <section class="section" id="sec-warmup">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--blue);">暖</div>
+        <div class="section-title">
+          <h2>能量巧克力怎麼分？</h2>
+          <p>回顧：用分數表示整數 ÷ 整數的結果</p>
+        </div>
+      </div>
+      <p>妙妙從德國帶回「能量巧克力」。一盒有 <strong>2 個圓形巧克力</strong>，每個都平分成 <strong>8 小塊</strong>。如果把這 2 個巧克力平分給 <strong>8 個人</strong>，每人可以分到幾個巧克力？</p>
+      <div class="interactive-area">
+        <div id="choco-grid" class="frac-grid" style="grid-template-columns: repeat(8, 32px);"></div>
+        <p style="text-align:center; color:#666; font-size:0.9rem;">👆 上面是 2 個巧克力，共 16 小塊</p>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-primary" onclick="shareChocolate(8)">平分給 8 人</button>
+          <button class="btn btn-blue" onclick="shareChocolate(4)">平分給 4 人</button>
+          <button class="btn btn-green" onclick="shareChocolate(16)">平分給 16 人</button>
+        </div>
+        <div id="choco-result" style="text-align:center; margin-top:16px; font-weight:600; color:#2c3e50;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>回顧：</strong>整數 ÷ 整數可以用分數表示。例如 2 ÷ 8 ＝ <span class="fraction"><span class="num">2</span><span class="den">8</span></span> ＝ <span class="fraction"><span class="num">1</span><span class="den">4</span></span>（個）。
+      </div>
+    </section>
+
+    <!-- 2-1 最簡分數 -->
+    <section class="section" id="sec-simplest">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--green);">2-1</div>
+        <div class="section-title">
+          <h2>最簡分數</h2>
+          <p>分子和分母不能再約分的分數</p>
+        </div>
+      </div>
+      <p>一盒巧克力有 18 塊，吃掉一些後還剩下 12 塊。12 塊巧克力是幾盒？</p>
+      <div class="interactive-area">
+        <div id="box-grid" class="frac-grid" style="grid-template-columns: repeat(6, 32px);"></div>
+        <p style="text-align:center; color:#666; font-size:0.9rem;">綠色表示剩下的 12 塊，灰色表示吃掉的 6 塊</p>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-sm btn-primary" onclick="showBoxFraction(1)">全部 18 塊為 1 盒</button>
+          <button class="btn btn-sm btn-blue" onclick="showBoxFraction(6)">每 6 塊為 1 份</button>
+          <button class="btn btn-sm btn-accent" onclick="showBoxFraction(3)">每 3 塊為 1 份</button>
+          <button class="btn btn-sm btn-green" onclick="showBoxFraction(2)">每 2 塊為 1 份</button>
+        </div>
+        <div id="box-result" style="text-align:center; margin-top:14px; font-weight:600;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>最簡分數：</strong>像 <span class="fraction"><span class="num">2</span><span class="den">3</span></span> 這種，<strong>分子和分母不能再約分</strong>的分數，稱為最簡分數。<br>
+        最簡分數的分子和分母的<strong>公因數只有 1</strong>，也就是分子和分母<strong>互質</strong>。
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🎯 約分練習</h3>
+        <p>把 <span class="fraction"><span class="num">30</span><span class="den">45</span></span> 約分成最簡分數。可以先用最大公因數一次約完，也可以分幾次約。</p>
+        <div class="step-box">
+          <div class="step-title">方法：一次用最大公因數約分</div>
+          <p>30 和 45 的最大公因數是 <strong>15</strong>。</p>
+          <div class="input-row" style="justify-content:center;">
+            <span class="fraction"><span class="num">30</span><span class="den">45</span></span> ＝
+            <span class="fraction"><span class="num">30 ÷ <input type="number" id="reduce-n" class="frac-input" value="15"></span><span class="den">45 ÷ <input type="number" id="reduce-d" class="frac-input" value="15"></span></span>
+            ＝ <input type="text" id="reduce-ans" placeholder="?/?" style="width:70px;">
+            <button class="btn btn-sm btn-primary" onclick="checkReduce()">檢查</button>
+          </div>
+          <div id="reduce-fb" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✅ 找出最簡分數</h3>
+        <p>點選下面哪些分數是「最簡分數」（錯誤會被標記，全部選對可得星星）。</p>
+        <div class="number-grid" id="simplest-grid"></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="checkSimplestQuiz()">檢查答案</button><button class="btn btn-sm" onclick="initSimplestQuiz()">重新挑戰</button></div>
+        <div id="simplest-fb" class="feedback"></div>
+      </div>
+    </section>
+
+    <!-- 2-2 同分母分數的除法 -->
+    <section class="section" id="sec-same-denom">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--purple);">2-2</div>
+        <div class="section-title">
+          <h2>同分母分數的除法</h2>
+          <p>分子相除，分母不變</p>
+        </div>
+      </div>
+      <p>有一條長 <span class="fraction"><span class="num">7</span><span class="den">8</span></span> 公尺的彈性線，每 <span class="fraction"><span class="num">1</span><span class="den">8</span></span> 公尺做成一個串珠手環，一共可以做成幾個？</p>
+      <div class="interactive-area">
+        <div style="margin:14px 0;">
+          <div class="tape" id="tape-same1"><div class="tape-fill" id="tape-fill-same1" style="width:87.5%;"></div></div>
+          <div id="tape-labels-same1" style="position:relative; height:30px;"></div>
+        </div>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-primary" onclick="showSameDenom1()">看看可以分成幾段</button>
+        </div>
+        <div id="same1-result" style="text-align:center; margin-top:10px; font-weight:600;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>重點：</strong><span class="fraction"><span class="num">7</span><span class="den">8</span></span> 是 7 個 <span class="fraction"><span class="num">1</span><span class="den">8</span></span>，<span class="fraction"><span class="num">1</span><span class="den">8</span></span> 是 1 個 <span class="fraction"><span class="num">1</span><span class="den">8</span></span>。<br>
+        所以「7 個 <span class="fraction"><span class="num">1</span><span class="den">8</span></span>」是「1 個 <span class="fraction"><span class="num">1</span><span class="den">8</span></span>」的幾倍？用整數算：7 ÷ 1 ＝ 7。<br>
+        <strong>同分母分數相除，等於兩分數的分子相除。</strong>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🧮 同分母除法練習</h3>
+        <div class="problem-card">
+          <div class="problem-text">有一條長 <span class="fraction"><span class="num">6</span><span class="den">7</span></span> 公尺的彩繩，每 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> 公尺做成一個中國結，一共可以做成幾個？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            <span class="fraction"><span class="num">6</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">2</span><span class="den">7</span></span> ＝ <input type="number" id="same-q1" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ1()">檢查</button>
+          </div>
+          <div id="same-q1-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">一塊重 <span class="fraction"><span class="num">15</span><span class="den">16</span></span> 公斤的麵團，每 <span class="fraction"><span class="num">3</span><span class="den">16</span></span> 公斤做一個披薩，一共可以做幾個？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            <span class="fraction"><span class="num">15</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">16</span></span> ＝ <input type="number" id="same-q2" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ2()">檢查</button>
+          </div>
+          <div id="same-q2-fb" class="feedback"></div>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🎀 緞帶長度比一比</h3>
+        <p>藍色緞帶長 <span class="fraction"><span class="num">7</span><span class="den">5</span></span> 公尺，綠色緞帶長 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公尺。</p>
+        <div id="ribbon-compare" style="margin:16px 0;"></div>
+        <div class="problem-card">
+          <div class="problem-text">藍色緞帶長是綠色緞帶長的幾倍？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            <span class="fraction"><span class="num">7</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ＝ <input type="text" id="same-q3" placeholder="?" style="width:70px;"> 倍
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ3()">檢查</button>
+          </div>
+          <div id="same-q3-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">綠色緞帶長是藍色緞帶長的幾倍？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">5</span></span> ＝ <input type="text" id="same-q4" placeholder="?" style="width:70px;"> 倍
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ4()">檢查</button>
+          </div>
+          <div id="same-q4-fb" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-3 異分母分數的除法 -->
+    <section class="section" id="sec-diff-denom">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--pink);">2-3</div>
+        <div class="section-title">
+          <h2>異分母分數的除法</h2>
+          <p>先通分，再相除；或發現「顛倒相乘」的規律</p>
+        </div>
+      </div>
+
+      <h3 style="color:#2c3e50; margin:20px 0 10px;">📦 整數 ÷ 分數</h3>
+      <p>1 公升的礦泉水，每 <span class="fraction"><span class="num">1</span><span class="den">2</span></span> 公升裝成一瓶，可以裝成幾瓶？</p>
+      <div class="interactive-area">
+        <div class="container-grid" id="bottle-grid"></div>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-sm btn-primary" onclick="showBottles(1,1,2)">每 <span class="fraction"><span class="num">1</span><span class="den">2</span></span> 公升</button>
+          <button class="btn btn-sm btn-blue" onclick="showBottles(1,1,3)">每 <span class="fraction"><span class="num">1</span><span class="den">3</span></span> 公升</button>
+          <button class="btn btn-sm btn-accent" onclick="showBottles(1,1,4)">每 <span class="fraction"><span class="num">1</span><span class="den">4</span></span> 公升</button>
+          <button class="btn btn-sm btn-green" onclick="showBottles(3,3,2)">3 公升 ÷ <span class="fraction"><span class="num">3</span><span class="den">2</span></span> 公升</button>
+        </div>
+        <div id="bottle-result" style="text-align:center; margin-top:14px; font-weight:600;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>方法：</strong>把整數化成和除數分母相同的假分數，再相除。<br>
+        例：1 ÷ <span class="fraction"><span class="num">1</span><span class="den">2</span></span> ＝ <span class="fraction"><span class="num">2</span><span class="den">2</span></span> ÷ <span class="fraction"><span class="num">1</span><span class="den">2</span></span> ＝ 2 ÷ 1 ＝ <strong>2</strong>（瓶）
+      </div>
+
+      <h3 style="color:#2c3e50; margin:20px 0 10px;">🥬 分數 ÷ 分數</h3>
+      <p>爺爺用 <span class="fraction"><span class="num">1</span><span class="den">4</span></span> 公畝種大白菜，<span class="fraction"><span class="num">1</span><span class="den">3</span></span> 公畝種胡蘿蔔。大白菜面積是胡蘿蔔面積的幾倍？</p>
+      <div class="interactive-area">
+        <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+          <div>
+            <p style="text-align:center; color:#666; font-size:0.9rem;">大白菜 <span class="fraction"><span class="num">1</span><span class="den">4</span></span></p>
+            <div id="area-cabbage" class="area-model" style="grid-template-columns: repeat(4,28px);"></div>
+          </div>
+          <div>
+            <p style="text-align:center; color:#666; font-size:0.9rem;">胡蘿蔔 <span class="fraction"><span class="num">1</span><span class="den">3</span></span></p>
+            <div id="area-carrot" class="area-model" style="grid-template-columns: repeat(4,28px);"></div>
+          </div>
+        </div>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-primary" onclick="showAreaModel()">把兩塊地通分比一比</button>
+        </div>
+        <div id="area-result" style="text-align:center; margin-top:14px; font-weight:600;"></div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 發現「顛倒相乘」</h3>
+        <p>比較下面兩個紅框中的式子，你發現了什麼？</p>
+        <div class="step-box">
+          <div style="text-align:center; font-size:1.1rem; line-height:2;">
+            <span class="fraction"><span class="num">2</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">8</span></span><br>
+            ＝ <span class="fraction"><span class="num">2×8</span><span class="den">5×8</span></span> ÷ <span class="fraction"><span class="num">5×7</span><span class="den">5×8</span></span><br>
+            ＝ (2×8) ÷ (5×7)<br>
+            ＝ <span class="fraction"><span class="num">2×8</span><span class="den">5×7</span></span><br>
+            ＝ <span class="fraction"><span class="num">2</span><span class="den">5</span></span> × <span class="fraction"><span class="num">8</span><span class="den">7</span></span>
+          </div>
+        </div>
+        <div class="concept-box">
+          <strong>結論：</strong>分數除以分數時，只要將<strong>除數的分子、分母顛倒</strong>後，再和被除數相乘。
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 異分母除法練習</h3>
+        <div class="problem-card">
+          <div class="problem-text"><span class="fraction"><span class="num">5</span><span class="den">9</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">11</span></span> ＝ ?</div>
+          <div class="problem-answer" style="justify-content:center;">
+            答案：<input type="text" id="diff-q1" placeholder="?" style="width:70px;">
+            <button class="btn btn-sm btn-primary" onclick="checkDiffQ1()">檢查</button>
+          </div>
+          <div id="diff-q1-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">6 <span class="fraction"><span class="num">2</span><span class="den">3</span></span> ÷ <span class="fraction"><span class="num">15</span><span class="den">7</span></span> ＝ ?</div>
+          <div class="problem-answer" style="justify-content:center;">
+            答案：<input type="text" id="diff-q2" placeholder="?" style="width:70px;">
+            <button class="btn btn-sm btn-primary" onclick="checkDiffQ2()">檢查</button>
+          </div>
+          <div id="diff-q2-fb" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-4 分數除法的應用 -->
+    <section class="section" id="sec-apps">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--accent);">2-4</div>
+        <div class="section-title">
+          <h2>分數除法的應用</h2>
+          <p>把生活情境變成除法算式</p>
+        </div>
+      </div>
+
+      <div class="mini-cards">
+        <div class="mini-card"><div class="icon">🏃</div><div class="title">包含除</div><div class="desc">總長 ÷ 每段長 ＝ 幾段</div></div>
+        <div class="mini-card"><div class="icon">💰</div><div class="title">單價</div><div class="desc">總價 ÷ 數量 ＝ 單價</div></div>
+        <div class="mini-card"><div class="icon">📐</div><div class="title">面積</div><div class="desc">面積 ÷ 長 ＝ 寬</div></div>
+        <div class="mini-card"><div class="icon">👫</div><div class="title">部分與全體</div><div class="desc">部分量 ÷ 比例 ＝ 全體量</div></div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🏃 接力賽跑</h3>
+        <p>在長 2 公里的接力賽跑中，每一位選手跑 <span class="fraction"><span class="num">1</span><span class="den">5</span></span> 公里，每隊需要幾位選手？</p>
+        <div class="tape" id="relay-tape"><div class="tape-fill" style="width:100%;"></div></div>
+        <div id="relay-labels" style="position:relative; height:30px;"></div>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-primary" onclick="showRelay()">幫選手排位置</button>
+        </div>
+        <div class="problem-answer" style="justify-content:center; margin-top:14px;">
+          2 ÷ <span class="fraction"><span class="num">1</span><span class="den">5</span></span> ＝ <input type="number" id="relay-ans" placeholder="?"> 位
+          <button class="btn btn-sm btn-primary" onclick="checkRelay()">檢查</button>
+        </div>
+        <div id="relay-fb" class="feedback"></div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 應用題練習</h3>
+        <div class="problem-card">
+          <div class="problem-text">媽媽買 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公斤的芭樂花了 48 元，1 公斤芭樂賣多少元？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            48 ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ＝ <input type="number" id="app-q1" placeholder="?"> 元
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ1()">檢查</button>
+          </div>
+          <div id="app-q1-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">幸福國小六年級女學生占全年級的 <span class="fraction"><span class="num">8</span><span class="den">15</span></span>，女學生有 72 人，六年級共有多少人？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            72 ÷ <span class="fraction"><span class="num">8</span><span class="den">15</span></span> ＝ <input type="number" id="app-q2" placeholder="?"> 人
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ2()">檢查</button>
+          </div>
+          <div id="app-q2-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">長方形菜園面積是 8 <span class="fraction"><span class="num">3</span><span class="den">4</span></span> 平方公尺，長是 3 <span class="fraction"><span class="num">1</span><span class="den">8</span></span> 公尺，寬是多少公尺？</div>
+          <div class="problem-answer" style="justify-content:center;">
+            答案：<input type="text" id="app-q3" placeholder="?" style="width:70px;"> 公尺
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ3()">檢查</button>
+          </div>
+          <div id="app-q3-fb" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-5 被除數、除數和商的關係 -->
+    <section class="section" id="sec-relation">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--cyan);">2-5</div>
+        <div class="section-title">
+          <h2>被除數、除數和商的關係</h2>
+          <p>看除數和 1 的大小，就能判斷商怎麼變</p>
+        </div>
+      </div>
+      <p>一條長 4 公尺的紙帶，下面三種剪法，最多可以剪成幾段？</p>
+      <div class="interactive-area">
+        <div class="problem-card">
+          <div class="problem-text"><strong>A.</strong> 每 <span class="fraction"><span class="num">2</span><span class="den">3</span></span> 公尺剪一段</div>
+          <div class="tape" id="tape-a"><div class="tape-fill" style="width:100%;"></div></div>
+          <div id="label-a" style="text-align:center; font-weight:600;"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text"><strong>B.</strong> 每 1 公尺剪一段</div>
+          <div class="tape" id="tape-b"><div class="tape-fill" style="width:100%;"></div></div>
+          <div id="label-b" style="text-align:center; font-weight:600;"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text"><strong>C.</strong> 每 <span class="fraction"><span class="num">4</span><span class="den">3</span></span> 公尺剪一段</div>
+          <div class="tape" id="tape-c"><div class="tape-fill" style="width:100%;"></div></div>
+          <div id="label-c" style="text-align:center; font-weight:600;"></div>
+        </div>
+        <div class="btn-group" style="justify-content:center;">
+          <button class="btn btn-primary" onclick="showRelationTapes()">顯示結果</button>
+        </div>
+      </div>
+      <div class="concept-box">
+        <strong>規律：</strong><br>
+        • 當除數 ＜ 1 時，商 ＞ 被除數。<br>
+        • 當除數 ＝ 1 時，商 ＝ 被除數。<br>
+        • 當除數 ＞ 1 時，商 ＜ 被除數。
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🧠 不用計算，比大小</h3>
+        <p>在 □ 裡填入 ＞、＜ 或 ＝。</p>
+        <div class="problem-card">
+          <div class="problem-answer" style="justify-content:center;">
+            6 ÷ <span class="fraction"><span class="num">1</span><span class="den">3</span></span> <select id="rel-q1"><option value="">?</option><option value=">">＞</option><option value="=">＝</option><option value="<">＜</option></select> 6
+            <button class="btn btn-sm btn-primary" onclick="checkRelQ1()">檢查</button>
+          </div>
+          <div id="rel-q1-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-answer" style="justify-content:center;">
+            4 ÷ <span class="fraction"><span class="num">3</span><span class="den">2</span></span> <select id="rel-q2"><option value="">?</option><option value=">">＞</option><option value="=">＝</option><option value="<">＜</option></select> 4
+            <button class="btn btn-sm btn-primary" onclick="checkRelQ2()">檢查</button>
+          </div>
+          <div id="rel-q2-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-answer" style="justify-content:center;">
+            <span class="fraction"><span class="num">5</span><span class="den">8</span></span> ÷ <span class="fraction"><span class="num">5</span><span class="den">8</span></span> <select id="rel-q3"><option value="">?</option><option value=">">＞</option><option value="=">＝</option><option value="<">＜</option></select> <span class="fraction"><span class="num">5</span><span class="den">8</span></span>
+            <button class="btn btn-sm btn-primary" onclick="checkRelQ3()">檢查</button>
+          </div>
+          <div id="rel-q3-fb" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 綜合練習 -->
+    <section class="section" id="sec-review">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--primary);">綜</div>
+        <div class="section-title">
+          <h2>綜合練習</h2>
+          <p>挑戰各種分數除法題型</p>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">1. 一個水壺容量是 3 公升，一個杯子容量是 <span class="fraction"><span class="num">3</span><span class="den">8</span></span> 公升，水壺容量是杯子的幾倍？</div>
+        <div class="problem-answer">
+          答案：<input type="number" id="rev-q1" placeholder="?"> 倍
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ1()">檢查</button>
+        </div>
+        <div id="rev-q1-fb" class="feedback"></div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">2. 哥哥買了一條長 <span class="fraction"><span class="num">11</span><span class="den">5</span></span> 公尺的鐵絲，花了 18 元，長 1 公尺的鐵絲售價幾元？</div>
+        <div class="problem-answer">
+          答案：<input type="number" id="rev-q2" placeholder="?"> 元
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ2()">檢查</button>
+        </div>
+        <div id="rev-q2-fb" class="feedback"></div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">3. 下面哪一個算式的商比 <span class="fraction"><span class="num">8</span><span class="den">9</span></span> 大？（多選）</div>
+        <div class="quiz-options" id="rev-compare-options"></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="checkReviewCompare()">檢查答案</button></div>
+        <div id="rev-compare-fb" class="feedback"></div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">4. 把 <span class="fraction"><span class="num">49</span><span class="den">21</span></span> 化成最簡分數。</div>
+        <div class="problem-answer">
+          答案：<input type="text" id="rev-q4" placeholder="?" style="width:70px;">
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ4()">檢查</button>
+        </div>
+        <div id="rev-q4-fb" class="feedback"></div>
+      </div>
+
+      <div class="completion" id="completion">
+        <div style="font-size:3rem;">🎉</div>
+        <h2>恭喜你完成第 2 單元！</h2>
+        <p>你已經學會最簡分數、同分母與異分母分數除法、應用問題，以及被除數和商的關係。繼續加油！</p>
+        <button class="btn btn-accent" onclick="location.reload()" style="margin-top:16px;">再學一次</button>
+      </div>
+    </section>
+
     <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
+      <p>108課綱 · 康軒版 六年級上學期數學 · 第 2 單元自學練習</p>
     </footer>
   </div>
+
+  <canvas class="confetti" id="confetti"></canvas>
+
+  <script>
+
+    // ===== 通用工具 =====
+    const $ = id => document.getElementById(id);
+    let stars = 0;
+    const addStar = (n=1) => { stars += n; $('star-display').textContent = '⭐ ' + stars; };
+    const showFeedback = (id, correct, msg) => {
+      const el = $(id);
+      el.className = 'feedback ' + (correct ? 'correct' : 'wrong');
+      el.textContent = msg;
+      if (correct) addStar();
+    };
+
+    // 進度追蹤
+    const sections = ['sec-warmup','sec-simplest','sec-same-denom','sec-diff-denom','sec-apps','sec-relation','sec-review'];
+    const observed = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) observed.add(e.target.id); });
+      const pct = Math.round(observed.size / sections.length * 100);
+      $('progress-fill').style.width = pct + '%';
+      $('progress-text').textContent = pct + '%';
+      if (pct === 100) $('completion').classList.add('show');
+    }, { threshold: 0.2 });
+    sections.forEach(id => { const el = $(id); if (el) observer.observe(el); });
+
+    // 分數工具
+    function gcd(a,b){
+      a = Math.abs(a); b = Math.abs(b);
+      while (b) [a,b] = [b, a % b];
+      return a;
+    }
+    function parseFrac(s){
+      s = String(s).trim().replace(/\s+/g,'').replace(/[\uFF0F]/g,'/');
+      let whole = 0, num = 0, den = 1;
+      if (s.includes(' ')){
+        const [w, rest] = s.split(' ');
+        whole = parseInt(w)||0;
+        s = rest;
+      }
+      if (s.includes('/')){
+        const [n,d] = s.split('/');
+        num = parseInt(n)||0; den = parseInt(d)||1;
+      } else {
+        whole = parseInt(s)||0;
+      }
+      const sign = (whole < 0 || num < 0) ? -1 : 1;
+      const total = sign * (Math.abs(whole)*Math.abs(den) + Math.abs(num));
+      let g = gcd(total, den); if (g === 0) g = 1;
+      return {num: total/g, den: Math.abs(den)/g};
+    }
+    function toImproper(f){ return {num: f.num, den: f.den}; }
+    function toMixedStr(f){
+      if (f.den === 1) return String(f.num);
+      if (f.num === 0) return '0';
+      const sign = f.num < 0 ? '-' : '';
+      const n = Math.abs(f.num), d = Math.abs(f.den);
+      const w = Math.floor(n/d), r = n % d;
+      if (w === 0) return `${sign}${r}/${d}`;
+      if (r === 0) return `${sign}${w}`;
+      return `${sign}${w} ${r}/${d}`;
+    }
+    function simplify(f){
+      const g = gcd(f.num, f.den);
+      return {num: f.num/g, den: f.den/g};
+    }
+    function mulFrac(a,b){ return simplify({num:a.num*b.num, den:a.den*b.den}); }
+    function divFrac(a,b){ return simplify({num:a.num*b.den, den:a.den*b.num}); }
+    function fracEqual(a,b){ const x=simplify(a), y=simplify(b); return x.num===y.num && x.den===y.den; }
+    function checkFracInput(inputId, expectedStr, fbId){
+      const val = $(inputId).value.trim();
+      if (!val) { showFeedback(fbId, false, '請輸入答案。'); return false; }
+      const ans = parseFrac(val);
+      const exp = parseFrac(expectedStr);
+      if (fracEqual(ans, exp)) { showFeedback(fbId, true, '正確！'); return true; }
+      else { showFeedback(fbId, false, '再試一次。答案是 ' + toMixedStr(simplify(exp)) + '。'); return false; }
+    }
+
+    // 畫分數
+    function fracHTML(n,d){ return `<span class="fraction"><span class="num">${n}</span><span class="den">${d}</span></span>`; }
+    function mixedHTML(w,n,d){ return `<span class="fraction mixed"><span class="whole">${w}</span><span class="num">${n}</span><span class="den">${d}</span></span>`; }
+
+    // ===== 暖身：巧克力 =====
+    function initChocoGrid(){
+      const grid = $('choco-grid');
+      grid.innerHTML = '';
+      for (let i = 0; i < 16; i++){
+        const cell = document.createElement('div');
+        cell.className = 'frac-cell';
+        cell.textContent = Math.floor(i/8)+1;
+        if (i < 8) cell.style.background = '#d4a373';
+        else cell.style.background = '#a97142';
+        cell.style.color = 'white';
+        grid.appendChild(cell);
+      }
+    }
+    function shareChocolate(people){
+      const cells = document.querySelectorAll('#choco-grid .frac-cell');
+      cells.forEach((c,i) => {
+        c.classList.remove('mark');
+        c.textContent = '';
+        const group = Math.floor(i / (16/people));
+        setTimeout(() => { c.classList.add('mark'); c.textContent = (group+1); }, i*30);
+      });
+      const each = simplify({num:2, den:people});
+      $('choco-result').innerHTML = `平分給 ${people} 人，每人分到 <strong>${toMixedStr(each)}</strong> 個巧克力。<br>算式：2 ÷ ${people} ＝ ${fracHTML(2,people)} ＝ ${fracHTML(each.num, each.den)}`;
+    }
+
+    // ===== 2-1 最簡分數 =====
+    function initBoxGrid(){
+      const grid = $('box-grid');
+      grid.innerHTML = '';
+      for (let i = 0; i < 18; i++){
+        const cell = document.createElement('div');
+        cell.className = 'frac-cell' + (i < 12 ? ' on' : '');
+        cell.textContent = i < 12 ? '剩' : '吃';
+        grid.appendChild(cell);
+      }
+    }
+    function showBoxFraction(unit){
+      const cells = document.querySelectorAll('#box-grid .frac-cell');
+      cells.forEach((c,i) => {
+        c.classList.remove('mark');
+        c.textContent = i < 12 ? '剩' : '吃';
+        if (i < 12 && (Math.floor(i/unit) % 2 === 1)) c.classList.add('mark');
+      });
+      const f = simplify({num:12/unit, den:18/unit});
+      $('box-result').innerHTML = `每 ${unit} 塊為 1 份，12 塊是 <strong>${12/unit}</strong> 份，18 塊是 <strong>${18/unit}</strong> 份。<br>也就是 ${fracHTML(12,18)} ＝ ${fracHTML(f.num, f.den)} 盒。`;
+    }
+    function checkReduce(){
+      const n = +$('reduce-n').value, d = +$('reduce-d').value;
+      const ans = $('reduce-ans').value.trim();
+      if (n !== 15 || d !== 15) { showFeedback('reduce-fb', false, '30 和 45 的最大公因數是 15，請用 15 約分。'); return; }
+      checkFracInput('reduce-ans', '2/3', 'reduce-fb');
+    }
+
+    const simplestData = [
+      {s:'2/3', ok:true}, {s:'7/27', ok:true}, {s:'13/26', ok:false, ans:'1/2'},
+      {s:'32/49', ok:true}, {s:'11/121', ok:false, ans:'1/11'}, {s:'14/23', ok:true},
+      {s:'17/8', ok:true}, {s:'12/36', ok:false, ans:'1/3'}
+    ];
+    let simplestSelected = new Set();
+    function initSimplestQuiz(){
+      simplestSelected.clear();
+      const grid = $('simplest-grid');
+      grid.innerHTML = '';
+      simplestData.forEach((item, idx) => {
+        const [n,d] = item.s.split('/');
+        const cell = document.createElement('div');
+        cell.className = 'number-cell';
+        cell.innerHTML = fracHTML(n,d);
+        cell.onclick = () => { cell.classList.toggle('selected'); simplestSelected.has(idx) ? simplestSelected.delete(idx) : simplestSelected.add(idx); };
+        grid.appendChild(cell);
+      });
+      $('simplest-fb').className = 'feedback';
+    }
+    function checkSimplestQuiz(){
+      const correctIdx = simplestData.map((x,i) => x.ok ? i : -1).filter(i => i>=0);
+      const selected = Array.from(simplestSelected);
+      const isCorrect = selected.length === correctIdx.length && selected.every(i => correctIdx.includes(i));
+      document.querySelectorAll('#simplest-grid .number-cell').forEach((c,i) => {
+        c.classList.remove('selected','correct','wrong');
+        if (simplestData[i].ok) c.classList.add('correct');
+        else if (selected.includes(i)) c.classList.add('wrong');
+      });
+      if (isCorrect) showFeedback('simplest-fb', true, '太棒了！你找到了所有最簡分數！');
+      else {
+        const missed = correctIdx.filter(i => !selected.includes(i));
+        const wrong = selected.filter(i => !correctIdx.includes(i));
+        let msg = '再想想看。';
+        if (missed.length) msg += `你漏掉了 ${missed.map(i=>simplestData[i].s).join('、')}。`;
+        if (wrong.length) msg += `${wrong.map(i=>simplestData[i].s).join('、')} 還可以再約分。`;
+        showFeedback('simplest-fb', false, msg);
+      }
+    }
+
+    // ===== 2-2 同分母分數的除法 =====
+    function showSameDenom1(){
+      const tape = $('tape-fill-same1');
+      tape.style.width = '0%';
+      setTimeout(() => tape.style.width = '87.5%', 100);
+      const labels = $('tape-labels-same1');
+      labels.innerHTML = '';
+      for (let i = 0; i <= 7; i++){
+        const pct = i/7*87.5;
+        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i+1}</div>`;
+      }
+      $('same1-result').innerHTML = `${fracHTML(7,8)} ÷ ${fracHTML(1,8)} ＝ 7 ÷ 1 ＝ <strong>7</strong> 個手環`;
+    }
+    function checkSameQ1(){ checkFracInput('same-q1','3','same-q1-fb'); }
+    function checkSameQ2(){ checkFracInput('same-q2','5','same-q2-fb'); }
+    function checkSameQ3(){ checkFracInput('same-q3','7/4','same-q3-fb'); }
+    function checkSameQ4(){ checkFracInput('same-q4','4/7','same-q4-fb'); }
+    function initRibbonCompare(){
+      const wrap = $('ribbon-compare');
+      wrap.innerHTML = `
+        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--blue); border-radius:2px;"></span> 藍色緞帶 ${fracHTML(7,5)} 公尺</div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${(7/5)/(7/5)*100}%;">7/5</div></div>
+        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--accent); border-radius:2px;"></span> 綠色緞帶 ${fracHTML(4,5)} 公尺</div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${(4/5)/(7/5)*100}%; background:linear-gradient(90deg,var(--accent),var(--accent2));">4/5</div></div>
+      `;
+    }
+
+    // ===== 2-3 異分母分數的除法 =====
+    function showBottles(totalNum, totalDen, bottleDen){
+      const grid = $('bottle-grid');
+      grid.innerHTML = '';
+      const total = totalNum / totalDen;
+      const each = 1 / bottleDen;
+      const count = Math.round(total / each);
+      // visual: each bottle represents 1/bottleDen of total container unit
+      for (let i = 0; i < count; i++){
+        const b = document.createElement('div');
+        b.className = 'bottle';
+        b.innerHTML = `<div class="bottle-fill" style="height:100%;"></div>`;
+        b.title = `${i+1}`;
+        grid.appendChild(b);
+      }
+      const result = divFrac({num:totalNum, den:totalDen}, {num:1, den:bottleDen});
+      if (totalNum === 1 && totalDen === 1){
+        $('bottle-result').innerHTML = `1 ÷ ${fracHTML(1,bottleDen)} ＝ ${fracHTML(bottleDen,bottleDen)} ÷ ${fracHTML(1,bottleDen)} ＝ ${bottleDen} ÷ 1 ＝ <strong>${count}</strong> 瓶`;
+      } else {
+        $('bottle-result').innerHTML = `${totalNum} ÷ ${fracHTML(totalNum,totalDen)}（此處為假分數示例）... 可裝 <strong>${toMixedStr(result)}</strong> 壺`;
+      }
+    }
+    function showAreaModel(){
+      const cab = $('area-cabbage'), car = $('area-carrot');
+      cab.innerHTML = ''; car.innerHTML = '';
+      // 1/4 vs 1/3, common denominator 12
+      for (let i=0;i<12;i++){
+        const c1 = document.createElement('div'); c1.className = 'area-cell' + (i<3?' on':''); cab.appendChild(c1);
+        const c2 = document.createElement('div'); c2.className = 'area-cell' + (i<4?' target':''); car.appendChild(c2);
+      }
+      $('area-cabbage').style.gridTemplateColumns = 'repeat(4,28px)';
+      $('area-carrot').style.gridTemplateColumns = 'repeat(4,28px)';
+      $('area-result').innerHTML = `${fracHTML(1,4)} ＝ ${fracHTML(3,12)}，${fracHTML(1,3)} ＝ ${fracHTML(4,12)}。<br>${fracHTML(1,4)} ÷ ${fracHTML(1,3)} ＝ ${fracHTML(3,12)} ÷ ${fracHTML(4,12)} ＝ 3 ÷ 4 ＝ <strong>${fracHTML(3,4)}</strong> 倍`;
+    }
+    function checkDiffQ1(){ checkFracInput('diff-q1','55/63','diff-q1-fb'); }
+    function checkDiffQ2(){ checkFracInput('diff-q2','28/9','diff-q2-fb'); }
+
+    // ===== 2-4 應用 =====
+    function showRelay(){
+      const tape = $('relay-tape');
+      const labels = $('relay-labels');
+      labels.innerHTML = '';
+      for (let i = 0; i <= 5; i++){
+        const pct = i/5*100;
+        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i}</div>`;
+      }
+      // Add markers
+      for (let i=0;i<=10;i++){
+        const pct = i/10*100;
+        const mark = document.createElement('div');
+        mark.style.cssText = `position:absolute; left:${pct}%; top:10px; transform:translateX(-50%); width:20px; height:20px; background:var(--accent); border-radius:50%; color:white; font-size:0.7rem; display:flex; align-items:center; justify-content:center;`;
+        mark.textContent = i+1;
+        tape.appendChild(mark);
+      }
+    }
+    function checkRelay(){ checkFracInput('relay-ans','10','relay-fb'); }
+    function checkAppQ1(){ checkFracInput('app-q1','60','app-q1-fb'); }
+    function checkAppQ2(){ checkFracInput('app-q2','135','app-q2-fb'); }
+    function checkAppQ3(){ checkFracInput('app-q3','14/5','app-q3-fb'); }
+
+    // ===== 2-5 關係 =====
+    function showRelationTapes(){
+      const cases = [
+        {id:'a', divNum:2, divDen:3, res:6},
+        {id:'b', divNum:1, divDen:1, res:4},
+        {id:'c', divNum:4, divDen:3, res:3}
+      ];
+      cases.forEach(c => {
+        const div = c.divNum/c.divDen;
+        const count = 4 / div;
+        $(`label-${c.id}`).innerHTML = `4 ÷ ${fracHTML(c.divNum,c.divDen)} ＝ 4 × ${fracHTML(c.divDen,c.divNum)} ＝ <strong>${count}</strong> 段`;
+      });
+    }
+    function checkRelQ1(){ const sel=$('rel-q1').value; if(sel==='>') showFeedback('rel-q1-fb',true,'對！除以比 1 小的分數，商會變大。'); else showFeedback('rel-q1-fb',false,'除數 1/3 < 1，商會比被除數大。'); }
+    function checkRelQ2(){ const sel=$('rel-q2').value; if(sel==='<') showFeedback('rel-q2-fb',true,'對！除以比 1 大的分數，商會變小。'); else showFeedback('rel-q2-fb',false,'除數 3/2 > 1，商會比被除數小。'); }
+    function checkRelQ3(){ const sel=$('rel-q3').value; if(sel==='>') showFeedback('rel-q3-fb',true,'對！除以等於自己的數，商等於 1，而 5/8 < 1。'); else showFeedback('rel-q3-fb',false,'5/8 ÷ 5/8 ＝ 1，1 > 5/8。'); }
+
+    // ===== 綜合練習 =====
+    function checkReviewQ1(){ checkFracInput('rev-q1','8','rev-q1-fb'); }
+    function checkReviewQ2(){ checkFracInput('rev-q2','90/11','rev-q2-fb'); }
+    const compareOptions = [
+      {expr:'8/9 ÷ 9/8', ok:false},
+      {expr:'8/9 ÷ 8/9', ok:true},
+      {expr:'8/9 ÷ 1/2', ok:true},
+      {expr:'8/9 ÷ 5/4', ok:false}
+    ];
+    let compareSelected = new Set();
+    function initReviewCompare(){
+      const wrap = $('rev-compare-options');
+      wrap.innerHTML = '';
+      compareSelected.clear();
+      compareOptions.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'quiz-option';
+        div.innerHTML = opt.expr;
+        div.onclick = () => { div.classList.toggle('selected'); compareSelected.has(idx)?compareSelected.delete(idx):compareSelected.add(idx); };
+        wrap.appendChild(div);
+      });
+    }
+    function checkReviewCompare(){
+      const correct = compareOptions.map((o,i)=>o.ok?i:-1).filter(i=>i>=0);
+      const selected = Array.from(compareSelected);
+      const ok = selected.length===correct.length && selected.every(i=>correct.includes(i));
+      document.querySelectorAll('#rev-compare-options .quiz-option').forEach((c,i)=>{
+        c.classList.remove('selected','correct','wrong');
+        if (compareOptions[i].ok) c.classList.add('correct');
+        else if (selected.includes(i)) c.classList.add('wrong');
+      });
+      if (ok) showFeedback('rev-compare-fb', true, '正確！除數 < 1 時商比被除數大。');
+      else showFeedback('rev-compare-fb', false, '再想想看：除數小於 1 時，商會比被除數大。');
+    }
+    function checkReviewQ4(){ checkFracInput('rev-q4','7/3','rev-q4-fb'); }
+
+    // 初始化
+    window.onload = function(){
+      initChocoGrid();
+      initBoxGrid();
+      initRibbonCompare();
+      showBottles(1,1,2);
+      initSimplestQuiz();
+      initReviewCompare();
+      initConfetti();
+    };
+
+    // Confetti
+    function initConfetti(){
+      const canvas = $('confetti');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+    }
+    function fireConfetti(){
+      const canvas = $('confetti');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const pieces = [];
+      for (let i=0;i<80;i++) pieces.push({x:canvas.width/2, y:canvas.height/2, vx:(Math.random()-0.5)*10, vy:(Math.random()-1)*10, color:`hsl(${Math.random()*360},80%,60%)`, size:Math.random()*6+4});
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        let moving = false;
+        pieces.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.vy+=0.3; if (p.y < canvas.height) moving=true; ctx.fillStyle=p.color; ctx.fillRect(p.x,p.y,p.size,p.size); });
+        if (moving) requestAnimationFrame(draw); else ctx.clearRect(0,0,canvas.width,canvas.height);
+      }
+      draw();
+    }
+  </script>
 </body>
 </html>
