@@ -291,10 +291,16 @@
       line-height: 1.6;
       margin: 10px 0;
     }
-    .sd-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .sd-row { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
     .sd-divisor { color: var(--accent); font-weight: 700; min-width: 24px; text-align: right; }
-    .sd-num { border-bottom: 2px solid #333; padding: 0 8px; min-width: 40px; text-align: center; }
-    .sd-res { padding: 0 8px; min-width: 40px; text-align: center; }
+    .sd-num {
+      border-bottom: 2px solid #333;
+      padding: 0 10px;
+      min-width: 44px;
+      text-align: center;
+    }
+    .sd-num:first-of-type { border-left: 2px solid #333; }
+    .sd-res { padding: 0 10px; min-width: 44px; text-align: center; }
 
     /* GCD/LCM visualizers */
     .venn-wrap { display: flex; justify-content: center; margin: 16px 0; }
