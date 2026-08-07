@@ -322,10 +322,30 @@
     .nl-marker.b { background: var(--accent); }
 
     /* Tile visualization */
-    .tile-grid { display: grid; gap: 2px; justify-content: center; margin: 16px auto; }
-    .tile { aspect-ratio: 1; border-radius: 3px; }
-    .tile.blue { background: var(--blue); }
-    .tile.pink { background: var(--pink); }
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(24, 12px);
+      gap: 1px;
+      justify-content: center;
+      margin: 16px auto;
+      width: fit-content;
+      padding: 8px;
+      background: #e0e0e0;
+      border-radius: 8px;
+    }
+    .tile {
+      width: 12px; height: 12px;
+      background: #f5f5f5;
+      border-radius: 1px;
+    }
+    .tile.square-a { background: #bbdefb; }
+    .tile.square-b { background: #f8bbd0; }
+    .tile.border-top { border-top: 2px solid #555; }
+    .tile.border-left { border-left: 2px solid #555; }
+    @media (max-width: 400px) {
+      .tile-grid { grid-template-columns: repeat(24, 8px); padding: 5px; }
+      .tile { width: 8px; height: 8px; }
+    }
 
     /* Quiz */
     .quiz-options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
@@ -1021,19 +1041,23 @@
     }
     function drawTile(size) {
       const grid = $('tile-grid');
-      const cols = 24 / size, rows = 16 / size;
-      grid.style.gridTemplateColumns = `repeat(${cols}, 16px)`;
-      grid.style.width = (cols * 16 + (cols-1)*2) + 'px';
       grid.innerHTML = '';
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
+      // 固定顯示 24×16 的原始長方形，用框線標出每個正方形
+      for (let r = 0; r < 16; r++) {
+        for (let c = 0; c < 24; c++) {
           const tile = document.createElement('div');
-          tile.className = 'tile ' + (r % 2 === c % 2 ? 'blue' : 'pink');
+          tile.className = 'tile';
+          const sr = Math.floor(r / size);
+          const sc = Math.floor(c / size);
+          tile.classList.add((sr + sc) % 2 === 0 ? 'square-a' : 'square-b');
+          if (r % size === 0) tile.classList.add('border-top');
+          if (c % size === 0) tile.classList.add('border-left');
           grid.appendChild(tile);
         }
       }
       const isMax = size === 8;
-      $('tile-info').innerHTML = `邊長 <strong>${size}</strong> 公分，可以剛好剪完。<br>${isMax ? '✅ 8 是 24 和 16 的最大公因數！' : '雖然可以，但不是最長的邊長。'}`;
+      const numSquares = (24 / size) * (16 / size);
+      $('tile-info').innerHTML = `邊長 <strong>${size}</strong> 公分，可以剪成 <strong>${24/size} × ${16/size} = ${numSquares}</strong> 個正方形。<br>${isMax ? '✅ 8 是 24 和 16 的最大公因數，所以邊長最長是 8 公分！' : '雖然可以剪完，但不是最長的邊長。'}`;
     }
 
     // GCD 短除法
