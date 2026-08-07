@@ -1107,32 +1107,48 @@
     }
 
     // ===== 1-4 最小公倍數 =====
+    function buildSingleTimeline(maxTime, multiples, cls, label, name, color) {
+      let html = `<div style="margin:14px 0;">`;
+      html += `<div style="display:flex; align-items:center; gap:8px; margin-bottom:6px; font-size:0.9rem; color:#666;">`;
+      html += `<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:${color};"></span>`;
+      html += `<span>${name}（每 ${label === 'A' ? $('lcm-a').value : $('lcm-b').value} 分鐘閃一次）</span>`;
+      html += `</div>`;
+      html += '<div class="numberline" style="height:48px;"><div class="nl-line"></div>';
+      for (let i = 0; i <= maxTime; i += Math.max(1, Math.floor(maxTime/8))) {
+        const pct = i / maxTime * 100;
+        html += `<div class="nl-tick" style="left:${pct}%"></div><div class="nl-label" style="left:${pct}%">${i}</div>`;
+      }
+      multiples.forEach(t => {
+        const pct = t / maxTime * 100;
+        html += `<div class="nl-marker ${cls}" style="left:${pct}%; top:6px;">${label}</div>`;
+      });
+      html += '</div></div>';
+      return html;
+    }
     function drawLcmTimeline() {
       const a = +$('lcm-a').value, b = +$('lcm-b').value;
       if (a < 2 || b < 2) return;
-      const maxTime = Math.min(a * b, 200);
+      const maxTime = Math.min(a * b, 120);
       const multA = [], multB = [];
       for (let t = a; t <= maxTime; t += a) multA.push(t);
       for (let t = b; t <= maxTime; t += b) multB.push(t);
       const common = multA.filter(t => multB.includes(t));
       const lcm = common[0] || a*b;
-      let html = '<div class="numberline"><div class="nl-line"></div>';
-      for (let i = 0; i <= Math.min(maxTime, 120); i += Math.max(1, Math.floor(maxTime/10))) {
-        const pct = i / maxTime * 100;
-        html += `<div class="nl-tick" style="left:${pct}%"></div><div class="nl-label" style="left:${pct}%">${i}</div>`;
+      let html = '<div style="background:#fafafa; border-radius:14px; padding:12px 16px;">';
+      html += buildSingleTimeline(maxTime, multA, 'a', 'A', '小燈泡', '#42a5f5');
+      html += buildSingleTimeline(maxTime, multB, 'b', 'B', '大燈泡', '#f5846e');
+      // 標示同時閃爍的時刻
+      html += '<div style="text-align:center; margin-top:8px;">';
+      if (common.length) {
+        html += '<div style="font-size:0.9rem; color:#666; margin-bottom:6px;">👇 同時閃爍的時刻</div>';
+        common.slice(0, 5).forEach(t => {
+          const isFirst = t === lcm;
+          html += `<div style="display:inline-block; margin:4px; padding:6px 12px; border-radius:20px; font-weight:600; ${isFirst ? 'background:#e8f5e9; color:#2e7d32;' : 'background:#fff3e0; color:#ef6c00;'}">${t} 分鐘${isFirst ? '（第一次）' : ''}</div>`;
+        });
       }
-      multA.forEach(t => {
-        const pct = t / maxTime * 100;
-        html += `<div class="nl-marker a" style="left:${pct}%">A</div>`;
-      });
-      multB.forEach(t => {
-        const pct = t / maxTime * 100;
-        html += `<div class="nl-marker b" style="left:${pct}%">B</div>`;
-      });
-      html += '</div>';
-      html += '<div style="text-align:center; margin-top:8px; font-size:0.9rem;"><span style="color:#42a5f5;">● A 閃爍</span>　<span style="color:#f5846e;">● B 閃爍</span></div>';
+      html += '</div></div>';
       $('lcm-timeline').innerHTML = html;
-      $('lcm-result').innerHTML = `第一次同時閃爍在 <strong>${lcm}</strong> 分鐘後。<br>也就是 8 和 28 的最小公倍數是 <strong>${lcm}</strong>。`;
+      $('lcm-result').innerHTML = `第一次同時閃爍在 <strong>${lcm}</strong> 分鐘後。<br>也就是 ${a} 和 ${b} 的最小公倍數是 <strong>${lcm}</strong>。`;
       addStar();
     }
 
