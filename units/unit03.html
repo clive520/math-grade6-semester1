@@ -1,89 +1,465 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>數量關係 - 六上數學自學網</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .container { max-width: 800px; margin: 0 auto; }
-    .back-link {
-      display: inline-block;
-      color: #2c5f8a;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .back-link:hover { background: #e8f0f8; }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    .unit-badge {
-      display: inline-block;
-      background: BADGE_COLOR;
-      color: white;
-      padding: 6px 20px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.8;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>數量關係 - 六上數學自學網</title>
+<style>
+:root{--c1:#7bc67e;--c1d:#4caf50;--c2:#6ec6f5;--c3:#f5846e;--c4:#b39ddb;--bg:#f5f7fa;--card:#fff;--text:#2c3e50;--muted:#666;--light:#f0f4f0;--shadow:0 4px 18px rgba(0,0,0,0.08);--r:18px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+header.top{background:linear-gradient(135deg,#7bc67e 0%,#4caf50 100%);color:#fff;padding:30px 20px 70px;position:relative;overflow:hidden}
+header.top::before{content:"";position:absolute;bottom:-40px;left:-10%;right:-10%;height:100px;background:var(--bg);border-radius:50% 50% 0 0}
+.back-link{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.25);color:#fff;padding:8px 16px;border-radius:30px;font-size:.95rem;margin-bottom:16px}
+.back-link:hover{background:rgba(255,255,255,0.35)}
+.hero-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.unit-badge{display:inline-block;background:rgba(255,255,255,0.25);padding:6px 18px;border-radius:30px;font-weight:700;margin-bottom:10px}
+h1{font-size:2.2rem;letter-spacing:2px;margin-bottom:6px}
+.tagline{font-size:1.1rem;opacity:.95}
+.container{max-width:860px;margin:-40px auto 40px;padding:0 16px;position:relative;z-index:2}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:24px;margin-bottom:20px}
+.card h2{font-size:1.4rem;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.card h3{font-size:1.15rem;margin:20px 0 10px;color:var(--c1d)}
+.card p{color:var(--muted);margin-bottom:12px}
+.tip{background:#fff8e1;border-left:4px solid #ffc107;padding:12px 16px;border-radius:10px;font-size:.95rem;color:#5d4037;margin:14px 0}
+.formula{background:#e3f2fd;border-left:4px solid var(--c2);padding:14px 18px;border-radius:10px;font-size:1.05rem;color:#1565c0;margin:14px 0;font-weight:600}
+.sub-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;position:sticky;top:10px;z-index:10;background:rgba(245,247,250,.92);backdrop-filter:blur(6px);padding:10px;border-radius:50px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.sub-nav button{flex:1;min-width:120px;border:none;background:#fff;padding:12px 16px;border-radius:30px;font-size:1rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.sub-nav button.active,.sub-nav button:hover{background:var(--c1);color:#fff}
+.section{display:none;animation:fadeIn .35s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.widget{background:var(--light);border-radius:14px;padding:20px;margin:16px 0}
+.widget-title{font-weight:700;color:var(--text);margin-bottom:12px;font-size:1.05rem}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.controls label{font-weight:600;color:var(--muted)}
+input[type=number],input[type=text],select{padding:10px 14px;border:2px solid #ddd;border-radius:10px;font-size:1rem;min-width:100px;outline:none}
+input[type=number]:focus,input[type=text]:focus,select:focus{border-color:var(--c1)}
+input[type=range]{flex:1;min-width:160px;accent-color:var(--c1)}
+button.btn{background:var(--c1);color:#fff;border:none;padding:10px 20px;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .1s,background .2s}
+button.btn:hover{background:var(--c1d)}
+button.btn:active{transform:scale(.98)}
+button.btn.secondary{background:var(--c2)}
+button.btn.secondary:hover{background:#4791db}
+.pattern-strip{display:flex;flex-wrap:wrap;gap:4px;padding:14px;background:#fff;border-radius:12px;justify-content:center;min-height:70px;align-items:center}
+.pattern-item{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.85rem;box-shadow:0 2px 4px rgba(0,0,0,.1);transition:transform .2s}
+.pattern-item.highlight{transform:scale(1.15);box-shadow:0 0 0 3px #ffd700,0 4px 10px rgba(0,0,0,.15)}
+.pattern-item.dim{opacity:.45}
+.shape-icon{font-size:1.6rem}
+.builder-canvas{background:#fff;border-radius:12px;padding:16px;text-align:center;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.builder-result{font-size:1.2rem;font-weight:700;color:var(--c1d);margin-top:10px}
+.bar-container{background:#fff;border-radius:12px;padding:20px;margin-top:10px}
+.split-bar{height:44px;border-radius:22px;display:flex;overflow:hidden;box-shadow:inset 0 2px 6px rgba(0,0,0,.08);margin-bottom:12px}
+.split-segment{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;transition:width .2s}
+table.data-table{width:100%;border-collapse:collapse;margin:12px 0;background:#fff;border-radius:10px;overflow:hidden}
+table.data-table th,table.data-table td{border:1px solid #e0e0e0;padding:10px;text-align:center}
+table.data-table th{background:var(--c1);color:#fff}
+table.data-table td input{width:80px;text-align:center;border:1px solid #ddd;border-radius:6px;padding:6px}
+.quiz-option{display:block;width:100%;text-align:left;background:#fff;border:2px solid #e0e0e0;border-radius:12px;padding:12px 16px;margin-bottom:10px;cursor:pointer;transition:all .15s;font-size:1rem}
+.quiz-option:hover{border-color:var(--c1);background:#f1f8f4}
+.quiz-option.correct{border-color:#4caf50;background:#e8f5e9}
+.quiz-option.wrong{border-color:#ef5350;background:#ffebee}
+.quiz-feedback{margin-top:10px;font-weight:600;min-height:26px}
+.progress-wrap{position:fixed;bottom:20px;right:20px;background:#fff;padding:14px 18px;border-radius:16px;box-shadow:var(--shadow);z-index:50;min-width:180px}
+.progress-bar{height:10px;background:#e0e0e0;border-radius:5px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:var(--c1);width:0%;transition:width .4s}
+.badge-pop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:#fff;padding:30px 40px;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.2);text-align:center;z-index:100;transition:transform .35s cubic-bezier(.175,.885,.32,1.275);pointer-events:none}
+.badge-pop.show{transform:translate(-50%,-50%) scale(1)}
+.badge-pop .icon{font-size:4rem;margin-bottom:10px}
+.badge-pop h3{color:var(--c1d);font-size:1.5rem}
+.interval-line{position:relative;height:60px;background:#fff;border-radius:12px;margin:16px 0;display:flex;align-items:center;padding:0 30px}
+.interval-line::before{content:"";position:absolute;left:30px;right:30px;height:4px;background:#cfd8dc;border-radius:2px}
+.interval-post{position:absolute;width:10px;height:36px;background:var(--c2);border-radius:4px 4px 2px 2px;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;color:#fff;font-size:.65rem;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.interval-label{position:absolute;top:-20px;transform:translateX(-50%);font-size:.75rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.interval-label.bottom{top:auto;bottom:-22px}
+footer{text-align:center;padding:20px;color:#aaa;font-size:.85rem}
+@media(max-width:600px){h1{font-size:1.7rem}.sub-nav button{min-width:90px;font-size:.9rem;padding:10px}.progress-wrap{bottom:10px;right:10px;left:10px;min-width:auto}}
+</style>
 </head>
 <body>
-  <div class="container">
+<header class="top">
+  <div class="hero-inner">
     <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #7bc67e;">第 3 單元</div>
-      <h1>數量關係</h1>
-      <p class="tag">和不變、差不變、積不變</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">🔢</div>
-      <p>內容建置中，敬請期待！</p>
-    </div>
-    <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
-    </footer>
+    <div class="unit-badge">第 3 單元</div>
+    <h1>數量關係</h1>
+    <p class="tagline">和不變、差不變、積不變、商不變，找出數與形的規律！</p>
   </div>
+</header>
+<div class="container">
+  <nav class="sub-nav">
+    <button class="active" onclick="showSection(0)">3-1 圖形與數形規律</button>
+    <button onclick="showSection(1)">3-2 和差積商不變</button>
+    <button onclick="showSection(2)">3-3 間隔問題</button>
+    <button onclick="showSection(3)">✏️ 練習挑戰</button>
+  </nav>
+
+  <section class="section active" id="sec0">
+    <div class="card">
+      <h2>🎨 3-1 圖形和數形的規律</h2>
+      <p>先觀察圖形是「幾個一組」，再用除法找出第幾個在第幾組。數形的規律則要找出「每次增加多少」。</p>
+      <div class="widget">
+        <div class="widget-title">法國國旗色紙規律</div>
+        <p>色紙按照「藍、白、紅、白」4 張一組重複排列。輸入位置，看看第幾張是什麼顏色。</p>
+        <div class="pattern-strip" id="flagStrip"></div>
+        <div class="controls">
+          <label>第 <input type="number" id="flagPos" value="21" min="1" max="100"> 張</label>
+          <button class="btn" onclick="checkFlag()">查看答案</button>
+        </div>
+        <div class="formula" id="flagResult"></div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">妮妮的圖卡規律</div>
+        <p>圖卡按照「奧力、米歐、朵朵果」3 張一組重複。你來試試第 23 張是什麼？</p>
+        <div class="pattern-strip" id="cardStrip"></div>
+        <div class="controls">
+          <label>第 <input type="number" id="cardPos" value="23" min="1" max="100"> 張</label>
+          <button class="btn" onclick="checkCard()">查看答案</button>
+        </div>
+        <div class="formula" id="cardResult"></div>
+        <div class="tip">小提醒：要算「總共排了幾張某個圖案」，可以先算完整有幾組，再看餘數裡有沒有它。</div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">吸管排三角形</div>
+        <p>圖① 1 個三角形用 3 枝吸管，每多 1 個三角形就多 2 枝。拉動滑桿看看要幾枝吸管。</p>
+        <div class="controls">
+          <label>三角形個數：<span id="triN">8</span> 個</label>
+          <input type="range" id="triSlider" min="1" max="20" value="8" oninput="drawTriangles()">
+        </div>
+        <div class="builder-canvas" id="triCanvas"></div>
+        <div class="builder-result" id="triResult"></div>
+        <div class="tip">算法一：3 + 2 × (個數 − 1)　|　算法二：1 + 2 × 個數</div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">火柴棒排正方形</div>
+        <p>圖① 1 個正方形用 4 根火柴棒，每多 1 個正方形就多 3 根。試試看！</p>
+        <div class="controls">
+          <label>正方形個數：<span id="sqN">5</span> 個</label>
+          <input type="range" id="sqSlider" min="1" max="20" value="5" oninput="drawSquares()">
+        </div>
+        <div class="builder-canvas" id="sqCanvas"></div>
+        <div class="builder-result" id="sqResult"></div>
+        <div class="tip">算法：4 + 3 × (個數 − 1) = 1 + 3 × 個數</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec1">
+    <div class="card">
+      <h2>⚖️ 3-2 和差積商不變</h2>
+      <p>兩個數量之間如果有固定不變的關係，我們就能用一條算式來表示它。</p>
+      <div class="widget">
+        <div class="widget-title">和不變：白晝 + 黑夜 = 24 小時</div>
+        <p>拉動滑桿改變白晝時數，黑夜會自動調整，總和永遠是 24 小時。</p>
+        <div class="controls">
+          <label>白晝 <input type="range" id="daySlider" min="0" max="24" step="0.5" value="11" oninput="updateDayNight()"> 小時</label>
+        </div>
+        <div class="bar-container">
+          <div class="split-bar" id="dayNightBar"></div>
+          <div id="dayNightText"></div>
+        </div>
+        <div class="formula">白晝 + 黑夜 = 24</div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">差不變：媽媽和祐維的年齡</div>
+        <p>今年媽媽 35 歲、祐維 7 歲，兩人相差 28 歲。無論過幾年，年齡差都不變！</p>
+        <div class="controls">
+          <label>經過 <input type="range" id="ageSlider" min="0" max="50" value="0" oninput="updateAge()"> 年</label>
+        </div>
+        <div class="bar-container" id="ageDisplay"></div>
+        <div class="formula" id="ageFormula">媽媽年齡 − 祐維年齡 = 28</div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">積不變：白米分裝</div>
+        <p>同一袋白米，每包越重，包數就越少，但「每包重量 × 包數」永遠等於總重量。</p>
+        <table class="data-table">
+          <tr><th>每包重量(公斤)</th><td>2</td><td>4</td><td>5</td><td><input type="number" id="riceW" value="10" onchange="updateRice()"></td></tr>
+          <tr><th>裝成包數(包)</th><td>30</td><td>15</td><td>12</td><td id="riceB"></td></tr>
+        </table>
+        <div class="formula" id="riceFormula"></div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">商不變：杯子蛋糕的單價</div>
+        <p>總價 ÷ 數量 = 一個的價錢。只要買的是同一種蛋糕，這個商就不會變。</p>
+        <table class="data-table">
+          <tr><th></th><th>妙妙</th><th>奇奇</th><th>妮妮</th><th>豆豆</th></tr>
+          <tr><th>總價(元)</th><td>90</td><td>180</td><td>300</td><td>240</td></tr>
+          <tr><th>數量(個)</th><td>6</td><td>12</td><td>20</td><td id="cakeAns"></td></tr>
+        </table>
+        <div class="controls">
+          <label>豆豆 240 元可買幾個？ <input type="number" id="cakeInput" placeholder="?"> 個</label>
+          <button class="btn" onclick="checkCake()">檢查</button>
+        </div>
+        <div class="quiz-feedback" id="cakeFeedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec2">
+    <div class="card">
+      <h2>🚦 3-3 間隔問題</h2>
+      <p>遇到路燈、種樹、插旗等問題，先畫圖找出「間隔數」和「數量」的關係。</p>
+      <div class="tip"><strong>直線型：</strong>兩端都有 → 數量 = 間隔數 + 1；一端有 → 數量 = 間隔數；兩端都沒有 → 數量 = 間隔數 − 1。<br><strong>封閉型：</strong>數量 = 間隔數</div>
+      <div class="widget">
+        <div class="widget-title">第幾號到第幾號，相距多遠？</div>
+        <p>相鄰兩盞路燈相距 25 公尺。從第 36 號到第 51 號有幾個間隔？</p>
+        <div class="controls">
+          <label>起點號碼 <input type="number" id="startN" value="36"></label>
+          <label>終點號碼 <input type="number" id="endN" value="51"></label>
+          <label>間距 <input type="number" id="gapN" value="25"> 公尺</label>
+          <button class="btn" onclick="updateIntervalDistance()">計算</button>
+        </div>
+        <div class="interval-line" id="intervalLine"></div>
+        <div class="formula" id="intervalDistanceResult"></div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">已知全長，求數量</div>
+        <p>道路全長 600 公尺，每隔 25 公尺設一盞路燈。選擇頭尾情況，看看會有幾盞。</p>
+        <div class="controls">
+          <label>全長 <input type="number" id="roadLen" value="600"> 公尺</label>
+          <label>間距 <input type="number" id="roadGap" value="25"> 公尺</label>
+          <label>在 <select id="roadEnd"><option value="both">頭尾兩端都有</option><option value="one">只有一端有</option><option value="none">頭尾兩端都沒有</option></select></label>
+          <label>幾側 <select id="roadSide"><option value="1">一側</option><option value="2">兩側</option></select></label>
+          <button class="btn" onclick="updateRoadCount()">計算</button>
+        </div>
+        <div class="interval-line" id="roadLine"></div>
+        <div class="formula" id="roadCountResult"></div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">已知數量，求間距</div>
+        <p>繩子長 420 公分，要綁 21 個氣球，兩端都要綁。相鄰氣球距離是多少？</p>
+        <div class="controls">
+          <label>總長 <input type="number" id="ropeLen" value="420"> 公分</label>
+          <label>數量 <input type="number" id="ropeCount" value="21"></label>
+          <label><select id="ropeEnd"><option value="both">兩端都有</option><option value="one">一端有一端沒有</option><option value="none">兩端都沒有</option></select></label>
+          <button class="btn" onclick="updateRopeGap()">計算</button>
+        </div>
+        <div class="formula" id="ropeGapResult"></div>
+      </div>
+      <div class="widget">
+        <div class="widget-title">封閉圖形：圓形水池</div>
+        <p>圓形水池周長 330 公尺，每隔 15 公尺種一棵樹。繞一圈的數量 = 間隔數。</p>
+        <div class="controls">
+          <label>周長 <input type="number" id="circleLen" value="330"> 公尺</label>
+          <label>間距 <input type="number" id="circleGap" value="15"> 公尺</label>
+          <button class="btn" onclick="updateCircle()">計算</button>
+        </div>
+        <div class="builder-canvas" id="circleCanvas"></div>
+        <div class="formula" id="circleResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sec3">
+    <div class="card">
+      <h2>✏️ 練習挑戰</h2>
+      <p>來自課本與習作的精選題目，全部答對就能獲得「數量關係小達人」徽章！</p>
+      <div id="quizBox"></div>
+      <div class="progress-wrap" style="position:static;margin-top:20px;">
+        <div>答對題數：<span id="score">0</span> / <span id="total">0</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="quizProgress"></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="progress-wrap">
+  <div>學習進度</div>
+  <div class="progress-bar"><div class="progress-fill" id="learnProgress"></div></div>
+</div>
+<div class="badge-pop" id="badgePop">
+  <div class="icon">🏆</div>
+  <h3>數量關係小達人</h3>
+  <p>恭喜你完成所有挑戰！</p>
+</div>
+<footer>
+  <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
+</footer>
+
+<script>
+function showSection(i){
+  document.querySelectorAll('.section').forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  document.querySelectorAll('.sub-nav button').forEach((b,idx)=>b.classList.toggle('active',idx===i));
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateProgress();
+}
+const $ = id => document.getElementById(id);
+
+const flagColors=[{bg:'#1a237e',t:'藍'},{bg:'#fff',t:'白',c:'#333'},{bg:'#c62828',t:'紅'},{bg:'#fff',t:'白',c:'#333'}];
+function renderFlagStrip(){
+  const el=$('flagStrip'); el.innerHTML='';
+  for(let i=1;i<=20;i++){
+    const c=flagColors[(i-1)%4];
+    const d=document.createElement('div'); d.className='pattern-item'; d.style.background=c.bg; d.style.color=c.c||'#fff';
+    d.textContent=c.t; el.appendChild(d);
+  }
+}
+function checkFlag(){
+  const n=parseInt($('flagPos').value)||1;
+  const groupPos=(n-1)%4; const groups=Math.floor((n-1)/4); const rem=groupPos+1;
+  const names=['藍色','白色','紅色','白色'];
+  $('flagResult').textContent=n+' ÷ 4 = '+groups+' 餘 '+rem+' → 第 '+(groups+1)+' 組的第 '+rem+' 張：'+names[groupPos];
+  Array.from($('flagStrip').children).forEach((d,i)=>{d.classList.toggle('highlight',i+1===n); d.classList.toggle('dim',i+1!==n);});
+}
+
+const cardShapes=['🐻','🐸','🐰'];
+function renderCardStrip(){
+  const el=$('cardStrip'); el.innerHTML='';
+  for(let i=1;i<=18;i++){
+    const d=document.createElement('div'); d.className='pattern-item'; d.style.background=['#ffb74d','#81c784','#90caf9'][(i-1)%3];
+    d.innerHTML='<span class="shape-icon">'+cardShapes[(i-1)%3]+'</span>'; el.appendChild(d);
+  }
+}
+function checkCard(){
+  const n=parseInt($('cardPos').value)||1; const groupPos=(n-1)%3; const groups=Math.floor((n-1)/3); const rem=groupPos+1;
+  const names=['奧力','米歐','朵朵果'];
+  $('cardResult').textContent=n+' ÷ 3 = '+groups+' 餘 '+rem+' → 第 '+(groups+1)+' 組的第 '+rem+' 張：'+names[groupPos];
+  Array.from($('cardStrip').children).forEach((d,i)=>{d.classList.toggle('highlight',i+1===n); d.classList.toggle('dim',i+1!==n);});
+}
+
+function drawTriangles(){
+  const n=parseInt($('triSlider').value); $('triN').textContent=n;
+  const w=Math.min(700,n*38+40); const h=120;
+  let svg='<svg class="geometry" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">';
+  for(let i=0;i<n;i++){
+    const x=20+i*38, y=20;
+    svg+='<polygon points="'+x+','+(y+80)+' '+(x+30)+','+y+' '+(x+60)+','+(y+80)+'" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
+    if(i>0) svg+='<line x1="'+(x)+'" y1="'+(y+80)+'" x2="'+(x)+'" y2="'+(y)+'" stroke="#42a5f5" stroke-width="4"/>';
+  }
+  svg+='</svg>';
+  $('triCanvas').innerHTML=svg;
+  $('triResult').textContent='需要的吸管數：3 + 2 × ('+n+' − 1) = '+(1+2*n)+' 枝';
+}
+function drawSquares(){
+  const n=parseInt($('sqSlider').value); $('sqN').textContent=n;
+  const w=Math.min(700,n*35+40); const h=110;
+  let svg='<svg class="geometry" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">';
+  for(let i=0;i<n;i++){
+    const x=20+i*35, y=20;
+    svg+='<rect x="'+x+'" y="'+y+'" width="50" height="50" fill="none" stroke="#ff8a65" stroke-width="4"/>';
+    if(i>0) svg+='<line x1="'+(x)+'" y1="'+y+'" x2="'+(x)+'" y2="'+(y+50)+'" stroke="white" stroke-width="6"/>';
+  }
+  svg+='</svg>';
+  $('sqCanvas').innerHTML=svg;
+  $('sqResult').textContent='需要的火柴棒數：4 + 3 × ('+n+' − 1) = '+(1+3*n)+' 根';
+}
+
+function updateDayNight(){
+  const day=parseFloat($('daySlider').value); const night=24-day;
+  const dayPct=(day/24)*100;
+  $('dayNightBar').innerHTML='<div class="split-segment" style="width:'+dayPct+'%;background:#ffb74d">白晝 '+day+'h</div><div class="split-segment" style="width:'+(100-dayPct)+'%;background:#455a64">黑夜 '+night+'h</div>';
+  $('dayNightText').innerHTML='白晝 <strong>'+day+'</strong> 小時 + 黑夜 <strong>'+night+'</strong> 小時 = 24 小時';
+}
+function updateAge(){
+  const y=parseInt($('ageSlider').value); const mom=35+y, kid=7+y;
+  $('ageDisplay').innerHTML='<p>今年起經過 <strong>'+y+'</strong> 年後：媽媽 <strong>'+mom+'</strong> 歲，祐維 <strong>'+kid+'</strong> 歲，相差 <strong>'+(mom-kid)+'</strong> 歲。</p>';
+}
+function updateRice(){
+  const w=parseFloat($('riceW').value)||10; const total=60; const b=total/w;
+  $('riceB').textContent=Math.round(b*100)/100;
+  $('riceFormula').textContent='每包重量 × 裝成包數 = '+w+' × '+Math.round(b*100)/100+' = 60 公斤';
+}
+function checkCake(){
+  const ans=$('cakeInput').value.trim(); const fb=$('cakeFeedback');
+  if(ans=='16'||ans=='16個'||ans=='16 個'){fb.innerHTML='<span style="color:#4caf50">答對了！240 ÷ 15 = 16 個。</span>';trackCorrect('cake');}
+  else{fb.innerHTML='<span style="color:#ef5350">再想想看：先算一個蛋糕多少元？</span>';}
+}
+
+function makePost(line,left,num,showLabel){
+  const post=document.createElement('div'); post.className='interval-post'; post.style.left=left+'px'; line.appendChild(post);
+  if(showLabel){
+    const lbl=document.createElement('div'); lbl.className='interval-label'; lbl.style.left=left+'px'; lbl.textContent=num; line.appendChild(lbl);
+  }
+}
+function updateIntervalDistance(){
+  const a=parseInt($('startN').value), b=parseInt($('endN').value), g=parseInt($('gapN').value);
+  const intervals=Math.abs(b-a); const dist=intervals*g;
+  $('intervalDistanceResult').textContent='間隔數：'+Math.max(a,b)+' − '+Math.min(a,b)+' = '+intervals+'，距離：'+g+' × '+intervals+' = '+dist+' 公尺';
+  const line=$('intervalLine'); line.innerHTML='';
+  const count=Math.min(intervals+1,12); const start=Math.min(a,b);
+  for(let i=0;i<count;i++){
+    const left=30+(i/(count-1||1))*(line.offsetWidth-60);
+    makePost(line,left,start+i,i===0||i===count-1);
+  }
+}
+function updateRoadCount(){
+  const len=parseFloat($('roadLen').value), gap=parseFloat($('roadGap').value);
+  const end=$('roadEnd').value; const sides=parseInt($('roadSide').value);
+  const intervals=len/gap;
+  let count;if(end==='both')count=intervals+1;else if(end==='one')count=intervals;else count=intervals-1;
+  const total=count*sides;
+  const line=$('roadLine'); line.innerHTML='';
+  const show=Math.min(count,12);
+  for(let i=0;i<show;i++){
+    const left=30+(i/(show-1||1))*(line.offsetWidth-60);
+    makePost(line,left,i+1,i===0||i===show-1);
+  }
+  const endText={'both':'頭尾兩端都有','one':'只有一端有','none':'頭尾兩端都沒有'};
+  $('roadCountResult').textContent='間隔數：'+len+' ÷ '+gap+' = '+intervals+'，'+endText[end]+' → 一側 '+count+' 盞，'+sides+'側共 '+total+' 盞';
+}
+function updateRopeGap(){
+  const len=parseFloat($('ropeLen').value), c=parseInt($('ropeCount').value), end=$('ropeEnd').value;
+  let intervals;if(end==='both')intervals=c-1;else if(end==='one')intervals=c;else intervals=c+1;
+  const gap=len/intervals;
+  const endText={'both':'兩端都有','one':'一端有一端沒有','none':'兩端都沒有'};
+  $('ropeGapResult').textContent=endText[end]+' → 間隔數 = '+intervals+'，間距 = '+len+' ÷ '+intervals+' = '+gap+' 公分';
+}
+function updateCircle(){
+  const len=parseFloat($('circleLen').value), gap=parseFloat($('circleGap').value);
+  const count=len/gap; const r=70, cx=150, cy=100;
+  let svg='<svg class="geometry" width="300" height="200" viewBox="0 0 300 200">';
+  svg+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="#e3f2fd" stroke="#42a5f5" stroke-width="3"/>';
+  const n=Math.min(count,24);
+  for(let i=0;i<n;i++){const ang=(i/n)*Math.PI*2;const x=cx+r*Math.cos(ang),y=cy+r*Math.sin(ang);svg+='<circle cx="'+x+'" cy="'+y+'" r="8" fill="#4caf50"/>';}
+  svg+='<text x="'+cx+'" y="'+cy+'" text-anchor="middle" dominant-baseline="middle" fill="#1565c0" font-size="16" font-weight="bold">'+Math.round(count)+' 棵</text></svg>';
+  $('circleCanvas').innerHTML=svg;
+  $('circleResult').textContent='種樹數量 = 間隔數 = '+len+' ÷ '+gap+' = '+count+' 棵';
+}
+
+const quizData=[
+  {q:'色紙按照「藍、白、紅、白」重複排列，第 35 張是什麼顏色？',options:['藍色','白色','紅色'],a:2,exp:'35 ÷ 4 = 8 餘 3，第 3 張是紅色。'},
+  {q:'用吸管排三角形，第 8 個圖形要用幾枝吸管？',options:['15 枝','17 枝','19 枝'],a:1,exp:'1 + 2 × 8 = 17 枝。'},
+  {q:'媽媽今年 35 歲，祐維 7 歲。15 年後兩人相差幾歲？',options:['22 歲','28 歲','30 歲'],a:1,exp:'年齡差不變：35 − 7 = 28 歲。'},
+  {q:'一袋白米共 60 公斤，每包 10 公斤，可以裝成幾包？',options:['5 包','6 包','7 包'],a:1,exp:'60 ÷ 10 = 6 包。'},
+  {q:'第 37 號路燈到第 73 號路燈，每隔 20 公尺一盞，相距幾公尺？',options:['700 公尺','720 公尺','740 公尺'],a:1,exp:'(73−37) × 20 = 720 公尺。'},
+  {q:'一條 600 公尺的道路，每隔 25 公尺設路燈，頭尾兩端都有，一側有幾盞？',options:['24 盞','25 盞','26 盞'],a:2,exp:'600 ÷ 25 = 24 個間隔，24 + 1 = 25 盞。'},
+  {q:'圓形水池周長 330 公尺，每隔 15 公尺種一棵樹，共要種幾棵？',options:['21 棵','22 棵','23 棵'],a:1,exp:'330 ÷ 15 = 22 棵。'}
+];
+const quizState={};
+function renderQuiz(){
+  $('total').textContent=quizData.length;
+  const box=$('quizBox'); box.innerHTML='';
+  quizData.forEach((q,i)=>{
+    const d=document.createElement('div'); d.className='card'; d.style.marginBottom='16px';
+    let html='<h3>題目 '+(i+1)+'</h3><p>'+q.q+'</p>';
+    q.options.forEach((opt,j)=>{html+='<button class="quiz-option" onclick="answerQuiz('+i+','+j+',this)">'+String.fromCharCode(65+j)+'. '+opt+'</button>';});
+    html+='<div class="quiz-feedback" id="fb'+i+'"></div>';
+    d.innerHTML=html; box.appendChild(d);
+  });
+}
+function answerQuiz(idx,choice,btn){
+  const q=quizData[idx]; const fb=$('fb'+idx); const card=btn.closest('.card');
+  card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);
+  if(choice===q.a){btn.classList.add('correct');fb.innerHTML='<span style="color:#4caf50">✅ 答對了！</span> '+q.exp;if(!quizState[idx]){quizState[idx]=true;updateScore();}}
+  else{btn.classList.add('wrong');const correctBtn=card.querySelectorAll('.quiz-option')[q.a];correctBtn.classList.add('correct');fb.innerHTML='<span style="color:#ef5350">❌ 再加油！</span> '+q.exp;}
+}
+function updateScore(){
+  const s=Object.keys(quizState).length; $('score').textContent=s;
+  const pct=(s/quizData.length)*100; $('quizProgress').style.width=pct+'%';
+  if(s===quizData.length) showBadge();
+}
+function showBadge(){const b=$('badgePop');b.classList.add('show');setTimeout(()=>b.classList.remove('show'),2500);}
+function updateProgress(){
+  const tabs=[0,1,2,3].map(i=>document.querySelectorAll('.sub-nav button')[i].classList.contains('active'));
+  let p=0; tabs.forEach((v,i)=>{if(v)p=Math.max(p,(i+1)*25);}); $('learnProgress').style.width=p+'%';
+}
+function trackCorrect(key){}
+
+renderFlagStrip(); checkFlag();
+renderCardStrip(); checkCard();
+drawTriangles(); drawSquares();
+updateDayNight(); updateAge(); updateRice();
+updateIntervalDistance(); updateRoadCount(); updateRopeGap(); updateCircle();
+renderQuiz(); updateProgress();
+</script>
 </body>
 </html>
