@@ -492,6 +492,85 @@
       color: #888;
     }
 
+    /* Ribbon comparison visual */
+    .ribbon-stack {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 16px 0;
+      border: 2px solid #f0f0f0;
+    }
+    .ribbon-stack-title {
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .ribbon-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+      min-height: 40px;
+    }
+    .ribbon-label {
+      width: 100px;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .ribbon-bar-wrap {
+      flex: 1;
+      height: 34px;
+      background: #e8e8e8;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ribbon-bar {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding-left: 8px;
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      position: relative;
+    }
+    .ribbon-segment {
+      position: absolute;
+      top: 0; bottom: 0;
+      border-right: 2px dashed rgba(255,255,255,0.6);
+    }
+    .ribbon-segment:last-child { border-right: none; }
+    .ribbon-marker {
+      position: absolute;
+      top: -22px;
+      font-size: 0.75rem;
+      color: #666;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .ribbon-legend {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+    .ribbon-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ribbon-legend .dot {
+      width: 14px; height: 14px;
+      border-radius: 3px;
+    }
+
     @media (max-width: 500px) {
       .number-grid { grid-template-columns: repeat(4, 1fr); }
       .frac-cell { width: 24px; height: 24px; }
@@ -648,6 +727,7 @@
         <h3 style="margin-bottom:10px; color:#2c3e50;">🎀 緞帶長度比一比</h3>
         <p>藍色緞帶長 <span class="fraction"><span class="num">7</span><span class="den">5</span></span> 公尺，綠色緞帶長 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公尺。</p>
         <div id="ribbon-compare" style="margin:16px 0;"></div>
+        <div id="ribbon-visual" style="margin:16px 0;"></div>
         <div class="problem-card">
           <div class="problem-text">藍色緞帶長是綠色緞帶長的幾倍？</div>
           <div class="problem-answer" style="justify-content:center;">
@@ -1239,8 +1319,14 @@
     }
     function checkSameQ1(){ checkFracInput('same-q1','3','same-q1-fb'); }
     function checkSameQ2(){ checkFracInput('same-q2','5','same-q2-fb'); }
-    function checkSameQ3(){ checkFracInput('same-q3','7/4','same-q3-fb'); }
-    function checkSameQ4(){ checkFracInput('same-q4','4/7','same-q4-fb'); }
+    function checkSameQ3(){
+      const ok = checkFracInput('same-q3','7/4','same-q3-fb');
+      if (ok) showRibbonVisual('q3');
+    }
+    function checkSameQ4(){
+      const ok = checkFracInput('same-q4','4/7','same-q4-fb');
+      if (ok) showRibbonVisual('q4');
+    }
     function initRibbonCompare(){
       const wrap = $('ribbon-compare');
       wrap.innerHTML = `
@@ -1249,6 +1335,78 @@
         <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--accent); border-radius:2px;"></span> 綠色緞帶 ${fracHTML(4,5)} 公尺</div>
         <div class="bar-wrap"><div class="bar-fill" style="width:${(4/5)/(7/5)*100}%; background:linear-gradient(90deg,var(--accent),var(--accent2));">4/5</div></div>
       `;
+      $('ribbon-visual').innerHTML = `<div class="hint" style="text-align:center;">👇 輸入正確答案後，這裡會出現圖解輔助說明</div>`;
+    }
+    function showRibbonVisual(type){
+      const wrap = $('ribbon-visual');
+      if (type === 'q3'){
+        // 藍色 7/5 是綠色 4/5 的幾倍：1 個完整的綠色 + 3/4 個綠色
+        wrap.innerHTML = `
+          <div class="ribbon-stack">
+            <div class="ribbon-stack-title">圖解：${fracHTML(7,5)} 是 ${fracHTML(4,5)} 的幾倍？</div>
+            <div class="ribbon-row">
+              <div class="ribbon-label">綠色緞帶<br>＝ 1 倍</div>
+              <div class="ribbon-bar-wrap">
+                <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--accent),var(--accent2));">
+                  ${fracHTML(4,5)}
+                </div>
+              </div>
+            </div>
+            <div class="ribbon-row">
+              <div class="ribbon-label">再 3/4 個<br>綠色緞帶</div>
+              <div class="ribbon-bar-wrap">
+                <div class="ribbon-bar" style="width:${3/7*100}%; background:linear-gradient(90deg,#ffcc80,#ffb74d);">
+                  ${fracHTML(3,5)}（${fracHTML(3,4)} 個綠色）
+                </div>
+              </div>
+            </div>
+            <div class="ribbon-row">
+              <div class="ribbon-label">藍色緞帶<br>（合起來）</div>
+              <div class="ribbon-bar-wrap">
+                <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); padding-left:0;">
+                  <div style="width:${4/7*100}%; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; border-right:2px dashed white;">${fracHTML(4,5)}</div>
+                  <div style="width:${3/7*100}%; height:100%; background:linear-gradient(90deg,#ffcc80,#ffb74d); display:flex; align-items:center; justify-content:center;">${fracHTML(3,5)}</div>
+                </div>
+              </div>
+            </div>
+            <div class="ribbon-legend">
+              <span><span class="dot" style="background:linear-gradient(90deg,var(--accent),var(--accent2));"></span>1 個綠色緞帶</span>
+              <span><span class="dot" style="background:linear-gradient(90deg,#ffcc80,#ffb74d);"></span>3/4 個綠色緞帶</span>
+            </div>
+            <div style="text-align:center; margin-top:12px; color:#2c3e50; font-weight:600;">
+              ${fracHTML(7,5)} ＝ ${fracHTML(4,5)} + ${fracHTML(3,5)}<br>
+              所以 ${fracHTML(7,5)} ÷ ${fracHTML(4,5)} ＝ 1 + ${fracHTML(3,4)} ＝ ${fracHTML(7,4)}（倍）
+            </div>
+          </div>
+        `;
+      } else {
+        // 綠色 4/5 是藍色 7/5 的幾分之幾
+        wrap.innerHTML = `
+          <div class="ribbon-stack">
+            <div class="ribbon-stack-title">圖解：${fracHTML(4,5)} 是 ${fracHTML(7,5)} 的幾分之幾？</div>
+            <div class="ribbon-row">
+              <div class="ribbon-label">藍色緞帶<br>（全部）</div>
+              <div class="ribbon-bar-wrap">
+                <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan));">
+                  ${fracHTML(7,5)} ＝ 7 個 ${fracHTML(1,5)}
+                  ${[1,2,3,4,5,6].map(i => `<div class="ribbon-segment" style="left:${i/7*100}%;"></div>`).join('')}
+                </div>
+              </div>
+            </div>
+            <div class="ribbon-row">
+              <div class="ribbon-label">綠色緞帶<br>（部分）</div>
+              <div class="ribbon-bar-wrap">
+                <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--accent),var(--accent2));">
+                  ${fracHTML(4,5)} ＝ 4 個 ${fracHTML(1,5)}
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center; margin-top:12px; color:#2c3e50; font-weight:600;">
+              所以 ${fracHTML(4,5)} ÷ ${fracHTML(7,5)} ＝ 4 ÷ 7 ＝ ${fracHTML(4,7)}（倍）
+            </div>
+          </div>
+        `;
+      }
     }
 
     // ===== 2-3 異分母分數的除法 =====
