@@ -240,6 +240,8 @@
     .number-cell.composite { background: #e3f2fd; border-color: var(--blue); color: #1565c0; }
     .number-cell.one { background: #fff3e0; border-color: var(--accent2); color: #ef6c00; }
     .number-cell.active { box-shadow: 0 0 0 3px rgba(245,132,110,0.4); }
+    .number-cell.selected { background: #fff3e0; border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(245,164,35,0.35); transform: scale(1.08); }
+    .number-cell.wrong { background: #ffebee; border-color: var(--error); color: #c62828; }
     @media (max-width: 500px) { .number-grid { grid-template-columns: repeat(5, 1fr); } }
 
     /* Factor arrays */
@@ -856,17 +858,26 @@
       const correct = primeQuizNumbers.filter(n => isPrime(n));
       const selected = Array.from(primeQuizSelected);
       const isCorrect = selected.length === correct.length && selected.every(n => correct.includes(n));
+      document.querySelectorAll('#prime-quiz-grid .number-cell').forEach(c => {
+        c.classList.remove('selected');
+        const n = +c.textContent;
+        c.classList.remove('prime','composite','one','wrong');
+        if (isPrime(n)) c.classList.add('prime');
+        else if (n === 1) c.classList.add('one');
+        else c.classList.add('composite');
+      });
       if (isCorrect) {
-        document.querySelectorAll('#prime-quiz-grid .number-cell').forEach(c => {
-          const n = +c.textContent;
-          if (isPrime(n)) c.classList.add('prime');
-          else if (n === 1) c.classList.add('one');
-          else c.classList.add('composite');
-        });
         showFeedback('prime-quiz-feedback', true, '太棒了！你抓到了所有質數！⭐');
       } else {
         const missed = correct.filter(n => !selected.includes(n));
         const wrong = selected.filter(n => !correct.includes(n));
+        document.querySelectorAll('#prime-quiz-grid .number-cell').forEach(c => {
+          const n = +c.textContent;
+          if (wrong.includes(n)) {
+            c.classList.remove('composite','one');
+            c.classList.add('wrong');
+          }
+        });
         let msg = '再想想看。';
         if (missed.length) msg += `你漏掉了 ${missed.join('、')}。`;
         if (wrong.length) msg += `${wrong.join('、')} 不是質數。`;
