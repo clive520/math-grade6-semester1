@@ -1340,42 +1340,47 @@
     function showRibbonVisual(type){
       const wrap = $('ribbon-visual');
       if (type === 'q3'){
-        // 藍色 7/5 是綠色 4/5 的幾倍：1 個完整的綠色 + 3/4 個綠色
+        // 藍色 7/5 是綠色 4/5 的幾倍
+        // 用相同單位長度 1/5 公尺對齊兩條緞帶，清楚看出倍數關係
         wrap.innerHTML = `
           <div class="ribbon-stack">
             <div class="ribbon-stack-title">圖解：${fracHTML(7,5)} 是 ${fracHTML(4,5)} 的幾倍？</div>
+
             <div class="ribbon-row">
-              <div class="ribbon-label">綠色緞帶<br>＝ 1 倍</div>
+              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(4,5)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
-                  ${fracHTML(4,5)}
+                  <span>1 倍 ＝ ${fracHTML(4,5)} 公尺</span>
+                  ${[1,2,3].map(i => `<div class="ribbon-segment" style="left:${i/4*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
+
             <div class="ribbon-row">
-              <div class="ribbon-label">再 3/4 個<br>綠色緞帶</div>
-              <div class="ribbon-bar-wrap">
-                <div class="ribbon-bar" style="width:${3/7*100}%; background:linear-gradient(90deg,#a5d6a7,#81c784);">
-                  ${fracHTML(3,5)}（${fracHTML(3,4)} 個綠色）
-                </div>
-              </div>
-            </div>
-            <div class="ribbon-row">
-              <div class="ribbon-label">藍色緞帶<br>（合起來）</div>
+              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(7,5)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); padding-left:0;">
-                  <div style="width:${4/7*100}%; height:100%; background:linear-gradient(90deg,var(--green),#4caf50); display:flex; align-items:center; justify-content:center; border-right:2px dashed white;">${fracHTML(4,5)}</div>
-                  <div style="width:${3/7*100}%; height:100%; background:linear-gradient(90deg,#a5d6a7,#81c784); display:flex; align-items:center; justify-content:center;">${fracHTML(3,5)}</div>
+                  <div style="width:${4/7*100}%; height:100%; background:linear-gradient(90deg,var(--green),#4caf50); display:flex; align-items:center; justify-content:center; border-right:2px dashed white;">
+                    1 倍
+                  </div>
+                  <div style="width:${3/7*100}%; height:100%; background:linear-gradient(90deg,#a5d6a7,#81c784); display:flex; align-items:center; justify-content:center;">
+                    ${fracHTML(3,4)} 倍
+                  </div>
+                  ${[1,2,3,4,5,6].map(i => `<div class="ribbon-segment" style="left:${i/7*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
+
             <div class="ribbon-legend">
-              <span><span class="dot" style="background:linear-gradient(90deg,var(--green),#4caf50);"></span>1 個綠色緞帶</span>
-              <span><span class="dot" style="background:linear-gradient(90deg,#a5d6a7,#81c784);"></span>3/4 個綠色緞帶</span>
+              <span><span class="dot" style="background:linear-gradient(90deg,var(--green),#4caf50);"></span>1 個綠色緞帶（${fracHTML(4,5)} 公尺）</span>
+              <span><span class="dot" style="background:linear-gradient(90deg,#a5d6a7,#81c784);"></span>多出的 ${fracHTML(3,4)} 個綠色緞帶（${fracHTML(3,5)} 公尺）</span>
             </div>
-            <div style="text-align:center; margin-top:12px; color:#2c3e50; font-weight:600;">
-              ${fracHTML(7,5)} ＝ ${fracHTML(4,5)} + ${fracHTML(3,5)}<br>
-              所以 ${fracHTML(7,5)} ÷ ${fracHTML(4,5)} ＝ 1 + ${fracHTML(3,4)} ＝ ${fracHTML(7,4)}（倍）
+
+            <div style="text-align:center; margin-top:16px; color:#2c3e50; font-weight:600; line-height:1.8;">
+              把 1 公尺都分成 5 等分，每一小格都是 ${fracHTML(1,5)} 公尺。<br>
+              綠色緞帶有 4 格，藍色緞帶有 7 格。<br>
+              7 格 ÷ 4 格 ＝ ${fracHTML(7,4)}<br>
+              所以 ${fracHTML(7,5)} ÷ ${fracHTML(4,5)} ＝ ${fracHTML(7,4)}（倍）
             </div>
           </div>
         `;
@@ -1384,25 +1389,31 @@
         wrap.innerHTML = `
           <div class="ribbon-stack">
             <div class="ribbon-stack-title">圖解：${fracHTML(4,5)} 是 ${fracHTML(7,5)} 的幾分之幾？</div>
+
             <div class="ribbon-row">
-              <div class="ribbon-label">藍色緞帶<br>（全部）</div>
+              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(7,5)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan));">
-                  ${fracHTML(7,5)} ＝ 7 個 ${fracHTML(1,5)}
+                  <span>全部 ＝ ${fracHTML(7,5)} 公尺 ＝ 7 格</span>
                   ${[1,2,3,4,5,6].map(i => `<div class="ribbon-segment" style="left:${i/7*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
+
             <div class="ribbon-row">
-              <div class="ribbon-label">綠色緞帶<br>（部分）</div>
+              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(4,5)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
-                  ${fracHTML(4,5)} ＝ 4 個 ${fracHTML(1,5)}
+                  <span>部分 ＝ ${fracHTML(4,5)} 公尺 ＝ 4 格</span>
+                  ${[1,2,3].map(i => `<div class="ribbon-segment" style="left:${i/4*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
-            <div style="text-align:center; margin-top:12px; color:#2c3e50; font-weight:600;">
-              所以 ${fracHTML(4,5)} ÷ ${fracHTML(7,5)} ＝ 4 ÷ 7 ＝ ${fracHTML(4,7)}（倍）
+
+            <div style="text-align:center; margin-top:16px; color:#2c3e50; font-weight:600; line-height:1.8;">
+              把 1 公尺都分成 5 等分，綠色佔 4 格，藍色佔 7 格。<br>
+              4 格 ÷ 7 格 ＝ ${fracHTML(4,7)}<br>
+              所以 ${fracHTML(4,5)} ÷ ${fracHTML(7,5)} ＝ ${fracHTML(4,7)}（倍）
             </div>
           </div>
         `;
