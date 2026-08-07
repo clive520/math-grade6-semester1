@@ -3,87 +3,1259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>最大公因數與最小公倍數 - 六上數學自學網</title>
+  <title>第1單元：最大公因數與最小公倍數 - 六上數學自學網</title>
   <style>
+    :root {
+      --primary: #2c5f8a;
+      --primary-light: #e8f4f8;
+      --accent: #f5846e;
+      --accent2: #f5a623;
+      --green: #7bc67e;
+      --purple: #b39ddb;
+      --pink: #e88eb5;
+      --blue: #6ec6f5;
+      --text: #333;
+      --text-light: #666;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --success: #4caf50;
+      --error: #ef5350;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      padding: 20px;
+      padding-bottom: 40px;
     }
-    .container { max-width: 800px; margin: 0 auto; }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+    .top-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
     .back-link {
-      display: inline-block;
-      color: #2c5f8a;
+      color: var(--primary);
       text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 14px;
       border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      background: var(--primary-light);
+      white-space: nowrap;
     }
-    .back-link:hover { background: #e8f0f8; }
-    header {
+    .back-link:hover { background: #d8eaf2; }
+    .progress-wrap { flex: 1; }
+    .progress-label { font-size: 0.75rem; color: #888; margin-bottom: 4px; }
+    .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.5s; border-radius: 4px; }
+    .stars { font-size: 1.2rem; color: #ffd54f; }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+    header.hero {
       text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      padding: 36px 24px;
+      background: linear-gradient(135deg, #fff 0%, #fff5f2 100%);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(245,132,110,0.15), transparent 70%);
+      border-radius: 50%;
     }
     .unit-badge {
       display: inline-block;
-      background: BADGE_COLOR;
+      background: var(--accent);
       color: white;
-      padding: 6px 20px;
+      padding: 6px 18px;
       border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       margin-bottom: 12px;
     }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
+    header.hero h1 { font-size: 1.9rem; color: #2c3e50; margin-bottom: 8px; }
+    header.hero .tag { color: #888; font-size: 1rem; }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px dashed #eee;
     }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
+    .section-number {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .section-title h2 { font-size: 1.35rem; color: #2c3e50; margin-bottom: 4px; }
+    .section-title p { font-size: 0.9rem; color: #888; }
+    .concept-box {
+      background: #f8faff;
+      border-left: 4px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin: 16px 0;
       line-height: 1.8;
     }
-    footer {
-      text-align: center;
+    .concept-box strong { color: var(--primary); }
+
+    .interactive-area {
+      background: #fafafa;
+      border-radius: 16px;
       padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
+      margin: 18px 0;
+    }
+    .hint {
+      background: #fff8e1;
+      border-left: 4px solid var(--accent2);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #6d5c28;
+      margin: 12px 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: #1e4568; box-shadow: 0 4px 12px rgba(44,95,138,0.25); }
+    .btn-accent { background: var(--accent); color: white; }
+    .btn-accent:hover { background: #e06b52; }
+    .btn-green { background: var(--green); color: white; }
+    .btn-green:hover { background: #5da85f; }
+    .btn-sm { padding: 7px 14px; font-size: 0.9rem; }
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+
+    /* Inputs */
+    input[type="number"], input[type="text"] {
+      width: 90px;
+      padding: 10px 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      text-align: center;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .input-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+
+    /* Feedback */
+    .feedback {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-top: 12px;
+      font-weight: 600;
+      display: none;
+    }
+    .feedback.correct { background: #e8f5e9; color: #2e7d32; display: block; }
+    .feedback.wrong { background: #ffebee; color: #c62828; display: block; }
+
+    /* Warm-up grouping */
+    .people-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0; }
+    .person {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), #42a5f5);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 0.85rem;
+      transition: transform 0.3s;
+    }
+    .group-label { font-size: 0.85rem; color: #888; margin-top: 6px; text-align: center; }
+    .group-option {
+      display: inline-flex; flex-direction: column; align-items: center;
+      padding: 10px 14px; margin: 6px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 70px;
+    }
+    .group-option:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .group-option.selected { border-color: var(--success); background: #e8f5e9; }
+    .group-option .num { font-size: 1.2rem; font-weight: 700; color: #2c3e50; }
+    .group-option .label { font-size: 0.75rem; color: #888; }
+
+    /* Number grid for prime/composite */
+    .number-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; margin: 16px 0; }
+    .number-cell {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: white;
+      border: 2px solid #e8e8e8;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+    .number-cell:hover { transform: scale(1.1); border-color: var(--primary); }
+    .number-cell.prime { background: #e8f5e9; border-color: var(--green); color: #2e7d32; }
+    .number-cell.composite { background: #e3f2fd; border-color: var(--blue); color: #1565c0; }
+    .number-cell.one { background: #fff3e0; border-color: var(--accent2); color: #ef6c00; }
+    .number-cell.active { box-shadow: 0 0 0 3px rgba(245,132,110,0.4); }
+    @media (max-width: 500px) { .number-grid { grid-template-columns: repeat(5, 1fr); } }
+
+    /* Factor arrays */
+    .factor-array { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 14px 0; }
+    .array-box { display: grid; gap: 3px; padding: 8px; background: white; border-radius: 10px; border: 2px solid #e0e0e0; }
+    .array-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--blue); }
+    .array-label { text-align: center; font-size: 0.8rem; color: #666; margin-top: 4px; }
+
+    /* Prime factor tree */
+    .tree-area { min-height: 220px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+    .tree-node {
+      display: inline-flex; flex-direction: column; align-items: center;
+      position: relative;
+    }
+    .tree-value {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem;
+      margin: 4px;
+    }
+    .tree-children { display: flex; gap: 20px; margin-top: 8px; }
+    .tree-line {
+      width: 2px; height: 16px;
+      background: #ccc;
+    }
+    .factor-btn {
+      padding: 6px 12px; margin: 3px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .factor-btn:hover { border-color: var(--purple); background: #f3e5f5; }
+    .factor-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* Short division */
+    .short-division {
+      display: inline-block;
+      font-family: "Microsoft JhengHei", monospace;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+    .sd-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .sd-divisor { color: var(--accent); font-weight: 700; min-width: 24px; text-align: right; }
+    .sd-num { border-bottom: 2px solid #333; padding: 0 8px; min-width: 40px; text-align: center; }
+    .sd-res { padding: 0 8px; min-width: 40px; text-align: center; }
+
+    /* GCD/LCM visualizers */
+    .venn-wrap { display: flex; justify-content: center; margin: 16px 0; }
+    .venn { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 320px; }
+    .venn-left, .venn-right {
+      min-height: 160px;
+      border: 3px solid var(--blue);
+      border-radius: 50%;
+      padding: 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .venn-right { margin-left: -40px; border-color: var(--accent); }
+    .venn-title { font-size: 0.8rem; color: #888; position: absolute; top: 20px; }
+    .venn-item { font-size: 0.85rem; padding: 2px 0; }
+    .venn-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 6px 10px; border-radius: 8px; font-weight: 700; color: var(--primary); }
+
+    /* Number line */
+    .numberline { position: relative; height: 60px; margin: 14px 0; }
+    .nl-line { position: absolute; top: 28px; left: 0; right: 0; height: 3px; background: #ddd; border-radius: 2px; }
+    .nl-tick { position: absolute; top: 22px; width: 3px; height: 14px; background: #999; border-radius: 2px; }
+    .nl-label { position: absolute; top: 40px; font-size: 0.75rem; color: #666; transform: translateX(-50%); }
+    .nl-marker { position: absolute; top: 14px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; transform: translateX(-50%); transition: all 0.3s; }
+    .nl-marker.a { background: var(--blue); }
+    .nl-marker.b { background: var(--accent); }
+
+    /* Tile visualization */
+    .tile-grid { display: grid; gap: 2px; justify-content: center; margin: 16px auto; }
+    .tile { aspect-ratio: 1; border-radius: 3px; }
+    .tile.blue { background: var(--blue); }
+    .tile.pink { background: var(--pink); }
+
+    /* Quiz */
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+    .quiz-option {
+      padding: 14px 16px;
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center;
+    }
+    .quiz-option:hover { border-color: var(--primary); background: #f8fafc; }
+    .quiz-option.selected { border-color: var(--primary); background: #e8f4f8; }
+    .quiz-option.correct { border-color: var(--success); background: #e8f5e9; }
+    .quiz-option.wrong { border-color: var(--error); background: #ffebee; }
+
+    /* Practice problem */
+    .problem-card {
+      background: #fafafa;
+      border-radius: 14px;
+      padding: 18px;
+      margin: 14px 0;
+    }
+    .problem-text { font-size: 1.05rem; line-height: 1.8; margin-bottom: 14px; }
+    .problem-answer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    footer { text-align: center; padding: 30px 20px; color: #aaa; font-size: 0.85rem; }
+    .completion {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #fff8e1, #e8f5e9);
+      border-radius: 20px;
+      margin: 24px 0;
+    }
+    .completion.show { display: block; }
+    .completion h2 { color: #2e7d32; font-size: 1.5rem; margin-bottom: 10px; }
+
+    /* Mini cards */
+    .mini-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0; }
+    .mini-card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      border: 2px solid #f0f0f0;
+      transition: all 0.2s;
+    }
+    .mini-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+    .mini-card .icon { font-size: 1.8rem; margin-bottom: 6px; }
+    .mini-card .title { font-weight: 700; color: #2c3e50; margin-bottom: 4px; }
+    .mini-card .desc { font-size: 0.85rem; color: #888; }
+
+    /* Collapsible */
+    details { margin: 12px 0; }
+    summary {
+      background: var(--primary-light);
+      padding: 12px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    details[open] summary { border-radius: 10px 10px 0 0; }
+    .solution-content {
+      background: #f8faff;
+      padding: 16px;
+      border-radius: 0 0 10px 10px;
+      line-height: 1.8;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #f5846e;">第 1 單元</div>
-      <h1>最大公因數與最小公倍數</h1>
-      <p class="tag">質數、因數、倍數</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">📐</div>
-      <p>內容建置中，敬請期待！</p>
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="../index.html" class="back-link">← 回單元列表</a>
+      <div class="progress-wrap">
+        <div class="progress-label">學習進度 <span id="progress-text">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="stars" id="star-display">⭐ 0</div>
     </div>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="unit-badge">第 1 單元</div>
+      <h1>最大公因數與最小公倍數</h1>
+      <p class="tag">質數 · 質因數分解 · 最大公因數 · 最小公倍數</p>
+    </header>
+
+    <!-- 暖身：20人分組 -->
+    <section class="section" id="sec-warmup">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--blue);">暖</div>
+        <div class="section-title">
+          <h2>小童軍要分組</h2>
+          <p>回顧因數：20 個人，每組人數一樣多，可以怎麼分？</p>
+        </div>
+      </div>
+      <p>貝登堡第一次辦童軍露營有 <strong>20 人</strong>參加。分組活動時，每組人數要一樣多，而且剛好分完。可以分成幾組呢？</p>
+      <div class="interactive-area">
+        <div class="people-grid" id="people-grid"></div>
+        <p style="text-align:center; color:#666; font-size:0.9rem;">👆 點選一種分組方式，看看 20 個人會怎麼排隊</p>
+        <div class="btn-group" style="justify-content:center;" id="group-options"></div>
+        <div id="group-result" style="text-align:center; margin-top:16px; font-weight:600; color:#2c3e50;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>發現：</strong>能夠把 20 人剛好分完的「每組人數」或「組數」，都是 20 的 <strong>因數</strong>。<br>
+        20 的因數有：<span id="factors-20">1、2、4、5、10、20</span>
+      </div>
+    </section>
+
+    <!-- 1-1 質數和合數 -->
+    <section class="section" id="sec-prime">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--green);">1-1</div>
+        <div class="section-title">
+          <h2>質數和合數</h2>
+          <p>認識只有兩個因數的數</p>
+        </div>
+      </div>
+      <p>先找出 1～20 每個數的因數，再來觀察規律。</p>
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 因數探險家</h3>
+        <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">點選一個數，看看它能排成幾種長方形（就是它的因數）。</p>
+        <div class="number-grid" id="prime-grid"></div>
+        <div id="factor-explore" style="margin-top:16px;"></div>
+      </div>
+
+      <div class="concept-box">
+        <strong>定義：</strong><br>
+        • <strong>質數</strong>：大於 1 的整數，只有 <strong>1</strong> 和 <strong>自己</strong> 兩個因數。例如 2、3、5、7、11……<br>
+        • <strong>合數</strong>：大於 1 的整數，除了 1 和自己外，還有別的因數。例如 4、6、8、9、10……<br>
+        • <strong>1</strong> 既不是質數，也不是合數。
+      </div>
+
+      <div class="mini-cards">
+        <div class="mini-card"><div class="icon">🌱</div><div class="title">最小的質數</div><div class="desc">是 2，也是唯一的偶質數</div></div>
+        <div class="mini-card"><div class="icon">🧱</div><div class="title">最小的合數</div><div class="desc">是 4（因數：1、2、4）</div></div>
+        <div class="mini-card"><div class="icon">🚫</div><div class="title">1 很特別</div><div class="desc">只有 1 個因數，獨立分類</div></div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🎯 質數捕手</h3>
+        <p>下面哪些數是質數？請全部點選出來。</p>
+        <div class="number-grid" id="prime-quiz-grid"></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="checkPrimeQuiz()">檢查答案</button><button class="btn btn-sm" onclick="resetPrimeQuiz()">重新挑戰</button></div>
+        <div id="prime-quiz-feedback" class="feedback"></div>
+      </div>
+    </section>
+
+    <!-- 1-2 質因數和質因數分解 -->
+    <section class="section" id="sec-factorize">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--purple);">1-2</div>
+        <div class="section-title">
+          <h2>質因數和質因數分解</h2>
+          <p>把合數拆成質數相乘</p>
+        </div>
+      </div>
+      <p>18 的因數有 1、2、3、6、9、18，其中 <strong>2 和 3</strong> 是質數，所以 18 的 <strong>質因數</strong> 是 2 和 3。</p>
+      <div class="concept-box">
+        <strong>定義：</strong>一個整數的因數，如果又是質數，就稱為這個整數的 <strong>質因數</strong>。<br>
+        把一個數用質因數相乘的形式表示，叫做 <strong>質因數分解</strong>。<br>
+        例如：18 ＝ 2 × 3 × 3，60 ＝ 2 × 2 × 3 × 5。
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🌳 質因數分解樹</h3>
+        <p>從 24 開始，每次選一組「兩個比 1 大的整數相乘」，把樹枝拆到全部都是質數為止。</p>
+        <div style="text-align:center; margin:14px 0;">
+          <span>目標數字：</span>
+          <input type="number" id="tree-target" value="24" min="4" max="100" onchange="initTree()">
+          <button class="btn btn-sm btn-primary" onclick="initTree()">重新開始</button>
+        </div>
+        <div class="tree-area" id="tree-area"></div>
+        <div id="tree-result" style="text-align:center; font-weight:700; color:#2c3e50; margin-top:10px;"></div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">➗ 短除法練習</h3>
+        <p>短除法就是反覆用質數去除，直到商變成質數為止。試試看 48：</p>
+        <div style="text-align:center;">
+          <div id="short-division-display" class="short-division"></div>
+          <div class="btn-group" style="justify-content:center;" id="sd-buttons"></div>
+          <div id="sd-feedback" class="feedback"></div>
+          <button class="btn btn-sm" onclick="initShortDivision()" style="margin-top:8px;">重置</button>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 動手分解</h3>
+        <div class="problem-card">
+          <div class="problem-text">將 36 做質因數分解。</div>
+          <div class="problem-answer">
+            36 ＝ <input type="text" id="pf-36" placeholder="例如 2×2×3×3"> <button class="btn btn-sm btn-primary" onclick="checkPF('36','2×2×3×3', 'pf-36')">檢查</button>
+          </div>
+          <div id="pf-36-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">將 60 做質因數分解。</div>
+          <div class="problem-answer">
+            60 ＝ <input type="text" id="pf-60" placeholder="例如 2×2×3×5"> <button class="btn btn-sm btn-primary" onclick="checkPF('60','2×2×3×5', 'pf-60')">檢查</button>
+          </div>
+          <div id="pf-60-fb" class="feedback"></div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">將 84 做質因數分解。</div>
+          <div class="problem-answer">
+            84 ＝ <input type="text" id="pf-84" placeholder="例如 2×2×3×7"> <button class="btn btn-sm btn-primary" onclick="checkPF('84','2×2×3×7', 'pf-84')">檢查</button>
+          </div>
+          <div id="pf-84-fb" class="feedback"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1-3 最大公因數 -->
+    <section class="section" id="sec-gcd">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--accent);">1-3</div>
+        <div class="section-title">
+          <h2>最大公因數</h2>
+          <p>找出兩數共同因數中最大的那個</p>
+        </div>
+      </div>
+      <p>把一張長 24 公分、寬 16 公分的長方形紙，全部剪成<strong>一樣大小</strong>的正方形，正方形的邊長最長是幾公分？</p>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🟦 方格紙剪正方形</h3>
+        <p>邊長要同時能整除 24 和 16。試試看不同邊長：</p>
+        <div class="btn-group" style="justify-content:center;" id="tile-size-buttons"></div>
+        <div id="tile-grid" class="tile-grid"></div>
+        <div id="tile-info" style="text-align:center; font-weight:600; color:#2c3e50;"></div>
+      </div>
+
+      <div class="concept-box">
+        <strong>定義：</strong>兩數的公因數中，最大的那個叫做 <strong>最大公因數</strong>（GCD）。<br>
+        如果兩數的最大公因數是 1，就稱這兩數 <strong>互質</strong>。
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 用質因數分解找最大公因數</h3>
+        <p>以 12 和 30 為例：</p>
+        <div style="text-align:center; font-size:1.1rem; margin:10px 0;">
+          12 ＝ 2 × 2 × 3　　30 ＝ 2 × 3 × 5
+        </div>
+        <p>共同的質因數是 <strong>2</strong> 和 <strong>3</strong>，所以最大公因數是 2 × 3 ＝ <strong>6</strong>。</p>
+        <div class="venn-wrap">
+          <div style="position:relative; min-width:280px; min-height:160px;">
+            <div class="venn">
+              <div class="venn-left" style="z-index:1;">
+                <div class="venn-title">12 的因數</div>
+                <div class="venn-item">1</div><div class="venn-item">2</div><div class="venn-item">3</div><div class="venn-item">4</div><div class="venn-item">6</div><div class="venn-item">12</div>
+              </div>
+              <div class="venn-right" style="z-index:0;">
+                <div class="venn-title">30 的因數</div>
+                <div class="venn-item">1</div><div class="venn-item">2</div><div class="venn-item">3</div><div class="venn-item">5</div><div class="venn-item">6</div><div class="venn-item">10</div><div class="venn-item">15</div><div class="venn-item">30</div>
+              </div>
+            </div>
+            <div class="venn-center">公因數<br>1, 2, 3, 6<br>最大：6</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">➗ 短除法求最大公因數</h3>
+        <p>用短除法找 42 和 70 的最大公因數：</p>
+        <div style="text-align:center;">
+          <div id="gcd-sd-display" class="short-division"></div>
+          <div class="btn-group" style="justify-content:center;" id="gcd-sd-buttons"></div>
+          <div id="gcd-sd-feedback" class="feedback"></div>
+          <button class="btn btn-sm" onclick="initGcdSD()" style="margin-top:8px;">重置</button>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ GCD 練習題</h3>
+        <div class="problem-card">
+          <div class="problem-text">48 個男生和 60 個女生分組，每組男生一樣多、女生也一樣多，最多可以分成幾組？</div>
+          <div class="problem-answer">最多 <input type="number" id="gcd-q1"> 組 <button class="btn btn-sm btn-primary" onclick="checkNumberAnswer('gcd-q1', 12, 'gcd-q1-fb')">檢查</button></div>
+          <div id="gcd-q1-fb" class="feedback"></div>
+          <details><summary>看解答</summary><div class="solution-content">求 48 和 60 的最大公因數。<br>48 ＝ 2×2×2×2×3，60 ＝ 2×2×3×5。<br>共同質因數：2、2、3，最大公因數＝12。<br>答：最多 12 組。</div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1-4 最小公倍數 -->
+    <section class="section" id="sec-lcm">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--pink);">1-4</div>
+        <div class="section-title">
+          <h2>最小公倍數</h2>
+          <p>找出兩數共同倍數中最小的那個</p>
+        </div>
+      </div>
+      <p>小聖誕樹的燈泡每 8 分鐘閃一次，大聖誕樹的燈泡每 28 分鐘閃一次。上午 9 時同時閃爍後，下一次同時閃爍是幾時幾分？</p>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">💡 燈泡閃爍同步器</h3>
+        <p>觀察 8 和 28 的倍數，找出第一次同時閃爍的時間。</p>
+        <div style="text-align:center; margin:14px 0;">
+          小燈泡每 <input type="number" id="lcm-a" value="8" min="2" max="50"> 分鐘閃一次
+          大燈泡每 <input type="number" id="lcm-b" value="28" min="2" max="50"> 分鐘閃一次
+          <button class="btn btn-sm btn-primary" onclick="drawLcmTimeline()">開始觀察</button>
+        </div>
+        <div id="lcm-timeline"></div>
+        <div id="lcm-result" style="text-align:center; font-weight:600; color:#2c3e50; margin-top:10px;"></div>
+      </div>
+
+      <div class="concept-box">
+        <strong>定義：</strong>兩數的公倍數中，最小的那個叫做 <strong>最小公倍數</strong>（LCM）。<br>
+        如果兩數互質，最小公倍數就是兩數的乘積。<br>
+        如果一數是另一數的倍數，較大的數就是最小公倍數。
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 用質因數分解找最小公倍數</h3>
+        <p>以 30 和 45 為例：</p>
+        <div style="text-align:center; font-size:1.1rem; margin:10px 0;">
+          30 ＝ 2 × 3 × 5　　45 ＝ 3 × 3 × 5
+        </div>
+        <p>共同質因數各取一個，再乘上剩下的質因數：<br>
+        最小公倍數 ＝ 3 × 5 × 2 × 3 ＝ <strong>90</strong></p>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">➗ 短除法求最小公倍數</h3>
+        <p>用短除法找 18 和 42 的最小公倍數：</p>
+        <div style="text-align:center;">
+          <div id="lcm-sd-display" class="short-division"></div>
+          <div class="btn-group" style="justify-content:center;" id="lcm-sd-buttons"></div>
+          <div id="lcm-sd-feedback" class="feedback"></div>
+          <button class="btn btn-sm" onclick="initLcmSD()" style="margin-top:8px;">重置</button>
+        </div>
+      </div>
+
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ LCM 練習題</h3>
+        <div class="problem-card">
+          <div class="problem-text">妙妙包了一些水餃，每 20 顆裝一袋或每 15 顆裝一袋都剛好裝完。妙妙最少包了幾顆水餃？</div>
+          <div class="problem-answer">最少 <input type="number" id="lcm-q1"> 顆 <button class="btn btn-sm btn-primary" onclick="checkNumberAnswer('lcm-q1', 60, 'lcm-q1-fb')">檢查</button></div>
+          <div id="lcm-q1-fb" class="feedback"></div>
+          <details><summary>看解答</summary><div class="solution-content">求 20 和 15 的最小公倍數。<br>20 ＝ 2×2×5，15 ＝ 3×5。<br>最小公倍數＝2×2×3×5＝60。<br>答：最少 60 顆。</div></details>
+        </div>
+        <div class="problem-card">
+          <div class="problem-text">有一些長 20 公分、寬 12 公分的長方形，排成一個正方形。正方形邊長最短是幾公分？</div>
+          <div class="problem-answer">最短 <input type="number" id="lcm-q2"> 公分 <button class="btn btn-sm btn-primary" onclick="checkNumberAnswer('lcm-q2', 60, 'lcm-q2-fb')">檢查</button></div>
+          <div id="lcm-q2-fb" class="feedback"></div>
+          <details><summary>看解答</summary><div class="solution-content">正方形邊長要同時是 20 和 12 的倍數，最短就是最小公倍數。<br>20 ＝ 2×2×5，12 ＝ 2×2×3。<br>最小公倍數＝2×2×3×5＝60。<br>答：最短 60 公分。</div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 綜合練習 -->
+    <section class="section" id="sec-review">
+      <div class="section-header">
+        <div class="section-number" style="background: var(--primary);">綜</div>
+        <div class="section-title">
+          <h2>綜合練習</h2>
+          <p>判斷要用最大公因數還是最小公倍數</p>
+        </div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">1. 將 32 張圖畫紙和 40 枝鉛筆平分給一些學生，每人分到的圖畫紙一樣多，鉛筆也一樣多，剛好全部分完。最多可以平分給幾人？</div>
+        <div class="problem-answer">要用 <select id="rev1-type"><option value="">請選擇</option><option value="gcd">最大公因數</option><option value="lcm">最小公倍數</option></select>，答案是 <input type="number" id="rev1-ans"> 人 <button class="btn btn-sm btn-primary" onclick="checkReview1()">檢查</button></div>
+        <div id="rev1-fb" class="feedback"></div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">2. 遊樂園巴士每 25 分鐘開一班，火車每 20 分鐘開一班。上午 9:30 同時開出第一班，下一次同時開出是幾時幾分？</div>
+        <div class="problem-answer">要用 <select id="rev2-type"><option value="">請選擇</option><option value="gcd">最大公因數</option><option value="lcm">最小公倍數</option></select>，再過 <input type="number" id="rev2-mins"> 分鐘，即 <input type="text" id="rev2-time" placeholder="例如 10:10"> <button class="btn btn-sm btn-primary" onclick="checkReview2()">檢查</button></div>
+        <div id="rev2-fb" class="feedback"></div>
+      </div>
+
+      <div class="problem-card">
+        <div class="problem-text">3. 下面哪些數是質數？（多選）</div>
+        <div class="quiz-options" id="final-prime-options"></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="checkFinalPrime()">檢查答案</button></div>
+        <div id="final-prime-fb" class="feedback"></div>
+      </div>
+
+      <div class="completion" id="completion">
+        <div style="font-size:3rem;">🎉</div>
+        <h2>恭喜你完成第 1 單元！</h2>
+        <p>你已經學會質數、合數、質因數分解、最大公因數和最小公倍數。繼續加油！</p>
+        <button class="btn btn-accent" onclick="location.reload()" style="margin-top:16px;">再學一次</button>
+      </div>
+    </section>
+
     <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
+      <p>108課綱 · 康軒版 六年級上學期數學 · 第 1 單元自學練習</p>
     </footer>
   </div>
+
+  <canvas class="confetti" id="confetti"></canvas>
+
+  <script>
+    // ===== 通用工具 =====
+    const $ = id => document.getElementById(id);
+    const delay = ms => new Promise(r => setTimeout(r, ms));
+    let stars = 0;
+    const addStar = (n=1) => { stars += n; $('star-display').textContent = '⭐ ' + stars; };
+    const showFeedback = (id, correct, msg) => {
+      const el = $(id);
+      el.className = 'feedback ' + (correct ? 'correct' : 'wrong');
+      el.textContent = msg;
+      if (correct) addStar();
+    };
+    const normalizePF = s => s.replace(/\s+/g,'').replace(/Ｘ/g,'×').replace(/x/g,'×').replace(/\*/g,'×').replace(/X/g,'×');
+
+    // 進度追蹤
+    const sections = ['sec-warmup','sec-prime','sec-factorize','sec-gcd','sec-lcm','sec-review'];
+    const observed = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) observed.add(e.target.id); });
+      const pct = Math.round(observed.size / sections.length * 100);
+      $('progress-fill').style.width = pct + '%';
+      $('progress-text').textContent = pct + '%';
+    }, { threshold: 0.3 });
+    sections.forEach(id => observer.observe($(id)));
+
+    // ===== 暖身：20 人分組 =====
+    function initWarmup() {
+      const grid = $('people-grid');
+      grid.innerHTML = '';
+      for (let i = 1; i <= 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'person';
+        p.textContent = i;
+        grid.appendChild(p);
+      }
+      const opts = $('group-options');
+      opts.innerHTML = '';
+      [1,2,4,5,10,20].forEach(n => {
+        const div = document.createElement('div');
+        div.className = 'group-option';
+        div.innerHTML = '<span class="num">' + n + '</span><span class="label">每組 ' + (20/n) + ' 人</span>';
+        div.onclick = () => showGrouping(n);
+        opts.appendChild(div);
+      });
+    }
+    function showGrouping(groupSize) {
+      document.querySelectorAll('.group-option').forEach((el,i) => {
+        el.classList.toggle('selected', [1,2,4,5,10,20][i] === groupSize);
+      });
+      const people = document.querySelectorAll('.person');
+      people.forEach((p, i) => {
+        p.style.transform = 'scale(0)';
+        setTimeout(() => {
+          const group = Math.floor(i / groupSize) + 1;
+          p.style.background = group % 2 === 0 ? 'linear-gradient(135deg, #f5846e, #e57373)' : 'linear-gradient(135deg, #6ec6f5, #42a5f5)';
+          p.style.transform = 'scale(1)';
+        }, 100 + i * 15);
+      });
+      const groups = 20 / groupSize;
+      $('group-result').innerHTML = `分成 <strong>${groups}</strong> 組，每組 <strong>${groupSize}</strong> 人。<br><span style="color:#888; font-size:0.9rem;">${groups} 和 ${groupSize} 都是 20 的因數</span>`;
+    }
+
+    // ===== 1-1 質數和合數 =====
+    function initPrimeGrid() {
+      const grid = $('prime-grid');
+      grid.innerHTML = '';
+      for (let n = 1; n <= 20; n++) {
+        const cell = document.createElement('div');
+        cell.className = 'number-cell';
+        cell.textContent = n;
+        if (n === 1) cell.classList.add('one');
+        else if (isPrime(n)) cell.classList.add('prime');
+        else cell.classList.add('composite');
+        cell.onclick = () => exploreFactors(n, cell);
+        grid.appendChild(cell);
+      }
+    }
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i * i <= n; i++) if (n % i === 0) return false;
+      return true;
+    }
+    function getFactors(n) {
+      const f = [];
+      for (let i = 1; i <= n; i++) if (n % i === 0) f.push(i);
+      return f;
+    }
+    function exploreFactors(n, cell) {
+      document.querySelectorAll('#prime-grid .number-cell').forEach(c => c.classList.remove('active'));
+      cell.classList.add('active');
+      const factors = getFactors(n);
+      const type = n === 1 ? '1（只有 1 個因數）' : isPrime(n) ? '質數' : '合數';
+      let html = `<div style="text-align:center; margin-bottom:10px;"><strong>${n}</strong> 是 ${type}，因數有：${factors.join('、')}</div>`;
+      html += '<div class="factor-array">';
+      factors.forEach(f => {
+        const other = n / f;
+        html += '<div style="text-align:center;"><div class="array-box" style="grid-template-columns: repeat(' + other + ', 1fr);">';
+        for (let i = 0; i < n; i++) html += '<div class="array-dot"></div>';
+        html += `</div><div class="array-label">${f} × ${other}</div></div>`;
+      });
+      html += '</div>';
+      $('factor-explore').innerHTML = html;
+    }
+
+    // 質數捕手
+    let primeQuizSelected = new Set();
+    const primeQuizNumbers = [1,3,4,5,7,9,11,13,15,17,19,21,23,27,29,31,33,37,39,41];
+    function initPrimeQuiz() {
+      const grid = $('prime-quiz-grid');
+      grid.innerHTML = '';
+      primeQuizSelected.clear();
+      primeQuizNumbers.forEach(n => {
+        const cell = document.createElement('div');
+        cell.className = 'number-cell';
+        cell.textContent = n;
+        cell.onclick = () => {
+          cell.classList.toggle('selected');
+          if (primeQuizSelected.has(n)) primeQuizSelected.delete(n);
+          else primeQuizSelected.add(n);
+        };
+        grid.appendChild(cell);
+      });
+      $('prime-quiz-feedback').className = 'feedback';
+    }
+    function checkPrimeQuiz() {
+      const correct = primeQuizNumbers.filter(n => isPrime(n));
+      const selected = Array.from(primeQuizSelected);
+      const isCorrect = selected.length === correct.length && selected.every(n => correct.includes(n));
+      if (isCorrect) {
+        document.querySelectorAll('#prime-quiz-grid .number-cell').forEach(c => {
+          const n = +c.textContent;
+          if (isPrime(n)) c.classList.add('prime');
+          else if (n === 1) c.classList.add('one');
+          else c.classList.add('composite');
+        });
+        showFeedback('prime-quiz-feedback', true, '太棒了！你抓到了所有質數！⭐');
+      } else {
+        const missed = correct.filter(n => !selected.includes(n));
+        const wrong = selected.filter(n => !correct.includes(n));
+        let msg = '再想想看。';
+        if (missed.length) msg += `你漏掉了 ${missed.join('、')}。`;
+        if (wrong.length) msg += `${wrong.join('、')} 不是質數。`;
+        showFeedback('prime-quiz-feedback', false, msg);
+      }
+    }
+    function resetPrimeQuiz() { initPrimeQuiz(); $('prime-quiz-feedback').className = 'feedback'; }
+
+    // ===== 1-2 質因數分解 =====
+    let treeState = {};
+    function initTree() {
+      const target = +$('tree-target').value;
+      if (target < 4 || target > 1000) return;
+      treeState = { value: target, path: [] };
+      renderTree();
+      $('tree-result').textContent = '';
+    }
+    function renderTree() {
+      const area = $('tree-area');
+      area.innerHTML = '';
+      const build = (n, isRoot) => {
+        if (isPrime(n)) {
+          return `<div class="tree-node"><div class="tree-value" style="background:#e8f5e9; border-color:var(--green);">${n}</div></div>`;
+        }
+        const factors = getFactorPairs(n);
+        let html = `<div class="tree-node"><div class="tree-value">${n}</div>`;
+        if (!isRoot) {
+          html += `<div class="tree-line"></div>`;
+        }
+        html += `<div class="tree-children">`;
+        if (treeState.chosen && treeState.chosen[n]) {
+          const [a, b] = treeState.chosen[n];
+          html += build(a) + build(b);
+        } else {
+          html += `<div class="tree-node"><div style="margin:6px;">選一組：</div><div>`;
+          factors.forEach(([a,b]) => {
+            html += `<button class="factor-btn" onclick="chooseFactor(${n},${a},${b})">${a} × ${b}</button>`;
+          });
+          html += `</div></div>`;
+        }
+        html += `</div></div>`;
+        return html;
+      };
+      area.innerHTML = build(treeState.value, true);
+      checkTreeComplete();
+    }
+    function getFactorPairs(n) {
+      const pairs = [];
+      for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) pairs.push([i, n/i]);
+      }
+      return pairs;
+    }
+    function chooseFactor(n, a, b) {
+      if (!treeState.chosen) treeState.chosen = {};
+      treeState.chosen[n] = [a, b];
+      renderTree();
+    }
+    function checkTreeComplete() {
+      const leaves = [];
+      const collect = (n) => {
+        if (isPrime(n)) { leaves.push(n); return; }
+        if (treeState.chosen && treeState.chosen[n]) {
+          treeState.chosen[n].forEach(collect);
+        }
+      };
+      collect(treeState.value);
+      const allDone = document.querySelectorAll('#tree-area .factor-btn').length === 0;
+      if (allDone) {
+        const sorted = leaves.slice().sort((a,b)=>a-b);
+        const product = sorted.reduce((a,b)=>a*b,1);
+        const expr = sorted.join(' × ');
+        if (product === treeState.value) {
+          $('tree-result').innerHTML = `完成！<strong>${treeState.value} ＝ ${expr}</strong>`;
+          addStar();
+        }
+      }
+    }
+
+    // 短除法（質因數分解）
+    let sdState = { value: 48, steps: [] };
+    function initShortDivision() {
+      sdState = { value: 48, steps: [] };
+      renderSD();
+    }
+    function renderSD() {
+      const disp = $('short-division-display');
+      const btns = $('sd-buttons');
+      let current = sdState.value;
+      sdState.steps.forEach(s => current /= s);
+      let html = '';
+      sdState.steps.forEach((d, i) => {
+        const before = i === 0 ? sdState.value : sdState.value / sdState.steps.slice(0, i).reduce((a,b)=>a*b,1);
+        const after = before / d;
+        html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${before}</span></div>`;
+        if (isPrime(after)) {
+          html += `<div class="sd-row"><span class="sd-divisor"></span><span class="sd-res" style="color:var(--green); font-weight:700;">${after}</span></div>`;
+        }
+      });
+      if (sdState.steps.length === 0) {
+        html += `<div class="sd-row"><span class="sd-divisor">?</span><span class="sd-num">${current}</span></div>`;
+      }
+      disp.innerHTML = html;
+      btns.innerHTML = '';
+      if (isPrime(current)) {
+        $('sd-feedback').className = 'feedback correct';
+        $('sd-feedback').textContent = `完成！48 ＝ ${sdState.steps.concat([current]).join(' × ')}`;
+        return;
+      }
+      $('sd-feedback').className = 'feedback';
+      const primes = [2,3,5,7,11];
+      primes.forEach(p => {
+        if (current % p === 0) {
+          const b = document.createElement('button');
+          b.className = 'btn btn-sm btn-accent';
+          b.textContent = '÷ ' + p;
+          b.onclick = () => { sdState.steps.push(p); renderSD(); };
+          btns.appendChild(b);
+        }
+      });
+    }
+
+    function checkPF(num, expected, inputId) {
+      const val = normalizePF($(inputId).value);
+      const fbId = inputId + '-fb';
+      if (val === expected) showFeedback(fbId, true, '正確！');
+      else showFeedback(fbId, false, '再試一次。答案要寫成質因數相乘，例如 2×2×3×3。');
+    }
+
+    // ===== 1-3 最大公因數 =====
+    function initTileGrid() {
+      const btns = $('tile-size-buttons');
+      btns.innerHTML = '';
+      [1,2,4,8].forEach(s => {
+        const b = document.createElement('button');
+        b.className = 'btn btn-sm btn-primary';
+        b.textContent = '邊長 ' + s + ' 公分';
+        b.onclick = () => drawTile(s);
+        btns.appendChild(b);
+      });
+      drawTile(1);
+    }
+    function drawTile(size) {
+      const grid = $('tile-grid');
+      const cols = 24 / size, rows = 16 / size;
+      grid.style.gridTemplateColumns = `repeat(${cols}, 16px)`;
+      grid.style.width = (cols * 16 + (cols-1)*2) + 'px';
+      grid.innerHTML = '';
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const tile = document.createElement('div');
+          tile.className = 'tile ' + (r % 2 === c % 2 ? 'blue' : 'pink');
+          grid.appendChild(tile);
+        }
+      }
+      const isMax = size === 8;
+      $('tile-info').innerHTML = `邊長 <strong>${size}</strong> 公分，可以剛好剪完。<br>${isMax ? '✅ 8 是 24 和 16 的最大公因數！' : '雖然可以，但不是最長的邊長。'}`;
+    }
+
+    // GCD 短除法
+    let gcdSdState = { a: 42, b: 70, steps: [] };
+    function initGcdSD() {
+      gcdSdState = { a: 42, b: 70, steps: [] };
+      renderGcdSD();
+    }
+    function renderGcdSD() {
+      const disp = $('gcd-sd-display');
+      const btns = $('gcd-sd-buttons');
+      let ca = gcdSdState.a, cb = gcdSdState.b;
+      gcdSdState.steps.forEach(d => { ca /= d; cb /= d; });
+      let html = '';
+      gcdSdState.steps.forEach((d, i) => {
+        const ba = i === 0 ? gcdSdState.a : gcdSdState.a / gcdSdState.steps.slice(0,i).reduce((a,b)=>a*b,1);
+        const bb = i === 0 ? gcdSdState.b : gcdSdState.b / gcdSdState.steps.slice(0,i).reduce((a,b)=>a*b,1);
+        html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${ba}</span><span class="sd-num">${bb}</span></div>`;
+      });
+      html += `<div class="sd-row"><span class="sd-divisor">?</span><span class="sd-num">${ca}</span><span class="sd-num">${cb}</span></div>`;
+      disp.innerHTML = html;
+      btns.innerHTML = '';
+      if (ca === 1 || cb === 1 || isCoprime(ca, cb)) {
+        const gcd = gcdSdState.steps.reduce((a,b)=>a*b,1);
+        $('gcd-sd-feedback').className = 'feedback correct';
+        $('gcd-sd-feedback').textContent = `完成！42 和 70 的最大公因數是 ${gcd}`;
+        return;
+      }
+      $('gcd-sd-feedback').className = 'feedback';
+      [2,3,5,7].forEach(p => {
+        if (ca % p === 0 && cb % p === 0) {
+          const b = document.createElement('button');
+          b.className = 'btn btn-sm btn-accent';
+          b.textContent = '÷ ' + p;
+          b.onclick = () => { gcdSdState.steps.push(p); renderGcdSD(); };
+          btns.appendChild(b);
+        }
+      });
+    }
+    function isCoprime(a,b) {
+      const g = gcd(a,b);
+      return g === 1;
+    }
+    function gcd(a,b) {
+      while (b) [a,b] = [b, a % b];
+      return a;
+    }
+
+    // ===== 1-4 最小公倍數 =====
+    function drawLcmTimeline() {
+      const a = +$('lcm-a').value, b = +$('lcm-b').value;
+      if (a < 2 || b < 2) return;
+      const maxTime = Math.min(a * b, 200);
+      const multA = [], multB = [];
+      for (let t = a; t <= maxTime; t += a) multA.push(t);
+      for (let t = b; t <= maxTime; t += b) multB.push(t);
+      const common = multA.filter(t => multB.includes(t));
+      const lcm = common[0] || a*b;
+      let html = '<div class="numberline"><div class="nl-line"></div>';
+      for (let i = 0; i <= Math.min(maxTime, 120); i += Math.max(1, Math.floor(maxTime/10))) {
+        const pct = i / maxTime * 100;
+        html += `<div class="nl-tick" style="left:${pct}%"></div><div class="nl-label" style="left:${pct}%">${i}</div>`;
+      }
+      multA.forEach(t => {
+        const pct = t / maxTime * 100;
+        html += `<div class="nl-marker a" style="left:${pct}%">A</div>`;
+      });
+      multB.forEach(t => {
+        const pct = t / maxTime * 100;
+        html += `<div class="nl-marker b" style="left:${pct}%">B</div>`;
+      });
+      html += '</div>';
+      html += '<div style="text-align:center; margin-top:8px; font-size:0.9rem;"><span style="color:#42a5f5;">● A 閃爍</span>　<span style="color:#f5846e;">● B 閃爍</span></div>';
+      $('lcm-timeline').innerHTML = html;
+      $('lcm-result').innerHTML = `第一次同時閃爍在 <strong>${lcm}</strong> 分鐘後。<br>也就是 8 和 28 的最小公倍數是 <strong>${lcm}</strong>。`;
+      addStar();
+    }
+
+    // LCM 短除法
+    let lcmSdState = { a: 18, b: 42, steps: [], lastA: 1, lastB: 1 };
+    function initLcmSD() {
+      lcmSdState = { a: 18, b: 42, steps: [], lastA: 1, lastB: 1 };
+      renderLcmSD();
+    }
+    function renderLcmSD() {
+      const disp = $('lcm-sd-display');
+      const btns = $('lcm-sd-buttons');
+      let ca = lcmSdState.a, cb = lcmSdState.b;
+      lcmSdState.steps.forEach(d => {
+        if (ca % d === 0) ca /= d; else lcmSdState.lastA *= d;
+        if (cb % d === 0) cb /= d; else lcmSdState.lastB *= d;
+      });
+      // 重新計算正確的左邊剩餘
+      let html = '';
+      // 動態計算每步的數值
+      const rows = [[lcmSdState.a, lcmSdState.b]];
+      lcmSdState.steps.forEach(d => {
+        const last = rows[rows.length-1];
+        rows.push([last[0]%d===0?last[0]/d:last[0], last[1]%d===0?last[1]/d:last[1]]);
+      });
+      lcmSdState.steps.forEach((d, i) => {
+        html += `<div class="sd-row"><span class="sd-divisor">${d}</span><span class="sd-num">${rows[i][0]}</span><span class="sd-num">${rows[i][1]}</span></div>`;
+      });
+      html += `<div class="sd-row"><span class="sd-divisor">?</span><span class="sd-num">${rows[rows.length-1][0]}</span><span class="sd-num">${rows[rows.length-1][1]}</span></div>`;
+      disp.innerHTML = html;
+      btns.innerHTML = '';
+      const last = rows[rows.length-1];
+      if (gcd(last[0], last[1]) === 1) {
+        const lcm = lcmSdState.steps.reduce((a,b)=>a*b,1) * last[0] * last[1];
+        $('lcm-sd-feedback').className = 'feedback correct';
+        $('lcm-sd-feedback').textContent = `完成！18 和 42 的最小公倍數是 ${lcm}`;
+        return;
+      }
+      $('lcm-sd-feedback').className = 'feedback';
+      [2,3,5,7].forEach(p => {
+        if (last[0] % p === 0 || last[1] % p === 0) {
+          const b = document.createElement('button');
+          b.className = 'btn btn-sm btn-accent';
+          b.textContent = '÷ ' + p;
+          b.onclick = () => { lcmSdState.steps.push(p); renderLcmSD(); };
+          btns.appendChild(b);
+        }
+      });
+    }
+
+    function checkNumberAnswer(inputId, expected, fbId) {
+      const val = +$(inputId).value;
+      if (val === expected) showFeedback(fbId, true, '答對了！🎉');
+      else showFeedback(fbId, false, '不對喔，再算一次。');
+    }
+
+    // ===== 綜合練習 =====
+    function checkReview1() {
+      const type = $('rev1-type').value;
+      const ans = +$('rev1-ans').value;
+      if (type === 'gcd' && ans === 8) showFeedback('rev1-fb', true, '正確！最多分給 8 人，每人 4 張圖畫紙、5 枝鉛筆。');
+      else if (type !== 'gcd') showFeedback('rev1-fb', false, '這題要「平分且最多」，應該用最大公因數。');
+      else showFeedback('rev1-fb', false, '答案不對，32 和 40 的最大公因數是 8。');
+    }
+    function checkReview2() {
+      const type = $('rev2-type').value;
+      const mins = +$('rev2-mins').value;
+      const time = $('rev2-time').value.trim();
+      if (type === 'lcm' && mins === 100 && (time === '11:10' || time === '11點10分' || time === '上午11:10')) {
+        showFeedback('rev2-fb', true, '正確！25 和 20 的最小公倍數是 100，所以是 11:10。');
+      } else if (type !== 'lcm') {
+        showFeedback('rev2-fb', false, '這題要「下一次同時」，應該用最小公倍數。');
+      } else {
+        showFeedback('rev2-fb', false, '再檢查一下：25 和 20 的最小公倍數是 100，9:30 再過 100 分鐘是幾點？');
+      }
+    }
+    function initFinalPrime() {
+      const opts = $('final-prime-options');
+      opts.innerHTML = '';
+      [1,3,14,17,22,29,34,51].forEach(n => {
+        const div = document.createElement('div');
+        div.className = 'quiz-option';
+        div.textContent = n;
+        div.onclick = () => div.classList.toggle('selected');
+        opts.appendChild(div);
+      });
+    }
+    function checkFinalPrime() {
+      const selected = Array.from(document.querySelectorAll('#final-prime-options .quiz-option.selected')).map(el => +el.textContent);
+      const correct = [3,17,29];
+      const isCorrect = selected.length === correct.length && selected.every(n => correct.includes(n));
+      document.querySelectorAll('#final-prime-options .quiz-option').forEach(el => {
+        const n = +el.textContent;
+        el.classList.remove('correct','wrong');
+        if (correct.includes(n)) el.classList.add('correct');
+        else if (el.classList.contains('selected')) el.classList.add('wrong');
+      });
+      if (isCorrect) {
+        showFeedback('final-prime-fb', true, '全對！你完全掌握質數了！');
+        $('completion').classList.add('show');
+        fireConfetti();
+      } else {
+        showFeedback('final-prime-fb', false, '還有錯誤，再看看哪些數只有兩個因數。');
+      }
+    }
+
+    // ===== 彩帶特效 =====
+    function fireConfetti() {
+      const canvas = $('confetti');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const colors = ['#f5846e','#f5a623','#7bc67e','#6ec6f5','#b39ddb','#e88eb5'];
+      const pieces = [];
+      for (let i = 0; i < 120; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * -canvas.height,
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * 3 + 2,
+          c: colors[Math.floor(Math.random() * colors.length)],
+          r: Math.random() * 6 + 4,
+          rot: Math.random() * 360,
+          vr: (Math.random() - 0.5) * 10
+        });
+      }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        pieces.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+          if (p.y < canvas.height) active = true;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot * Math.PI / 180);
+          ctx.fillStyle = p.c;
+          ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r);
+          ctx.restore();
+        });
+        if (active) requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // 初始化
+    window.onload = () => {
+      initWarmup();
+      initPrimeGrid();
+      initPrimeQuiz();
+      initTree();
+      initShortDivision();
+      initTileGrid();
+      initGcdSD();
+      drawLcmTimeline();
+      initLcmSD();
+      initFinalPrime();
+    };
+  </script>
 </body>
 </html>
