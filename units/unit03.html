@@ -619,12 +619,28 @@
 
     function drawTriangles(){
       const n = parseInt($('triSlider').value); $('triN').textContent = n;
-      const w = Math.min(700, n*38+40), h = 120;
-      let svg = '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">';
+      const tw = 44; // 每個三角形的寬度
+      const totalW = (n + 1) / 2 * tw; // 交替排列的總寬度
+      const pad = 20;
+      const W = Math.max(120, totalW + pad * 2);
+      const H = 120;
+      const baseY = 90, topY = 10;
+      // 縮放以適應畫布
+      const scale = Math.min(1, 700 / W);
+      const viewW = W / scale, viewH = H / scale;
+      let svg = '<svg width="' + Math.min(W, 700) + '" height="' + H + '" viewBox="0 0 ' + viewW + ' ' + viewH + '" style="max-width:100%;">';
       for (let i = 0; i < n; i++){
-        const x = 20 + i*38, y = 20;
-        svg += '<polygon points="' + x + ',' + (y+80) + ' ' + (x+30) + ',' + y + ' ' + (x+60) + ',' + (y+80) + '" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
-        if (i > 0) svg += '<line x1="' + x + '" y1="' + (y+80) + '" x2="' + x + '" y2="' + y + '" stroke="#42a5f5" stroke-width="4"/>';
+        const col = Math.floor(i / 2);
+        const left = pad + col * tw + (i % 2 === 1 ? tw / 2 : 0);
+        const apex = left + tw / 2;
+        const right = left + tw;
+        if (i % 2 === 0){
+          // 正三角形
+          svg += '<polygon points="' + left + ',' + baseY + ' ' + apex + ',' + topY + ' ' + right + ',' + baseY + '" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
+        } else {
+          // 倒三角形
+          svg += '<polygon points="' + left + ',' + topY + ' ' + apex + ',' + baseY + ' ' + right + ',' + topY + '" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
+        }
       }
       svg += '</svg>';
       $('triCanvas').innerHTML = svg;
