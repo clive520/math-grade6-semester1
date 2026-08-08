@@ -312,6 +312,25 @@
     .quiz-option.correct { border-color: var(--success); background: #e8f5e9; }
     .quiz-option.wrong { border-color: var(--error); background: #ffebee; }
 
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 6px;
+      font-size: 1.1rem;
+    }
+    .fraction .num { border-bottom: 2px solid #333; padding: 0 6px; }
+    .fraction .den { padding: 0 6px; }
+
+    .highlight {
+      background: #fff3cd;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #856404;
+    }
+
     @media (max-width: 500px) {
       .decimal-grid { grid-template-columns: repeat(5, 1fr); }
     }
@@ -397,6 +416,31 @@
         </div>
         <div id="int-dec-demo" style="text-align:center; line-height:2; margin:14px 0;"></div>
         <div id="int-dec-result" style="text-align:center; font-weight:700; color:var(--green-dark); font-size:1.1rem;"></div>
+      </div>
+      <div class="concept-box">
+        <strong>另一種看法：寫成分數再擴分</strong><br>
+        小數除法也可以看成「分數 ÷ 分數」。<br>
+        例如 3 ÷ 0.5 可以寫成 <span class="fraction"><span class="num">3</span><span class="den">0.5</span></span>，再把分子、分母同時乘以 10（擴分），得到 <span class="fraction"><span class="num">30</span><span class="den">5</span></span> ＝ 6。
+      </div>
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 用分數的眼光看</h3>
+        <p>選一題，看看小數除法怎麼用<span class="highlight">擴分</span>來算。</p>
+        <div class="input-row" style="justify-content:center; font-size:1.2rem;">
+          <select id="frac-a" onchange="updateFracDemo()">
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+          </select>
+          ÷
+          <select id="frac-b" onchange="updateFracDemo()">
+            <option value="0.5">0.5</option>
+            <option value="0.25">0.25</option>
+            <option value="0.2">0.2</option>
+            <option value="0.125">0.125</option>
+          </select>
+        </div>
+        <div id="frac-demo" style="text-align:center; line-height:2.4; margin:16px 0; font-size:1.1rem;"></div>
       </div>
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 練習</h3>
@@ -751,6 +795,21 @@
       `;
       $('int-dec-result').textContent = '＝ ' + result;
     }
+    function updateFracDemo(){
+      const a = parseFloat($('frac-a').value);
+      const b = parseFloat($('frac-b').value);
+      const factor = Math.pow(10, String(b).split('.')[1]?.length || 0);
+      const newA = a * factor, newB = b * factor;
+      const result = a / b;
+      const fmt = n => parseFloat(n.toFixed(6)).toString();
+      const fracExpr = (n, d) => `<span class="fraction"><span class="num">${n}</span><span class="den">${d}</span></span>`;
+      $('frac-demo').innerHTML = `
+        ${fmt(a)} ÷ ${fmt(b)} ＝ ${fracExpr(fmt(a), fmt(b))}<br>
+        ＝ ${fracExpr(fmt(a) + ' × ' + factor, fmt(b) + ' × ' + factor)}（分子、分母同乘 ${factor}）<br>
+        ＝ ${fracExpr(fmt(newA), fmt(newB))}<br>
+        ＝ ${fmt(result)}
+      `;
+    }
     function checkQ(inputId, expected, fbId, exp){
       const val = $(inputId).value.trim();
       if (val === expected) showFeedback(fbId, true, '答對了！' + exp);
@@ -955,6 +1014,7 @@
     window.onload = () => {
       showErasers();
       updateIntDec();
+      updateFracDemo();
       showRelationExamples();
       renderQuiz();
     };
