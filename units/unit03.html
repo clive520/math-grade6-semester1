@@ -658,12 +658,24 @@
 
     function drawSquares(){
       const n = parseInt($('sqSlider').value); $('sqN').textContent = n;
-      const w = Math.min(700, n*35+40), h = 110;
-      let svg = '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">';
+      const s = 50; // 正方形邊長（火柴棒長度）
+      const pad = 30;
+      const W = Math.max(120, pad + n * s + pad);
+      const H = 130;
+      const y = 30;
+      const scale = Math.min(1, 720 / W);
+      const viewW = W / scale, viewH = H / scale;
+      const colors = ['#ff8a65','#42a5f5','#7bc67e','#b39ddb','#f5a623','#e88eb5','#4dd0e1'];
+      let svg = '<svg width="' + Math.min(W, 720) + '" height="' + H + '" viewBox="0 0 ' + viewW + ' ' + viewH + '" style="max-width:100%;">';
       for (let i = 0; i < n; i++){
-        const x = 20 + i*35, y = 20;
-        svg += '<rect x="' + x + '" y="' + y + '" width="50" height="50" fill="none" stroke="#ff8a65" stroke-width="4"/>';
-        if (i > 0) svg += '<line x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (y+50) + '" stroke="white" stroke-width="6"/>';
+        const x = pad + i * s;
+        const color = colors[i % colors.length];
+        const strokeAttr = 'stroke="' + color + '" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"';
+        // 第一個正方形畫四邊，後續只畫上、右、下三邊（左邊與前一個共用）
+        if (i === 0) svg += '<line x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (y+s) + '" ' + strokeAttr + '/>';
+        svg += '<line x1="' + x + '" y1="' + y + '" x2="' + (x+s) + '" y2="' + y + '" ' + strokeAttr + '/>';
+        svg += '<line x1="' + (x+s) + '" y1="' + y + '" x2="' + (x+s) + '" y2="' + (y+s) + '" ' + strokeAttr + '/>';
+        svg += '<line x1="' + x + '" y1="' + (y+s) + '" x2="' + (x+s) + '" y2="' + (y+s) + '" ' + strokeAttr + '/>';
       }
       svg += '</svg>';
       $('sqCanvas').innerHTML = svg;
