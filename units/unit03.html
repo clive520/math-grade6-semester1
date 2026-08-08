@@ -207,7 +207,7 @@
     .problem-answer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
     /* Pattern strip */
-    .pattern-strip { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: #fff; border-radius: 12px; justify-content: center; min-height: 70px; align-items: center; margin: 14px 0; }
+    .pattern-strip { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px; background: #fff; border-radius: 12px; justify-content: flex-start; min-height: 70px; align-items: center; margin: 14px 0; }
     .pattern-item { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 0.85rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; border: 2px solid transparent; }
     .pattern-item.highlight { transform: scale(1.15); box-shadow: 0 0 0 3px #ffd700, 0 4px 10px rgba(0,0,0,0.15); }
     .pattern-item.dim { opacity: 0.35; }
@@ -596,7 +596,7 @@
     const cardShapes = ['🐻','🐸','🐰'];
     function renderCardStrip(){
       const el = $('cardStrip'); el.innerHTML = '';
-      for (let i = 1; i <= 18; i++){
+      for (let i = 1; i <= 50; i++){
         const d = document.createElement('div');
         d.className = 'pattern-item';
         d.style.background = ['#ffb74d','#81c784','#90caf9'][(i-1)%3];
