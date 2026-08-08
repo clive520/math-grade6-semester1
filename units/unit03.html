@@ -629,18 +629,26 @@
       // 縮放以適應畫布
       const scale = Math.min(1, 720 / W);
       const viewW = W / scale, viewH = H / scale;
+      const colors = ['#42a5f5','#f5846e','#7bc67e','#b39ddb','#f5a623','#e88eb5','#4dd0e1'];
       let svg = '<svg width="' + Math.min(W, 720) + '" height="' + H + '" viewBox="0 0 ' + viewW + ' ' + viewH + '" style="max-width:100%;">';
       for (let i = 0; i < n; i++){
         const col = Math.floor(i / 2);
         const left = pad + col * s + (i % 2 === 1 ? s / 2 : 0);
         const apex = left + s / 2;
         const right = left + s;
+        const color = colors[i % colors.length];
+        const strokeAttr = 'stroke="' + color + '" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"';
         if (i % 2 === 0){
           // 正三角形
-          svg += '<polygon points="' + left + ',' + baseY + ' ' + apex + ',' + topY + ' ' + right + ',' + baseY + '" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
+          // 第一個三角形畫三邊，後續只畫底邊與右邊（左邊已與前一個共用）
+          if (i === 0) svg += '<line x1="' + left + '" y1="' + baseY + '" x2="' + apex + '" y2="' + topY + '" ' + strokeAttr + '/>';
+          svg += '<line x1="' + apex + '" y1="' + topY + '" x2="' + right + '" y2="' + baseY + '" ' + strokeAttr + '/>';
+          svg += '<line x1="' + left + '" y1="' + baseY + '" x2="' + right + '" y2="' + baseY + '" ' + strokeAttr + '/>';
         } else {
           // 倒三角形
-          svg += '<polygon points="' + left + ',' + topY + ' ' + apex + ',' + baseY + ' ' + right + ',' + topY + '" fill="none" stroke="#42a5f5" stroke-width="4" stroke-linejoin="round"/>';
+          // 左邊已與前一個共用，只畫底邊與右邊
+          svg += '<line x1="' + left + '" y1="' + topY + '" x2="' + right + '" y2="' + topY + '" ' + strokeAttr + '/>';
+          svg += '<line x1="' + apex + '" y1="' + baseY + '" x2="' + right + '" y2="' + topY + '" ' + strokeAttr + '/>';
         }
       }
       svg += '</svg>';
