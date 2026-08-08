@@ -783,18 +783,42 @@
     }
 
     // ===== 4-4 被除數、除數與商的關係 =====
+    function formatNum(n){
+      return parseFloat(n.toFixed(6)).toString();
+    }
+    function cleanDecimal(num){
+      return parseFloat(num.toFixed(6));
+    }
+    function randomRelationExample(type){
+      const lessThanOne = [0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9];
+      const greaterThanOne = [1.2, 1.25, 1.5, 2, 2.5, 4, 5, 8];
+      let a, b, q;
+      if (type === '＝'){
+        b = 1;
+        q = cleanDecimal((Math.floor(Math.random() * 50) + 1) / 10);
+        a = cleanDecimal(b * q);
+      } else if (type === '＞'){
+        b = lessThanOne[Math.floor(Math.random() * lessThanOne.length)];
+        q = Math.floor(Math.random() * 20) + 1;
+        a = cleanDecimal(b * q);
+      } else {
+        b = greaterThanOne[Math.floor(Math.random() * greaterThanOne.length)];
+        q = Math.floor(Math.random() * 20) + 1;
+        a = cleanDecimal(b * q);
+      }
+      return {a, b, q, symbol: type};
+    }
     function showRelationExamples(){
       const examples = [
-        {a:4.2, b:0.7, symbol:'＞'},
-        {a:5, b:1.25, symbol:'＜'},
-        {a:3.6, b:1, symbol:'＝'},
-        {a:0.9, b:0.3, symbol:'＞'},
-        {a:8, b:2.5, symbol:'＜'}
+        randomRelationExample('＞'),
+        randomRelationExample('＜'),
+        randomRelationExample('＝'),
+        randomRelationExample('＞'),
+        randomRelationExample('＜')
       ];
       let html = '<div style="background:#fff; border-radius:12px; padding:16px; line-height:2;">';
       examples.forEach(ex => {
-        const res = ex.a / ex.b;
-        html += `${ex.a} ÷ ${ex.b} ＝ ${res}，${res} ${ex.symbol} ${ex.a}<br>`;
+        html += `${formatNum(ex.a)} ÷ ${formatNum(ex.b)} ＝ ${formatNum(ex.q)}，${formatNum(ex.q)} ${ex.symbol} ${formatNum(ex.a)}<br>`;
       });
       html += '</div>';
       $('relation-examples').innerHTML = html;
