@@ -1,89 +1,118 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>比與比值 - 六上數學自學網</title>
+  <title>第5單元: 比與比值 - 六上數學自學網</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .container { max-width: 800px; margin: 0 auto; }
-    .back-link {
-      display: inline-block;
-      color: #2c5f8a;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .back-link:hover { background: #e8f0f8; }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    .unit-badge {
-      display: inline-block;
-      background: BADGE_COLOR;
-      color: white;
-      padding: 6px 20px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.8;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
+    :root { --primary:#2c5f8a; --light:#e8f4f8; --pink:#e88eb5; --orange:#f5a623; --green:#69b96d; --blue:#6ec6f5; --purple:#b39ddb; --text:#333; --muted:#777; --bg:#f5f7fa; --success:#4caf50; --error:#ef5350; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; padding-bottom:40px; }
+    .top-bar { position:sticky; top:0; z-index:10; background:rgba(255,255,255,.96); box-shadow:0 1px 6px rgba(0,0,0,.08); }
+    .top-inner { max-width:900px; margin:auto; padding:10px 16px; display:flex; align-items:center; gap:12px; }
+    .back-link { color:var(--primary); text-decoration:none; font-weight:700; background:var(--light); padding:7px 12px; border-radius:9px; white-space:nowrap; font-size:.9rem; }
+    .progress-wrap { flex:1; min-width:80px; } .progress-label { font-size:.76rem; color:#888; margin-bottom:2px; }
+    .progress-bar { height:8px; background:#e3e3e3; border-radius:5px; overflow:hidden; } .progress-fill { height:100%; width:0; background:linear-gradient(90deg,var(--pink),#d45d8c); transition:width .4s; }
+    .stars { color:#f5b900; font-weight:700; white-space:nowrap; }
+    .container { max-width:800px; margin:auto; padding:24px 16px; }
+    .hero { text-align:center; padding:36px 22px; margin-bottom:22px; background:linear-gradient(135deg,#fff 0%,#f1e8fa 100%); border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,.06); }
+    .unit-badge { display:inline-block; color:#fff; background:var(--purple); padding:5px 18px; border-radius:20px; font-weight:700; margin-bottom:10px; }
+    h1 { color:#2c3e50; font-size:1.9rem; margin-bottom:5px; } .tag { color:#888; }
+    .chapter-nav { background:#fff; border-radius:16px; padding:14px 16px; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+    .chapter-nav strong { color:var(--primary); margin-right:8px; } .chapter-nav a { display:inline-block; color:var(--primary); text-decoration:none; background:#f4f8fb; padding:4px 9px; margin:3px; border-radius:8px; font-size:.9rem; }
+    .section { background:#fff; border-radius:20px; padding:27px 24px; margin-bottom:22px; box-shadow:0 2px 12px rgba(0,0,0,.05); scroll-margin-top:75px; }
+    .section-header { display:flex; gap:12px; align-items:center; border-bottom:2px dashed #eee; padding-bottom:14px; margin-bottom:18px; }
+    .section-number { width:45px; height:45px; border-radius:12px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+    .section-title h2 { color:#2c3e50; font-size:1.32rem; } .section-title p { color:#888; font-size:.9rem; }
+    .concept-box { background:#f8faff; border-left:4px solid var(--primary); border-radius:12px; padding:14px 17px; margin:15px 0; }
+    .concept-box strong { color:var(--primary); } .tip-box { background:#fff8e1; border-left:4px solid var(--orange); border-radius:10px; padding:11px 15px; margin:12px 0; color:#6d5c28; }
+    .interactive-area { background:#fafafa; border-radius:16px; padding:19px; margin:17px 0; }
+    .btn { border:0; border-radius:10px; padding:9px 17px; color:#fff; cursor:pointer; font:600 1rem inherit; transition:transform .15s,box-shadow .15s; } .btn:active{transform:scale(.98)} .btn-primary{background:var(--primary)} .btn-primary:hover{box-shadow:0 4px 12px #2c5f8a44}.btn-green{background:var(--green)}.btn-blue{background:var(--blue)}.btn-accent{background:#f5846e}.btn-sm{padding:6px 13px;font-size:.9rem}.btn-group{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+    input,select { width:82px; padding:9px 8px; border:2px solid #ddd; border-radius:9px; font:1rem inherit; text-align:center; background:#fff; } input:focus,select:focus{outline:none;border-color:var(--primary)} .input-row{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0;font-size:1.1rem}
+    .feedback { display:none; border-radius:10px; padding:10px 14px; margin-top:10px; font-weight:600; } .feedback.correct{display:block;background:#e8f5e9;color:#2e7d32}.feedback.wrong{display:block;background:#ffebee;color:#c62828}.feedback.info{display:block;background:#e3f2fd;color:#1565c0}
+    .ratio-display { display:flex; justify-content:center; align-items:center; gap:9px; flex-wrap:wrap; font-size:1.3rem; font-weight:700; margin:15px 0; } .ratio-box{min-width:58px;padding:9px 13px;text-align:center;border-radius:11px;background:#fce4ec;color:#ad426d}.colon{color:var(--primary)}
+    .fruit-cup { display:flex; justify-content:center; align-items:flex-end; gap:5px; min-height:105px; margin:12px; } .cup{width:52px;border:3px solid #72a9c8;border-top:0;border-radius:0 0 13px 13px;background:linear-gradient(#ffc45c 0 48%,#ef786f 48%);height:75px;position:relative}.cup:after{content:"";position:absolute;top:-8px;left:-5px;width:56px;height:8px;border-radius:5px;background:#72a9c8}.cup span{position:absolute;bottom:-27px;left:0;right:0;text-align:center;font-size:.75rem;color:#777}
+    .bar-wrap{max-width:430px;margin:15px auto}.bar-label{display:flex;justify-content:space-between;font-size:.88rem}.bar{height:28px;display:flex;border-radius:8px;overflow:hidden}.bar .a{background:#f5846e}.bar .b{background:#6ec6f5}.bar .c{background:#7bc67e}
+    .shape { margin:14px auto; border:5px solid #f5846e; background:#e8f4f8; transition:width .25s,height .25s; display:flex;align-items:center;justify-content:center;color:var(--primary);font-weight:700; }
+    input[type=range]{width:min(360px,100%);accent-color:var(--pink);padding:0;border:0} .range-line{text-align:center;margin:10px}
+    .problem-card { background:#fafafa; border-radius:14px; padding:16px; margin:13px 0; } .problem-text{margin-bottom:10px;font-size:1.04rem}.problem-answer{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .quiz-options{display:flex;flex-direction:column;gap:8px}.quiz-option{padding:11px 13px;border:2px solid #e0e0e0;border-radius:11px;background:#fff;text-align:left;cursor:pointer;font:1rem inherit}.quiz-option:hover{border-color:var(--pink)}.quiz-option.correct{background:#e8f5e9;border-color:var(--success)}.quiz-option.wrong{background:#ffebee;border-color:var(--error)}
+    details{margin:11px 0} summary{cursor:pointer;background:var(--light);color:var(--primary);font-weight:700;padding:10px 14px;border-radius:10px}.solution{background:#f8faff;padding:13px 15px;border-radius:0 0 10px 10px}
+    .completion{display:none;text-align:center;padding:27px;background:linear-gradient(135deg,#fff8e1,#e8f5e9);border-radius:20px;margin:22px 0}.completion.show{display:block}.completion h2{color:#2e7d32}
+    #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99} footer{text-align:center;color:#aaa;font-size:.84rem;padding:24px}
+    @media(max-width:520px){.top-inner{padding:8px 10px}.back-link{font-size:.78rem;padding:6px 8px}.stars{font-size:.9rem}.container{padding:16px 10px}.section{padding:21px 15px}.hero{padding:28px 15px}h1{font-size:1.55rem}.section-title h2{font-size:1.15rem}.interactive-area{padding:14px}.btn{width:auto;max-width:100%}.chapter-nav a{font-size:.82rem}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #b39ddb;">第 5 單元</div>
-      <h1>比與比值</h1>
-      <p class="tag">比、比值、正比</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">⚖️</div>
-      <p>內容建置中，敬請期待！</p>
-    </div>
-    <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
-    </footer>
-  </div>
+  <div class="top-bar"><div class="top-inner"><a href="../index.html" class="back-link">&larr; 回單元列表</a><div class="progress-wrap"><div class="progress-label">學習進度 <span id="progress-text">0%</span></div><div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div></div><div class="stars" id="star-display">* 0</div></div></div>
+  <main class="container">
+    <header class="hero"><div class="unit-badge">第 5 單元</div><h1>比與比值</h1><p class="tag">用比描述關係, 用比值比較大小</p></header>
+    <nav class="chapter-nav"><strong>章節導覽</strong><a href="#warmup">暖身</a><a href="#s51">5-1 比的意義</a><a href="#s52">5-2 比值</a><a href="#s53">5-3 相等的比</a><a href="#s54">5-4 比的應用</a><a href="#review">重點整理</a><a href="#quiz">綜合練習</a><a href="#gift">資優加油站</a></nav>
+
+    <section class="section track" id="warmup"><div class="section-header"><div class="section-number" style="background:var(--orange)">暖</div><div class="section-title"><h2>果汁調配實驗室</h2><p>先從生活情境觀察兩種量的關係</p></div></div>
+      <p>一杯好喝的橘子果汁, 每加入 <strong>2 杯果汁</strong>, 就要加入 <strong>1 杯水</strong>。調整下面的杯數, 看看味道如何維持。</p>
+      <div class="interactive-area"><div class="input-row">果汁 <input id="juice" type="number" min="0" value="2"> 杯, 水 <input id="water" type="number" min="0" value="1"> 杯 <button class="btn btn-accent btn-sm" onclick="mixJuice()">調配</button></div><div class="fruit-cup" id="cups"></div><div id="juice-result" class="feedback info" style="display:block;text-align:center"></div></div>
+      <div class="concept-box"><strong>觀察:</strong> 果汁和水的杯數可以不同, 但只要保持 <strong>2:1</strong>, 每一口的味道就一樣。這種表示兩個數量關係的方式, 就是「比」。</div>
+    </section>
+
+    <section class="section track" id="s51"><div class="section-header"><div class="section-number" style="background:var(--green)">5-1</div><div class="section-title"><h2>比的意義與表示</h2><p>認識前項, 後項和比號</p></div></div>
+      <p>有 6 顆紅球和 4 顆藍球, 紅球和藍球的數量關係可以記作 <strong>6:4</strong>, 讀作「六比四」。</p>
+      <div class="ratio-display"><span class="ratio-box">6</span><span class="colon">:</span><span class="ratio-box">4</span></div>
+      <div class="mini-table" style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;text-align:center;margin:15px 0"><div style="background:#fce4ec;padding:9px;border-radius:9px"><strong>6</strong><br>前項</div><div style="background:#e8f4f8;padding:9px;border-radius:9px"><strong>:</strong><br>比號</div><div style="background:#e8f5e9;padding:9px;border-radius:9px"><strong>4</strong><br>後項</div></div>
+      <div class="interactive-area"><h3>比一比, 填一填</h3><p>盒中有 3 支鉛筆和 5 支彩色筆。鉛筆和彩色筆的比是:</p><div class="input-row"><input id="r51a" type="number"> : <input id="r51b" type="number"><button class="btn btn-primary btn-sm" onclick="checkRatio()">檢查</button></div><div id="r51fb" class="feedback"></div><div class="tip-box">比的前後順序很重要。題目說「鉛筆和彩色筆」, 就要先寫鉛筆的數量。</div></div>
+      <div class="interactive-area"><h3>選出正確的說法</h3><p>在比 8:3 中, 比號右邊的數是什麼?</p><div class="btn-group"><button class="btn btn-blue btn-sm" onclick="chooseWord(this,'wrong')">前項</button><button class="btn btn-blue btn-sm" onclick="chooseWord(this,'correct')">後項</button><button class="btn btn-blue btn-sm" onclick="chooseWord(this,'wrong')">比值</button></div><div id="word-fb" class="feedback"></div></div>
+    </section>
+
+    <section class="section track" id="s52"><div class="section-header"><div class="section-number" style="background:var(--blue)">5-2</div><div class="section-title"><h2>比值</h2><p>用前項除以後項, 算出比值</p></div></div>
+      <p>比 <strong>a:b</strong> 的比值, 就是前項除以後項, 也就是 <strong>a &divide; b</strong>。例如 6:4 的比值是 6 &divide; 4 = 1.5。</p>
+      <div class="interactive-area"><h3>比值計算器</h3><div class="input-row"><input id="valueA" type="number" value="6"> : <input id="valueB" type="number" value="4"><button class="btn btn-primary btn-sm" onclick="calcValue()">算比值</button></div><div id="valueResult" class="concept-box" style="text-align:center;margin-bottom:0">6:4 的比值 = 6 &divide; 4 = 1.5</div></div>
+      <div class="concept-box"><strong>化簡比:</strong> 比的前項和後項同時除以相同的數, 比的關係不變。12:8 同除以 4 得到 3:2, 這就是最簡單整數比。</div>
+      <div class="problem-card"><div class="problem-text">把 18:12 化成最簡單的整數比。</div><div class="problem-answer">答案 <input id="simpA" type="number"> : <input id="simpB" type="number"><button class="btn btn-green btn-sm" onclick="checkSimplify()">檢查</button></div><div id="simpFb" class="feedback"></div></div>
+    </section>
+
+    <section class="section track" id="s53"><div class="section-header"><div class="section-number" style="background:var(--purple)">5-3</div><div class="section-title"><h2>相等的比</h2><p>同乘或同除相同的數, 比仍然相等</p></div></div>
+      <p>長方形的長和寬保持相同的比, 形狀就相同。拖曳滑桿, 觀察 3:2 如何變成相等的比。</p>
+      <div class="interactive-area"><div class="range-line">放大倍數: <strong id="scaleNum">1</strong> 倍</div><div class="range-line"><input id="scale" type="range" min="1" max="5" value="1" oninput="scaleShape()"></div><div class="shape" id="shape">3:2</div><div id="scaleText" style="text-align:center;color:var(--primary);font-weight:700">3:2</div></div>
+      <div class="concept-box"><strong>相等的比:</strong> 3:2 = (3 &times; 2):(2 &times; 2) = 6:4。前項和後項同時乘以或除以相同的數 (0 除外), 比值不變, 所以是相等的比。</div>
+      <div class="interactive-area"><h3>找出相等的比</h3><p>選出和 5:3 相等的比:</p><div class="btn-group"><button class="btn btn-blue btn-sm" onclick="equalPick(this,false)">10:9</button><button class="btn btn-blue btn-sm" onclick="equalPick(this,true)">15:9</button><button class="btn btn-blue btn-sm" onclick="equalPick(this,false)">20:15</button></div><div id="equalFb" class="feedback"></div></div>
+    </section>
+
+    <section class="section track" id="s54"><div class="section-header"><div class="section-number" style="background:#f5846e">5-4</div><div class="section-title"><h2>比的應用</h2><p>按比分配, 先找出一份是多少</p></div></div>
+      <div class="concept-box"><strong>解題三步驟:</strong><br>1. 先把各部分相加, 找出總份數。<br>2. 總量 &divide; 總份數 = 1 份的量。<br>3. 1 份的量 &times; 各自的份數。</div>
+      <div class="problem-card"><div class="problem-text">一盒彩色筆有 35 枝, 紅色和藍色的比是 3:4。紅色、藍色各有幾枝?</div><div class="problem-answer">紅色 <input id="dist1a" type="number"> 枝, 藍色 <input id="dist1b" type="number"> 枝 <button class="btn btn-primary btn-sm" onclick="checkDist(1)">檢查</button></div><div id="dist1fb" class="feedback"></div></div>
+      <div class="problem-card"><div class="problem-text">小安有 48 張貼紙, 送給弟弟和妹妹, 弟弟和妹妹的張數比是 5:3。兩人各得到幾張?</div><div class="problem-answer">弟弟 <input id="dist2a" type="number"> 張, 妹妹 <input id="dist2b" type="number"> 張 <button class="btn btn-primary btn-sm" onclick="checkDist(2)">檢查</button></div><div id="dist2fb" class="feedback"></div></div>
+    </section>
+
+    <section class="section" id="review"><div class="section-header"><div class="section-number" style="background:var(--orange)">記</div><div class="section-title"><h2>重點整理</h2><p>把本單元的工具放進數學工具箱</p></div></div><div class="mini-table" style="display:grid;gap:9px"><div class="concept-box"><strong>比:</strong> 用 a:b 表示兩個數量的關係。a 是前項, b 是後項, 中間的 : 是比號。</div><div class="concept-box"><strong>比值:</strong> 前項 &divide; 後項。比值可以是整數, 小數或分數。</div><div class="concept-box"><strong>相等的比:</strong> 前項和後項同乘或同除相同的數 (0 除外), 比值不變。</div><div class="concept-box"><strong>按比分配:</strong> 總量先除以總份數, 再乘上各部分的份數。</div></div></section>
+
+    <section class="section" id="quiz"><div class="section-header"><div class="section-number" style="background:var(--pink)">練</div><div class="section-title"><h2>綜合練習</h2><p>完成 5 題, 檢查自己是否掌握</p></div></div><p>點選答案後會立即顯示解說。答對題數: <strong id="quizScore">0</strong> / <span id="quizTotal">5</span></p><div id="quizBox"></div><div class="completion" id="completion"><h2>太棒了, 綜合練習全答對!</h2><p>你已經能靈活運用比與比值。</p></div></section>
+
+    <section class="section" id="gift"><div class="section-header"><div class="section-number" style="background:#8e78bd">優</div><div class="section-title"><h2>資優加油站</h2><p>挑戰需要多想一步的問題</p></div></div><p>不用急著算, 先找出數量之間的關係。每題都有解說可以打開檢查。</p><div class="problem-card"><div class="problem-text">1. 甲:乙 = 2:3, 乙:丙 = 4:5。如果甲有 8 個, 丙有幾個?</div><div class="problem-answer"><input id="gift1" type="number"><button class="btn btn-primary btn-sm" onclick="giftCheck(1,15)">檢查</button></div><div id="gift1fb" class="feedback"></div><details><summary>看解說</summary><div class="solution">甲:乙 = 2:3, 甲 8 個表示放大 4 倍, 乙 = 12。乙:丙 = 4:5, 乙 12 是放大 3 倍, 所以丙 = 15。答案是 15。</div></details></div><div class="problem-card"><div class="problem-text">2. 一個數和 12 的比是 3:4, 這個數是多少?</div><div class="problem-answer"><input id="gift2" type="number"><button class="btn btn-primary btn-sm" onclick="giftCheck(2,9)">檢查</button></div><div id="gift2fb" class="feedback"></div><details><summary>看解說</summary><div class="solution">12 對應比的後項 4, 1 份是 12 &divide; 4 = 3, 前項 3 份就是 3 &times; 3 = 9。</div></details></div><div class="problem-card"><div class="problem-text">3. 兩個正方形邊長比是 2:5, 面積比是多少?</div><div class="problem-answer"><input id="gift3" type="text" placeholder="例如 4:25"><button class="btn btn-primary btn-sm" onclick="giftTextCheck()">檢查</button></div><div id="gift3fb" class="feedback"></div><details><summary>看解說</summary><div class="solution">正方形面積是邊長 &times; 邊長, 所以面積比是 2&times;2 : 5&times;5 = 4:25。</div></details></div><div class="problem-card"><div class="problem-text">4. 甲乙兩數的比是 7:5, 甲比乙多 14, 甲乙兩數的和是多少?</div><div class="problem-answer"><input id="gift4" type="number"><button class="btn btn-primary btn-sm" onclick="giftCheck(4,84)">檢查</button></div><div id="gift4fb" class="feedback"></div><details><summary>看解說</summary><div class="solution">7 份比 5 份多 2 份, 2 份是 14, 所以 1 份是 7。總份數 12 份, 總和是 7&times;12 = 84。</div></details></div><div class="completion" id="giftCompletion"><h2>挑戰完成!</h2><p>四題資優題都解開了, 你的關係推理很有力。</p></div></section>
+    <footer>108 課綱 · 康軒版 六年級上學期數學 · 自學練習平台</footer>
+  </main><canvas id="confetti"></canvas>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    let stars = 0; const solved = new Set(); const giftSolved = new Set();
+    function feedback(id, ok, text) { const el = $(id); el.className = 'feedback ' + (ok ? 'correct' : 'wrong'); el.textContent = (ok ? '答對了! ' : '再想一想! ') + text; }
+    function addStar(key) { if (!solved.has(key)) { solved.add(key); stars++; $('star-display').textContent = '* ' + stars; updateProgress(); } }
+    function updateProgress() { const pct = Math.min(100, Math.round((solved.size / 18) * 100)); $('progress-fill').style.width = pct + '%'; $('progress-text').textContent = pct + '%'; }
+    function mixJuice() { const j = Number($('juice').value), w = Number($('water').value), cups = $('cups'); cups.innerHTML = ''; if (j <= 0 || w <= 0) { $('juice-result').textContent = '請輸入大於 0 的杯數。'; return; } for (let i=0;i<Math.min(j+w,12);i++) { const c=document.createElement('div'); c.className='cup'; c.innerHTML='<span>'+(i<j?'果汁':'水')+'</span>'; cups.appendChild(c); } const same = j/w === 2; $('juice-result').className='feedback '+(same?'correct':'wrong'); $('juice-result').textContent = same ? '味道相同! 果汁:水 = 2:1。' : '比例是 '+j+':'+w+'。想要同樣味道, 可以讓果汁和水保持 2:1。'; addStar('warm'); }
+    function checkRatio() { const ok = Number($('r51a').value) === 3 && Number($('r51b').value) === 5; feedback('r51fb',ok,'鉛筆和彩色筆的比是 3:5。'); if(ok)addStar('51a'); }
+    function chooseWord(btn, result) { const ok=result==='correct'; feedback('word-fb',ok,ok?'比號右邊是後項。':'8:3 的右邊數字 3 是後項。'); if(ok)addStar('51b'); }
+    function calcValue() { const a=Number($('valueA').value),b=Number($('valueB').value); if(b===0){$('valueResult').textContent='後項不能是 0。';return;} $('valueResult').innerHTML=a+':'+b+' 的比值 = '+a+' &divide; '+b+' = <strong>'+Number((a/b).toFixed(6))+'</strong>'; addStar('52a'); }
+    function checkSimplify() { const ok=Number($('simpA').value)===3&&Number($('simpB').value)===2; feedback('simpFb',ok,ok?'18:12 同除以 6 得到 3:2。':'18 和 12 的最大公因數是 6。'); if(ok)addStar('52b'); }
+    function scaleShape() { const n=Number($('scale').value); $('scaleNum').textContent=n; const shape=$('shape'); shape.style.width=(120*n/2)+'px'; shape.style.height=(80*n/2)+'px'; shape.textContent=(3*n)+':'+(2*n); $('scaleText').textContent='3:2 = '+(3*n)+':'+(2*n); addStar('53a'); }
+    function equalPick(btn,ok) { feedback('equalFb',ok,ok?'5:3 同乘 3 得 15:9。':'把前項和後項一起除以相同的數檢查看看。'); btn.style.borderColor=ok?'#4caf50':'#ef5350'; if(ok)addStar('53b'); }
+    function checkDist(n) { const a=Number($('dist'+n+'a').value),b=Number($('dist'+n+'b').value); const ok=n===1?a===15&&b===20:a===30&&b===18; feedback('dist'+n+'fb',ok,ok?(n===1?'總份數 7, 一份 5 枝, 所以是 15 枝和 20 枝。':'總份數 8, 一份 6 張, 所以是 30 張和 18 張。'):'先把比的兩個數相加, 再用總量除以總份數。'); if(ok)addStar('54'+n); }
+    const quiz=[{q:'紅球和藍球的比是 4:7, 前項是?',o:['4','7','11'],a:0,e:'比號左邊是前項。'},{q:'9:6 的最簡單整數比是?',o:['2:3','3:2','9:3'],a:1,e:'9 和 6 同除以 3 得 3:2。'},{q:'比 3:5 的比值是多少?',o:['0.6','1.6','2'],a:0,e:'3 &divide; 5 = 0.6。'},{q:'和 2:3 相等的比是?',o:['4:6','4:5','6:8'],a:0,e:'2:3 同乘 2 得 4:6。'},{q:'總數 42 按 4:3 分配, 第一部分是多少?',o:['18','24','28'],a:1,e:'總份數 7, 一份 6, 第一部分 6&times;4 = 24。'}];
+    const quizState=new Set();
+    function renderQuiz(){ $('quizTotal').textContent=quiz.length; const box=$('quizBox'); quiz.forEach((q,i)=>{ const card=document.createElement('div');card.className='problem-card';card.innerHTML='<div class="problem-text"><strong>第 '+(i+1)+' 題</strong>: '+q.q+'</div><div class="quiz-options">'+q.o.map((x,j)=>'<button class="quiz-option" onclick="answer('+i+','+j+',this)">'+String.fromCharCode(65+j)+'. '+x+'</button>').join('')+'</div><div class="feedback" id="qfb'+i+'"></div>';box.appendChild(card); }); }
+    function answer(i,j,btn){ const q=quiz[i],card=btn.closest('.problem-card'); card.querySelectorAll('button').forEach(x=>x.disabled=true); const ok=j===q.a; btn.classList.add(ok?'correct':'wrong'); if(!ok)card.querySelectorAll('button')[q.a].classList.add('correct'); feedback('qfb'+i,ok,q.e); if(ok&&!quizState.has(i)){quizState.add(i);$('quizScore').textContent=quizState.size;addStar('q'+i);} if(quizState.size===quiz.length){$('completion').classList.add('show');fireConfetti();} }
+    function giftCheck(n,expected){ const ok=Number($('gift'+n).value)===expected; feedback('gift'+n+'fb',ok,ok?'計算步驟正確, 請打開解說複習。':'先找出一份的量, 再依照比的份數計算。'); if(ok){giftSolved.add(n);addStar('g'+n);if(giftSolved.size===4)$('giftCompletion').classList.add('show');} }
+    function giftTextCheck(){ const value=$('gift3').value.replace(/\s/g,'').replace(/：/g,':'); const ok=value==='4:25'; feedback('gift3fb',ok,ok?'面積比要把邊長比各自平方。':'邊長比 2:5, 面積比要算 2&times;2:5&times;5。'); if(ok){giftSolved.add(3);addStar('g3');if(giftSolved.size===4)$('giftCompletion').classList.add('show');} }
+    function fireConfetti(){ const c=$('confetti'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const colors=['#f5846e','#f5a623','#7bc67e','#6ec6f5','#b39ddb','#e88eb5'];const p=[];for(let i=0;i<70;i++)p.push({x:Math.random()*c.width,y:-Math.random()*c.height,v:2+Math.random()*3,xv:(Math.random()-.5)*3,col:colors[i%colors.length]});function go(){ctx.clearRect(0,0,c.width,c.height);let live=false;p.forEach(x=>{x.y+=x.v;x.x+=x.xv;if(x.y<c.height)live=true;ctx.fillStyle=x.col;ctx.fillRect(x.x,x.y,7,10);});if(live)requestAnimationFrame(go);}go();}
+    window.addEventListener('load',function(){mixJuice();renderQuiz();scaleShape();});
+  </script>
 </body>
 </html>
