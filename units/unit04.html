@@ -331,8 +331,52 @@
       color: #856404;
     }
 
+    .ribbon-controls, .observer-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0;
+    }
+    .ribbon-bar {
+      display: flex;
+      width: 100%;
+      min-height: 58px;
+      margin: 18px 0 10px;
+      border: 3px solid #455a64;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #eceff1;
+    }
+    .ribbon-segment {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-right: 2px solid rgba(255,255,255,0.85);
+      color: #263238;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .ribbon-segment:last-child { border-right: none; }
+    .observer-bars { margin: 18px auto 10px; max-width: 520px; }
+    .observer-row { display: flex; align-items: center; gap: 10px; margin: 12px 0; }
+    .observer-label { width: 104px; flex-shrink: 0; font-weight: 700; text-align: right; }
+    .observer-track { flex: 1; height: 28px; background: #eceff1; border-radius: 8px; overflow: hidden; }
+    .observer-fill { height: 100%; border-radius: 8px; transition: width 0.25s ease; }
+    .observer-fill.dividend { background: linear-gradient(90deg, #6ec6f5, #4aa8e0); }
+    .observer-fill.quotient { background: linear-gradient(90deg, #e88eb5, #d45d8c); }
+    .observer-value { width: 52px; font-weight: 700; }
+    .observer-btn.active { box-shadow: 0 0 0 3px rgba(44,95,138,0.2); }
+
     @media (max-width: 500px) {
       .decimal-grid { grid-template-columns: repeat(5, 1fr); }
+      .interactive-area { padding: 16px 12px; }
+      .observer-label { width: 82px; font-size: 0.9rem; }
+      .ribbon-segment { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -491,6 +535,29 @@
         </div>
       </div>
       <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🎀 小數緞帶分段圖</h3>
+        <p>選擇緞帶總長和每段長，觀察「總長 ÷ 每段長」可以分成幾段。</p>
+        <div class="ribbon-controls">
+          <label for="ribbon-total">總長</label>
+          <select id="ribbon-total">
+            <option value="1.35">1.35</option>
+            <option value="0.9">0.9</option>
+            <option value="1.2">1.2</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+          </select>
+          <label for="ribbon-part">每段長</label>
+          <select id="ribbon-part">
+            <option value="0.15">0.15</option>
+            <option value="0.2">0.2</option>
+            <option value="0.3">0.3</option>
+            <option value="0.25">0.25</option>
+          </select>
+        </div>
+        <div id="ribbon-visual" aria-live="polite"></div>
+        <div id="ribbon-equation" class="concept-box" style="margin-bottom:0; text-align:center;"></div>
+      </div>
+      <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 練習</h3>
         <div class="problem-card">
           <div class="problem-text">0.84 ÷ 0.4 ＝ ?</div>
@@ -570,6 +637,20 @@
           <button class="btn btn-sm btn-primary" onclick="showRelationExamples()">產生例子</button>
         </div>
         <div id="relation-examples" style="margin:14px 0;"></div>
+      </div>
+      <div class="interactive-area">
+        <h3 style="margin-bottom:10px; color:#2c3e50;">🔍 除數大小觀察器</h3>
+        <p>被除數固定是 6，切換除數，看看商和 6 比較有什麼變化。</p>
+        <div class="observer-controls" role="group" aria-label="選擇除數">
+          <button class="btn btn-sm btn-blue observer-btn" data-divisor="0.5">除數 0.5</button>
+          <button class="btn btn-sm btn-blue observer-btn" data-divisor="1">除數 1</button>
+          <button class="btn btn-sm btn-blue observer-btn" data-divisor="2">除數 2</button>
+        </div>
+        <div class="observer-bars" aria-live="polite">
+          <div class="observer-row"><div class="observer-label">被除數 6</div><div class="observer-track"><div class="observer-fill dividend" id="dividend-bar"></div></div><div class="observer-value">6</div></div>
+          <div class="observer-row"><div class="observer-label">商</div><div class="observer-track"><div class="observer-fill quotient" id="quotient-bar"></div></div><div class="observer-value" id="quotient-value"></div></div>
+        </div>
+        <div id="relation-observer-result" class="concept-box" style="margin-bottom:0; text-align:center;"></div>
       </div>
       <div class="concept-box">
         <strong>規律：</strong><br>
@@ -834,6 +915,28 @@
       const table = $('decimal-table');
       table.innerHTML += `<tr><td>${ex.a} ÷ ${ex.b}</td><td>${newA}</td><td>${newB}</td><td>${newA} ÷ ${newB}</td><td>${result}</td></tr>`;
     }
+    function formatTeachingNumber(n){
+      return parseFloat(n.toFixed(6)).toString();
+    }
+    function updateRibbon(){
+      const total = parseFloat($('ribbon-total').value);
+      const part = parseFloat($('ribbon-part').value);
+      const exactCount = total / part;
+      const count = Math.round(exactCount);
+      const visual = $('ribbon-visual');
+      if (Math.abs(exactCount - count) > 0.000001) {
+        visual.innerHTML = '<div class="tip-box">這組數字不能剛好分完，請選擇可以整除的例子。</div>';
+        $('ribbon-equation').innerHTML = `${formatTeachingNumber(total)} ÷ ${formatTeachingNumber(part)} ＝ ${formatTeachingNumber(exactCount)} 段`;
+        return;
+      }
+      const colors = ['#ffd180', '#80cbc4', '#b39ddb', '#ffab91', '#90caf9'];
+      let segments = '';
+      for (let i = 0; i < count; i++) {
+        segments += `<div class="ribbon-segment" style="background:${colors[i % colors.length]};">${formatTeachingNumber(part)}</div>`;
+      }
+      visual.innerHTML = `<div class="ribbon-bar" aria-label="${count} 段，每段 ${formatTeachingNumber(part)}">${segments}</div><div style="text-align:center; color:#666;">每一格代表 ${formatTeachingNumber(part)}</div>`;
+      $('ribbon-equation').innerHTML = `${formatTeachingNumber(total)} ÷ ${formatTeachingNumber(part)} ＝ <strong>${count}</strong> 段`;
+    }
     function checkDecimalQ(inputId, expected, fbId, exp){
       const val = parseFloat($(inputId).value);
       const expVal = parseFloat(expected);
@@ -881,6 +984,27 @@
       });
       html += '</div>';
       $('relation-examples').innerHTML = html;
+    }
+    function updateRelationObserver(divisor){
+      const quotient = 6 / divisor;
+      const maxValue = 12;
+      $('dividend-bar').style.width = (6 / maxValue * 100) + '%';
+      $('quotient-bar').style.width = Math.min(quotient / maxValue * 100, 100) + '%';
+      $('quotient-value').textContent = formatTeachingNumber(quotient);
+      let description = divisor < 1 ? '商變大' : divisor === 1 ? '商相等' : '商變小';
+      $('relation-observer-result').innerHTML = `6 ÷ ${formatTeachingNumber(divisor)} ＝ <strong>${formatTeachingNumber(quotient)}</strong>，${description}（和被除數 6 比較）`;
+      document.querySelectorAll('.observer-btn').forEach(button => {
+        button.classList.toggle('active', parseFloat(button.dataset.divisor) === divisor);
+      });
+    }
+    function initNewInteractions(){
+      $('ribbon-total').addEventListener('change', updateRibbon);
+      $('ribbon-part').addEventListener('change', updateRibbon);
+      document.querySelectorAll('.observer-btn').forEach(button => {
+        button.addEventListener('click', () => updateRelationObserver(parseFloat(button.dataset.divisor)));
+      });
+      updateRibbon();
+      updateRelationObserver(0.5);
     }
     function checkRel(selId, expected, fbId, exp){
       const sel = $(selId).value;
@@ -1017,6 +1141,7 @@
       updateFracDemo();
       showRelationExamples();
       renderQuiz();
+      initNewInteractions();
     };
   </script>
 </body>
