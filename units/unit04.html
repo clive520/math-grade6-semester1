@@ -331,6 +331,42 @@
       color: #856404;
     }
 
+    .data-table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.95rem;
+    }
+    .data-table th, .data-table td {
+      padding: 10px 12px;
+      text-align: center;
+      white-space: nowrap;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .data-table th {
+      background: #e8f4f8;
+      color: #2c5f8a;
+      font-weight: 700;
+    }
+    .data-table tr:nth-child(even) td { background: #fafafa; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 16px 0 4px;
+    }
+    .process-step {
+      padding: 10px 8px;
+      text-align: center;
+      background: white;
+      border: 2px solid #d9eaf2;
+      border-radius: 10px;
+      color: #2c5f8a;
+      font-size: 0.9rem;
+    }
+    .process-step strong { display: block; color: #e06b52; margin-bottom: 3px; }
+
     .ribbon-controls, .observer-controls {
       display: flex;
       align-items: center;
@@ -529,6 +565,12 @@
             <tr><th>原式</th><th>被除數 × 100</th><th>除數 × 100</th><th>變成</th><th>商</th></tr>
             <tr><td>1.35 ÷ 0.15</td><td>135</td><td>15</td><td>135 ÷ 15</td><td>9</td></tr>
           </table>
+        </div>
+        <div class="process-steps" aria-label="對齊小數點的四個步驟">
+          <div class="process-step"><strong>第 1 步</strong>看除數有幾位小數</div>
+          <div class="process-step"><strong>第 2 步</strong>被除數、除數同乘 100</div>
+          <div class="process-step"><strong>第 3 步</strong>除數變成整數</div>
+          <div class="process-step"><strong>第 4 步</strong>改算整數除法</div>
         </div>
         <div class="btn-group" style="justify-content:center;">
           <button class="btn btn-sm btn-blue" onclick="addDecimalExample()">換一題</button>
