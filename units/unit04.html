@@ -913,7 +913,7 @@
       const newB = Math.round(ex.b * ex.factor);
       const result = ex.a / ex.b;
       const table = $('decimal-table');
-      table.innerHTML += `<tr><td>${ex.a} ÷ ${ex.b}</td><td>${newA}</td><td>${newB}</td><td>${newA} ÷ ${newB}</td><td>${result}</td></tr>`;
+      table.innerHTML += `<tr><td>${formatTeachingNumber(ex.a)} ÷ ${formatTeachingNumber(ex.b)}</td><td>${formatTeachingNumber(newA)}</td><td>${formatTeachingNumber(newB)}</td><td>${formatTeachingNumber(newA)} ÷ ${formatTeachingNumber(newB)}</td><td>${formatTeachingNumber(result)}</td></tr>`;
     }
     function formatTeachingNumber(n){
       return parseFloat(n.toFixed(6)).toString();
