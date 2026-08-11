@@ -1,89 +1,83 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>圓周長與扇形周長 - 六上數學自學網</title>
+  <title>第6單元：圓周長與扇形周長 - 六上數學自學網</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .container { max-width: 800px; margin: 0 auto; }
-    .back-link {
-      display: inline-block;
-      color: #2c5f8a;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .back-link:hover { background: #e8f0f8; }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    .unit-badge {
-      display: inline-block;
-      background: BADGE_COLOR;
-      color: white;
-      padding: 6px 20px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.8;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
+    :root{--primary:#2c5f8a;--light:#e8f4f8;--pink:#e88eb5;--orange:#f5a623;--green:#69b96d;--blue:#6ec6f5;--purple:#9b82c4;--text:#333;--muted:#777;--bg:#f5f7fa;--success:#4caf50;--error:#ef5350}
+    *{margin:0;padding:0;box-sizing:border-box} body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:40px}.top-bar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);box-shadow:0 1px 6px #00000014}.top-inner{max-width:900px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px}.back-link{color:var(--primary);text-decoration:none;font-weight:700;background:var(--light);padding:7px 12px;border-radius:9px;white-space:nowrap;font-size:.9rem}.progress-wrap{flex:1;min-width:80px}.progress-label{font-size:.76rem;color:#888;margin-bottom:2px}.progress-bar{height:8px;background:#e3e3e3;border-radius:5px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),#d45d8c);transition:width .4s}.stars{color:#f5b900;font-weight:700;white-space:nowrap}.container{max-width:800px;margin:auto;padding:24px 16px}.hero{text-align:center;padding:36px 22px;margin-bottom:22px;background:linear-gradient(135deg,#fff 0%,#fff1dc 100%);border-radius:20px;box-shadow:0 4px 20px #0000000f}.unit-badge{display:inline-block;color:#fff;background:var(--orange);padding:5px 18px;border-radius:20px;font-weight:700;margin-bottom:10px}h1{color:#2c3e50;font-size:1.9rem;margin-bottom:5px}.tag{color:#888}.chapter-nav{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:22px;box-shadow:0 2px 10px #0000000d}.chapter-nav strong{color:var(--primary);margin-right:8px}.chapter-nav a{display:inline-block;color:var(--primary);text-decoration:none;background:#f4f8fb;padding:4px 9px;margin:3px;border-radius:8px;font-size:.9rem}.section{background:#fff;border-radius:20px;padding:27px 24px;margin-bottom:22px;box-shadow:0 2px 12px #0000000d;scroll-margin-top:75px}.section-header{display:flex;gap:12px;align-items:center;border-bottom:2px dashed #eee;padding-bottom:14px;margin-bottom:18px}.section-number{width:45px;height:45px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}.section-title h2{color:#2c3e50;font-size:1.32rem}.section-title p{color:#888;font-size:.9rem}.concept-box{background:#f8faff;border-left:4px solid var(--primary);border-radius:12px;padding:14px 17px;margin:15px 0}.concept-box strong{color:var(--primary)}.tip-box{background:#fff8e1;border-left:4px solid var(--orange);border-radius:10px;padding:11px 15px;margin:12px 0;color:#6d5c28}.interactive-area{background:#fafafa;border-radius:16px;padding:19px;margin:17px 0}.btn{border:0;border-radius:10px;padding:9px 17px;color:#fff;cursor:pointer;font:600 1rem inherit;transition:transform .15s,box-shadow .15s}.btn:active{transform:scale(.98)}.btn-primary{background:var(--primary)}.btn-green{background:var(--green)}.btn-blue{background:var(--blue)}.btn-accent{background:#f5846e}.btn-sm{padding:6px 13px;font-size:.9rem}.btn-group{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}input,select{width:88px;padding:8px;border:2px solid #ddd;border-radius:9px;font:1rem inherit;text-align:center;background:#fff}input:focus{outline:none;border-color:var(--primary)}input[type=range]{width:min(390px,100%);accent-color:var(--pink);padding:0;border:0}.input-row{text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0;font-size:1.08rem}.range-line{text-align:center;margin:10px}.feedback{display:none;border-radius:10px;padding:10px 14px;margin-top:10px;font-weight:600}.feedback.correct{display:block;background:#e8f5e9;color:#2e7d32}.feedback.wrong{display:block;background:#ffebee;color:#c62828}.feedback.info{display:block;background:#e3f2fd;color:#1565c0}.diagram{width:100%;max-width:420px;height:auto;display:block;margin:8px auto}.diagram text{font-family:"Microsoft JhengHei",sans-serif}.formula{text-align:center;font-size:1.2rem;color:var(--primary);font-weight:700;margin:12px}.result{text-align:center;background:#fff8e1;border-radius:12px;padding:11px;color:#795548;font-weight:700;min-height:48px}.roll-track{height:34px;background:#d9edf4;border-radius:17px;position:relative;overflow:hidden;margin:17px 0}.roll-dot{position:absolute;top:3px;left:0;width:28px;height:28px;background:#f6a33b;border-radius:50%;transition:left 1.2s ease}.roll-dot.go{left:calc(100% - 28px)}.problem-card{background:#fafafa;border-radius:14px;padding:16px;margin:13px 0}.problem-text{margin-bottom:10px;font-size:1.04rem}.problem-answer{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}.quiz-options{display:flex;flex-direction:column;gap:8px}.quiz-option{padding:11px 13px;border:2px solid #e0e0e0;border-radius:11px;background:#fff;text-align:left;cursor:pointer;font:1rem inherit}.quiz-option.correct{background:#e8f5e9;border-color:var(--success)}.quiz-option.wrong{background:#ffebee;border-color:var(--error)}details{margin:11px 0}summary{cursor:pointer;background:var(--light);color:var(--primary);font-weight:700;padding:10px 14px;border-radius:10px}.solution{background:#f8faff;padding:13px 15px;border-radius:0 0 10px 10px}.completion{display:none;text-align:center;padding:27px;background:linear-gradient(135deg,#fff8e1,#e8f5e9);border-radius:20px;margin:22px 0}.completion.show{display:block}.completion h2{color:#2e7d32}#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99}footer{text-align:center;color:#aaa;font-size:.84rem;padding:24px}
+    @media(max-width:520px){.top-inner{padding:8px 10px}.back-link{font-size:.78rem;padding:6px 8px}.stars{font-size:.9rem}.container{padding:16px 10px}.section{padding:21px 15px}.hero{padding:28px 15px}h1{font-size:1.55rem}.section-title h2{font-size:1.15rem}.interactive-area{padding:14px}.chapter-nav a{font-size:.82rem}.diagram{max-width:100%}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #ffb74d;">第 6 單元</div>
-      <h1>圓周長與扇形周長</h1>
-      <p class="tag">圓周率、周長計算</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">⭕</div>
-      <p>內容建置中，敬請期待！</p>
-    </div>
-    <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
-    </footer>
-  </div>
+  <div class="top-bar"><div class="top-inner"><a href="../index.html" class="back-link">&larr; 回單元列表</a><div class="progress-wrap"><div class="progress-label">學習進度 <span id="progress-text">0%</span></div><div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div></div><div class="stars" id="star-display">★ 0</div></div></div>
+  <main class="container">
+    <header class="hero"><div class="unit-badge">第 6 單元</div><h1>圓周長與扇形周長</h1><p class="tag">轉一圈、量一量，發現圓周率的祕密</p></header>
+    <nav class="chapter-nav"><strong>章節導覽</strong><a href="#warmup">暖身</a><a href="#s61">6-1 圓的認識</a><a href="#s62">6-2 圓周率與圓周長</a><a href="#s63">6-3 扇形的認識</a><a href="#s64">6-4 扇形周長</a><a href="#review">重點整理</a><a href="#quiz">綜合練習</a><a href="#gift">資優加油站</a></nav>
+
+    <section class="section track" id="warmup"><div class="section-header"><div class="section-number" style="background:var(--orange)">暖</div><div class="section-title"><h2>生活中的圓：繞一圈</h2><p>輪胎、杯口、硬幣，都有圓周</p></div></div>
+      <p>腳踏車輪子轉一圈，輪胎外緣走過的距離就是<strong>圓周長</strong>。調整輪子的大小，再按下按鈕，觀察圓周如何隨半徑變長。</p>
+      <div class="interactive-area"><svg class="diagram" viewBox="0 0 420 180" role="img" aria-label="可調整大小的圓與圓周長"><circle id="warmCircle" cx="130" cy="90" r="52" fill="#fff3d6" stroke="#f5a623" stroke-width="5"/><circle cx="130" cy="90" r="5" fill="#2c5f8a"/><line id="warmRadius" x1="130" y1="90" x2="182" y2="90" stroke="#2c5f8a" stroke-width="3"/><text x="130" y="25" text-anchor="middle" fill="#795548">圓心</text><text id="warmLabel" x="156" y="82" fill="#2c5f8a">半徑 5 cm</text><path d="M230 90h145" stroke="#69b96d" stroke-width="6" stroke-linecap="round"/><text x="302" y="72" text-anchor="middle" fill="#2e7d32">繞一圈的路徑</text></svg><div class="range-line">半徑 <strong id="warmRadiusNum">5</strong> 公分<br><input id="warmRadiusRange" type="range" min="3" max="8" value="5"></div><button class="btn btn-accent" id="rollBtn">讓輪子滾一圈</button><div class="roll-track"><div class="roll-dot" id="rollDot"></div></div><div class="result" id="warmResult">半徑 5 公分，先想想圓周長會是多少？</div></div>
+      <div class="concept-box"><strong>今天的任務：</strong>用半徑、直徑和圓周率，算出圓周長；遇到扇形，再加上兩條半徑。</div>
+    </section>
+
+    <section class="section track" id="s61"><div class="section-header"><div class="section-number" style="background:var(--green)">6-1</div><div class="section-title"><h2>圓的認識</h2><p>圓心、半徑、直徑的位置關係</p></div></div>
+      <p>圓上每一點到圓心的距離都相等。從<strong>圓心</strong>到圓周的線段叫<strong>半徑</strong>；通過圓心、連接圓周兩點的線段叫<strong>直徑</strong>。</p>
+      <div class="interactive-area"><svg class="diagram" viewBox="0 0 420 260" role="img" aria-label="可調整半徑的圓，標示半徑與直徑"><circle id="circle61" cx="210" cy="130" r="75" fill="#e8f4f8" stroke="#2c5f8a" stroke-width="4"/><line id="radius61" x1="210" y1="130" x2="285" y2="130" stroke="#ef5350" stroke-width="4"/><line id="diameter61" x1="135" y1="130" x2="285" y2="130" stroke="#69b96d" stroke-width="4" stroke-dasharray="8 5"/><circle cx="210" cy="130" r="6" fill="#2c5f8a"/><text x="210" y="116" text-anchor="middle" fill="#2c5f8a">圓心 O</text><text id="radius61Text" x="245" y="121" fill="#c62828">半徑 r = 5 cm</text><text id="diameter61Text" x="210" y="155" text-anchor="middle" fill="#2e7d32">直徑 d = 10 cm</text></svg><div class="range-line">拖曳滑桿改變半徑：<strong id="radius61Num">5</strong> 公分<br><input id="radius61Range" type="range" min="2" max="8" value="5"></div><div id="circle61Feedback" class="feedback info" style="display:block;text-align:center">直徑永遠是半徑的 2 倍。</div></div>
+      <div class="tip-box">記憶口訣：<strong>直徑 = 半徑 × 2</strong>，<strong>半徑 = 直徑 ÷ 2</strong>。</div>
+    </section>
+
+    <section class="section track" id="s62"><div class="section-header"><div class="section-number" style="background:var(--blue)">6-2</div><div class="section-title"><h2>圓周率與圓周長</h2><p>每個圓的圓周長都約是直徑的 3.14 倍</p></div></div>
+      <p>把不同大小的圓剪開拉直，用<strong>圓周長 ÷ 直徑</strong>比較，結果都接近 <strong>3.14</strong>，這個固定的數叫做<strong>圓周率</strong>，通常用 π 表示。</p>
+      <div class="interactive-area"><h3>圓周率估算實驗</h3><div class="range-line">直徑 <strong id="expDiameterNum">10</strong> 公分<br><input id="expDiameter" type="range" min="4" max="20" value="10"></div><svg class="diagram" viewBox="0 0 420 130"><circle id="expCircle" cx="75" cy="65" r="35" fill="#fff3d6" stroke="#f5a623" stroke-width="4"/><line id="expLine" x1="40" y1="65" x2="110" y2="65" stroke="#2c5f8a" stroke-width="3"/><path id="expBar" d="M165 65h210" stroke="#69b96d" stroke-width="10" stroke-linecap="round"/><text x="75" y="112" text-anchor="middle">直徑</text><text x="270" y="45" text-anchor="middle" fill="#2e7d32">約 3.14 個直徑</text></svg><button class="btn btn-green" id="estimateBtn">模擬量周長 ÷ 直徑</button><div class="result" id="estimateResult">按鈕後觀察估算值（會四捨五入到小數點後兩位）。</div></div>
+      <div class="concept-box"><strong>圓周長公式：</strong><br>圓周長 = 直徑 × 圓周率 = 直徑 × 3.14<br>也可以寫成：圓周長 = 半徑 × 2 × 3.14。</div>
+      <div class="interactive-area"><h3>圓周長計算器與展開</h3><div class="input-row">直徑 <input id="circDiameter" type="number" min="0.1" step="0.1" value="10"> 公分 <button class="btn btn-primary btn-sm" id="circCalcBtn">計算</button></div><div class="formula" id="circFormula">圓周長 = 10 × 3.14 = 31.4 公分</div><div class="roll-track"><div class="roll-dot" id="circDot"></div></div><button class="btn btn-blue btn-sm" id="expandBtn">展開圓周</button><div class="result" id="circResult">按「展開圓周」，看圓周拉直後約等於 3.14 個直徑。</div></div>
+    </section>
+
+    <section class="section track" id="s63"><div class="section-header"><div class="section-number" style="background:var(--purple)">6-3</div><div class="section-title"><h2>扇形的認識</h2><p>圓心角、半徑與弧圍出扇形</p></div></div>
+      <p>由兩條半徑和一段弧所圍成的圖形叫<strong>扇形</strong>。兩條半徑夾出的角叫<strong>圓心角</strong>，角度越大，弧就越長。</p>
+      <div class="interactive-area"><svg class="diagram" viewBox="0 0 420 300" role="img" aria-label="可調整圓心角的扇形"><path id="sectorPath" d="M210 150 L210 50 A100 100 0 0 1 310 150 Z" fill="#f6d9ee" stroke="#9b59b6" stroke-width="4"/><line id="sectorR1" x1="210" y1="150" x2="210" y2="50" stroke="#2c5f8a" stroke-width="3"/><line id="sectorR2" x1="210" y1="150" x2="310" y2="150" stroke="#2c5f8a" stroke-width="3"/><circle cx="210" cy="150" r="5" fill="#2c5f8a"/><text x="210" y="174" text-anchor="middle" fill="#2c5f8a">圓心</text><text id="sectorAngleText" x="260" y="136" fill="#9b59b6">90° 圓心角</text><text id="sectorRadiusText" x="230" y="91" fill="#2c5f8a">半徑 10 cm</text><text x="300" y="205" fill="#c62828">弧</text></svg><div class="range-line">圓心角 <strong id="sectorAngleNum">90</strong>°<br><input id="sectorAngle" type="range" min="30" max="360" value="90"></div><div class="result" id="sectorResult">角度越大，扇形占整個圓的比例越大。</div></div>
+    </section>
+
+    <section class="section track" id="s64"><div class="section-header"><div class="section-number" style="background:#f5846e">6-4</div><div class="section-title"><h2>扇形周長</h2><p>弧長加上兩條半徑</p></div></div>
+      <div class="concept-box"><strong>扇形周長 = 弧長 + 半徑 + 半徑</strong><br>弧長 = 圓周長 × 圓心角 ÷ 360 = 2 × 半徑 × 3.14 × 圓心角 ÷ 360。</div>
+      <div class="interactive-area"><h3>扇形周長計算器</h3><div class="input-row">半徑 <input id="sectorR" type="number" min="0.1" step="0.1" value="10"> 公分，角度 <input id="sectorD" type="number" min="30" max="360" value="90"> ° <button class="btn btn-primary btn-sm" id="sectorCalcBtn">計算</button></div><div class="result" id="sectorCalcResult">90°：弧長 15.7 公分 + 10 + 10 = 扇形周長 35.7 公分</div><div class="btn-group"><button class="btn btn-blue btn-sm example" data-degree="90">90°例子</button><button class="btn btn-blue btn-sm example" data-degree="180">180°例子</button><button class="btn btn-blue btn-sm example" data-degree="120">120°例子</button></div></div>
+      <div class="tip-box">計算時最後才四捨五入，答案顯示到小數點後兩位，避免出現一長串浮點小數。</div>
+    </section>
+
+    <section class="section" id="review"><div class="section-header"><div class="section-number" style="background:var(--orange)">記</div><div class="section-title"><h2>重點整理</h2><p>把圓與扇形公式放進數學工具箱</p></div></div><div class="concept-box"><strong>圓的要素：</strong>半徑是圓心到圓周；直徑通過圓心，直徑 = 半徑 × 2。</div><div class="concept-box"><strong>圓周率：</strong>圓周長 ÷ 直徑 ≈ 3.14。圓周長 = 直徑 × 3.14。</div><div class="concept-box"><strong>扇形：</strong>由兩條半徑和一段弧組成；弧長 = 圓周長 × 圓心角 ÷ 360。</div><div class="concept-box"><strong>扇形周長：</strong>弧長 + 兩條半徑。</div></section>
+
+    <section class="section" id="quiz"><div class="section-header"><div class="section-number" style="background:var(--pink)">練</div><div class="section-title"><h2>綜合練習</h2><p>至少 5 題，檢查自己是否掌握</p></div></div><p>選出答案後會立即顯示解說。答對題數：<strong id="quizScore">0</strong> / <span id="quizTotal">5</span></p><div id="quizBox"></div><div class="completion" id="completion"><h2>太棒了，綜合練習全答對！</h2><p>你已經能靈活運用圓周長與扇形周長。</p></div></section>
+
+    <section class="section" id="gift"><div class="section-header"><div class="section-number" style="background:#8e78bd">優</div><div class="section-title"><h2>資優加油站</h2><p>挑戰需要多想一步的問題</p></div></div><p>每題都附有可展開的解說，先自己推理，再打開核對。</p><div id="giftBox"></div><div class="completion" id="giftCompletion"><h2>挑戰完成！</h2><p>四題資優題都解開了，你的圓形推理很有力。</p></div></section>
+    <footer>108 課綱 · 康軒版 六年級上學期數學 · 自學練習平台</footer>
+  </main><canvas id="confetti"></canvas>
+  <script>
+    'use strict';
+    const $=id=>document.getElementById(id); const fmt=n=>Number.isFinite(n)?Number(n.toFixed(2)).toString():'0'; const rad=d=>d*Math.PI/180;
+    let stars=0;const solved=new Set(),giftSolved=new Set();
+    function addStar(key){if(!solved.has(key)){solved.add(key);stars++;$('star-display').textContent='★ '+stars;updateProgress();}}
+     function updateProgress(){const pct=Math.min(100,Math.round(solved.size/16*100));$('progress-fill').style.width=pct+'%';$('progress-text').textContent=pct+'%'}
+    function feedback(id,ok,text){const el=$(id);el.className='feedback '+(ok?'correct':'wrong');el.textContent=(ok?'答對了！ ':'再想一想！ ')+text}
+    function updateWarm(){const r=Number($('warmRadiusRange').value);$('warmRadiusNum').textContent=r;$('warmCircle').setAttribute('r',r*10.4);$('warmRadius').setAttribute('x2',130+r*10.4);$('warmLabel').textContent='半徑 '+r+' cm';$('warmResult').textContent='半徑 '+r+' 公分，圓周長約 '+fmt(2*r*3.14)+' 公分。'}
+    function roll(){const dot=$('rollDot');dot.classList.remove('go');void dot.offsetWidth;dot.classList.add('go');addStar('warm')}
+    function updateCircle(){const r=Number($('radius61Range').value),px=r*15;$('radius61Num').textContent=r;$('circle61').setAttribute('r',px);$('radius61').setAttribute('x2',210+px);$('diameter61').setAttribute('x1',210-px);$('diameter61').setAttribute('x2',210+px);$('radius61Text').textContent='半徑 r = '+r+' cm';$('diameter61Text').textContent='直徑 d = '+(r*2)+' cm';addStar('61')}
+    function updateExperiment(){const d=Number($('expDiameter').value),r=d*3.5;$('expDiameterNum').textContent=d;$('expCircle').setAttribute('r',r);$('expLine').setAttribute('x1',75-r);$('expLine').setAttribute('x2',75+r);}
+    function estimate(){const d=Number($('expDiameter').value);$('estimateResult').textContent='模擬結果：圓周長約 '+fmt(d*3.14)+' 公分，圓周長 ÷ 直徑 ≈ '+fmt(3.14)+'。';addStar('62a')}
+    function calcCirc(){const d=Math.max(0,Number($('circDiameter').value)||0);$('circFormula').textContent='圓周長 = '+fmt(d)+' × 3.14 = '+fmt(d*3.14)+' 公分';addStar('62b')}
+    function expandCirc(){const dot=$('circDot');dot.classList.remove('go');void dot.offsetWidth;dot.classList.add('go');$('circResult').textContent='圓周展開後約是 '+fmt(3.14)+' 個直徑。';addStar('62c')}
+     function sectorPath(deg){const r=100;if(deg>=360)return 'M210 150 L210 50 A'+r+' '+r+' 0 1 1 210 250 A'+r+' '+r+' 0 1 1 210 50 Z';const start=-90,end=start+deg,a=rad(end),large=deg>180?1:0;return 'M210 150 L210 50 A'+r+' '+r+' 0 '+large+' 1 '+(210+r*Math.cos(a))+' '+(150+r*Math.sin(a))+' Z'}
+    function updateSector(){const d=Number($('sectorAngle').value);$('sectorAngleNum').textContent=d;$('sectorPath').setAttribute('d',sectorPath(d));$('sectorAngleText').textContent=d+'° 圓心角';$('sectorResult').textContent='這個扇形占整個圓的 '+fmt(d/360*100)+'%，弧長占圓周的同樣比例。';addStar('63')}
+    function calcSector(degree){const r=Math.max(0,Number($('sectorR').value)||0),d=Math.min(360,Math.max(0,Number(degree||$('sectorD').value)||0)),arc=2*r*3.14*d/360,total=arc+2*r;$('sectorD').value=d;$('sectorCalcResult').textContent=d+'°：弧長 '+fmt(arc)+' 公分 + '+fmt(r)+' + '+fmt(r)+' = 扇形周長 '+fmt(total)+' 公分';addStar('64')}
+     const quiz=[['直徑 12 公分的圓，圓周長約多少？',['18.84 公分','37.68 公分','75.36 公分'],1,'12 × 3.14 = 37.68。'],['半徑 7 公分的圓，直徑是多少？',['3.5 公分','7 公分','14 公分'],2,'直徑是半徑的 2 倍。'],['圓周長 31.4 公分，直徑約是多少？',['10 公分','15.7 公分','62.8 公分'],0,'31.4 ÷ 3.14 = 10。'],['半徑 10 公分、90°扇形的弧長約多少？',['15.7 公分','31.4 公分','62.8 公分'],0,'圓周長是 2 × 10 × 3.14 = 62.8 公分，90° 是四分之一，所以弧長是 62.8 ÷ 4 = 15.7 公分。'],['半徑 5 公分、180°扇形的周長約多少？',['15.7 公分','25.7 公分','41.4 公分'],1,'半圓弧長 15.7，再加兩條半徑 10，共 25.7。']];
+    function renderQuiz(){const box=$('quizBox');$('quizTotal').textContent=quiz.length;quiz.forEach((q,i)=>{const card=document.createElement('div');card.className='problem-card';card.innerHTML='<div class="problem-text"><strong>第 '+(i+1)+' 題：</strong>'+q[0]+'</div><div class="quiz-options">'+q[1].map((x,j)=>'<button class="quiz-option" data-i="'+i+'" data-j="'+j+'">'+String.fromCharCode(65+j)+'．'+x+'</button>').join('')+'</div><div class="feedback" id="qfb'+i+'"></div>';box.appendChild(card)});box.addEventListener('click',e=>{if(e.target.classList.contains('quiz-option'))answer(Number(e.target.dataset.i),Number(e.target.dataset.j),e.target)})}
+    function answer(i,j,btn){const q=quiz[i],card=btn.closest('.problem-card');card.querySelectorAll('button').forEach(x=>x.disabled=true);const ok=j===q[2];btn.classList.add(ok?'correct':'wrong');if(!ok)card.querySelectorAll('button')[q[2]].classList.add('correct');feedback('qfb'+i,ok,q[3]);if(ok&&!solved.has('q'+i)){addStar('q'+i);$('quizScore').textContent=Number($('quizScore').textContent)+1}if([...Array(quiz.length).keys()].every(x=>solved.has('q'+x))){$('completion').classList.add('show');fireConfetti()}}
+     const gifts=[['1. 一個圓的直徑增加 20%，圓周長增加幾 %？','20','直徑和圓周長成正比。直徑變成 1.2 倍，圓周長也變成 1.2 倍，所以增加 20%。'],['2. 半徑 6 公分的 120°扇形，弧長約是多少？','12.56','弧長 = 2 × 6 × 3.14 × 120 ÷ 360 = 12.56 公分。'],['3. 一個扇形周長 51.4 公分，半徑 10 公分、圓心角是 90°，弧長是多少？','31.4','扇形周長包含兩條半徑，所以弧長 = 51.4 − 10 − 10 = 31.4 公分。'],['4. 同半徑的兩個扇形角度是 90°與 180°，弧長比是多少？','1:2','弧長和圓心角成正比，90:180 化簡後就是 1:2。']];
+    function renderGifts(){const box=$('giftBox');gifts.forEach((g,i)=>{const card=document.createElement('div');card.className='problem-card';card.innerHTML='<div class="problem-text">'+g[0]+'</div><div class="problem-answer"><label for="gift'+i+'">答案</label><input id="gift'+i+'" aria-label="資優題答案"><button class="btn btn-primary btn-sm" data-gift="'+i+'">檢查</button></div><div class="feedback" id="giftfb'+i+'"></div><details><summary>看解說</summary><div class="solution">'+g[2]+'</div></details>';box.appendChild(card)});box.addEventListener('click',e=>{if(e.target.dataset.gift!==undefined)checkGift(Number(e.target.dataset.gift))})}
+    function checkGift(i){const value=$(('gift'+i)).value.replace(/\s/g,'').replace('％','%');const ok=value===gifts[i][1];feedback('giftfb'+i,ok,ok?'計算正確，請打開解說複習。':'先列出公式，再檢查單位與角度比例。');if(ok){giftSolved.add(i);addStar('g'+i);if(giftSolved.size===4){$('giftCompletion').classList.add('show');fireConfetti()}}}
+    function fireConfetti(){const c=$('confetti'),ctx=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const colors=['#f5846e','#f5a623','#7bc67e','#6ec6f5','#b39ddb','#e88eb5'],p=[];for(let i=0;i<70;i++)p.push({x:Math.random()*c.width,y:-Math.random()*c.height,v:2+Math.random()*3,xv:(Math.random()-.5)*3,col:colors[i%colors.length]});function go(){ctx.clearRect(0,0,c.width,c.height);let live=false;p.forEach(x=>{x.y+=x.v;x.x+=x.xv;if(x.y<c.height)live=true;ctx.fillStyle=x.col;ctx.fillRect(x.x,x.y,7,10)});if(live)requestAnimationFrame(go)}go()}
+    window.addEventListener('load',function(){updateWarm();updateCircle();updateExperiment();calcCirc();updateSector();calcSector(90);renderQuiz();renderGifts();$('warmRadiusRange').addEventListener('input',updateWarm);$('rollBtn').addEventListener('click',roll);$('radius61Range').addEventListener('input',updateCircle);$('expDiameter').addEventListener('input',updateExperiment);$('estimateBtn').addEventListener('click',estimate);$('circCalcBtn').addEventListener('click',calcCirc);$('expandBtn').addEventListener('click',expandCirc);$('sectorAngle').addEventListener('input',updateSector);$('sectorCalcBtn').addEventListener('click',()=>calcSector());document.querySelectorAll('.example').forEach(b=>b.addEventListener('click',()=>calcSector(b.dataset.degree)))})
+  </script>
 </body>
 </html>
