@@ -1,89 +1,46 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>圓面積與扇形面積 - 六上數學自學網</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .container { max-width: 800px; margin: 0 auto; }
-    .back-link {
-      display: inline-block;
-      color: #2c5f8a;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .back-link:hover { background: #e8f0f8; }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    .unit-badge {
-      display: inline-block;
-      background: BADGE_COLOR;
-      color: white;
-      padding: 6px 20px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.8;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #4dd0e1;">第 7 單元</div>
-      <h1>圓面積與扇形面積</h1>
-      <p class="tag">半徑 × 半徑 × 圓周率</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">🔵</div>
-      <p>內容建置中，敬請期待！</p>
-    </div>
-    <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
-    </footer>
-  </div>
-</body>
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7單元：圓面積與扇形面積 - 六上數學自學網</title>
+<style>
+:root{--primary:#2c5f8a;--light:#e8f4f8;--orange:#f5a623;--pink:#e88eb5;--green:#69b96d;--blue:#6ec6f5;--purple:#9b82c4;--text:#333;--muted:#777;--bg:#f5f7fa;--success:#4caf50;--error:#ef5350}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:40px}.top-bar{position:sticky;top:0;z-index:10;background:#fffffff5;box-shadow:0 1px 6px #00000014}.top-inner{max-width:900px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px}.back-link{color:var(--primary);text-decoration:none;font-weight:700;background:var(--light);padding:7px 12px;border-radius:9px;white-space:nowrap;font-size:.9rem}.progress-wrap{flex:1;min-width:80px}.progress-label{font-size:.76rem;color:#888;margin-bottom:2px}.progress-bar{height:8px;background:#e3e3e3;border-radius:5px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),#d45d8c);transition:width .4s}.stars{color:#f5b900;font-weight:700;white-space:nowrap}.container{max-width:820px;margin:auto;padding:24px 16px}.hero{text-align:center;padding:36px 22px;margin-bottom:22px;background:linear-gradient(135deg,#fff 0%,#fff1dc 100%);border-radius:20px;box-shadow:0 4px 20px #0000000f}.unit-badge{display:inline-block;color:#fff;background:var(--orange);padding:5px 18px;border-radius:20px;font-weight:700;margin-bottom:10px}h1{color:#2c3e50;font-size:1.9rem;margin-bottom:5px}.tag{color:#888}.chapter-nav{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:22px;box-shadow:0 2px 10px #0000000d}.chapter-nav strong{color:var(--primary);margin-right:8px}.chapter-nav a{display:inline-block;color:var(--primary);text-decoration:none;background:#f4f8fb;padding:4px 9px;margin:3px;border-radius:8px;font-size:.9rem}.section{background:#fff;border-radius:20px;padding:27px 24px;margin-bottom:22px;box-shadow:0 2px 12px #0000000d;scroll-margin-top:75px}.section-header{display:flex;gap:12px;align-items:center;border-bottom:2px dashed #eee;padding-bottom:14px;margin-bottom:18px}.section-number{width:48px;height:45px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}.section-title h2{font-size:1.35rem;color:#2c3e50}.section-title p{font-size:.88rem;color:#888}.interactive-area{background:#f8fbfc;border:1px solid #e3eef2;border-radius:15px;padding:18px;margin-top:16px}.diagram{display:block;width:100%;max-width:600px;height:auto;margin:8px auto}.range-line{text-align:center;margin:12px 0;color:var(--primary)}input[type=range]{accent-color:var(--orange);width:min(100%,400px);vertical-align:middle}.input-row{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}.input-row input,.answer-input{width:82px;padding:7px;border:2px solid #c8dce5;border-radius:8px;font-size:1rem}.btn{border:0;border-radius:9px;padding:8px 15px;color:#fff;cursor:pointer;font-weight:700;background:var(--primary);margin:4px}.btn:hover{filter:brightness(1.08)}.btn-orange{background:var(--orange)}.btn-green{background:var(--green)}.btn-purple{background:var(--purple)}.btn-sm{padding:6px 11px;font-size:.88rem}.btn-group{text-align:center;margin:10px}.result,.formula,.concept-box,.tip-box{background:#fff5db;border-left:5px solid var(--orange);padding:12px 15px;border-radius:9px;margin-top:14px}.formula{background:#f4edfb;border-color:var(--purple);text-align:center;font-size:1.1rem;color:#5d4383}.tip-box{background:#eef8ed;border-color:var(--green)}.feedback{display:none;margin-top:10px;padding:9px;border-radius:8px}.feedback.correct{display:block;background:#e8f5e9;color:#287d32}.feedback.wrong{display:block;background:#ffebee;color:#c62828}.split-wrap{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:center}.split-card{background:#fff;border-radius:12px;padding:8px;text-align:center;color:var(--primary);font-weight:700}.slice{fill:#f9d4a5;stroke:#f5a623;stroke-width:1}.rebuild-piece{fill:#f5c4d8;stroke:#bb648f;stroke-width:1}.rebuild-piece.alt{fill:#d7edf8}.steps{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px}.step-pill{padding:5px 10px;border-radius:20px;background:#e8f4f8;color:var(--primary)}.quiz-card{border:1px solid #e4e4e4;border-radius:12px;padding:14px;margin:12px 0}.quiz-options{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.quiz-option{border:1px solid #c9dbe2;background:#fff;padding:8px 11px;border-radius:8px;cursor:pointer}.quiz-option.correct{background:#dff3e1;border-color:var(--success)}.quiz-option.wrong{background:#ffdddd;border-color:var(--error)}.completion{display:none;text-align:center;padding:22px;background:linear-gradient(135deg,#fff2ad,#ffd6e7);border-radius:14px;margin-top:16px}.completion.show{display:block;animation:pop .5s ease}@keyframes pop{50%{transform:scale(1.03)}}details{margin-top:10px;background:#f7f3fb;padding:8px 12px;border-radius:8px}summary{cursor:pointer;color:#654c91;font-weight:700}.challenge-answer{display:flex;align-items:center;gap:6px;flex-wrap:wrap}footer{text-align:center;color:#aaa;font-size:.85rem;padding:18px}#confetti{position:fixed;inset:0;pointer-events:none;z-index:20}
+@keyframes shuffle{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(2deg)}100%{transform:translateY(0) rotate(0)}}#rebuildSvg.animate .rebuild-piece{animation:shuffle .8s ease-in-out}
+@media(max-width:560px){.top-inner{padding:8px 10px}.back-link{font-size:.76rem;padding:6px 8px}.stars{font-size:.9rem}.container{padding:16px 10px}.section{padding:21px 15px}.hero{padding:28px 15px}h1{font-size:1.55rem}.section-title h2{font-size:1.15rem}.interactive-area{padding:12px}.split-wrap{grid-template-columns:1fr}.chapter-nav a{font-size:.82rem}.diagram{max-width:100%}}
+</style></head>
+<body><div class="top-bar"><div class="top-inner"><a href="../index.html" class="back-link">&larr; 回單元列表</a><div class="progress-wrap"><div class="progress-label">學習進度 <span id="progress-text">0%</span></div><div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div></div><div class="stars" id="star-display">★ 0</div></div></div>
+<main class="container"><header class="hero"><div class="unit-badge">第 7 單元</div><h1>圓面積與扇形面積</h1><p class="tag">把圓切開、拼起來，發現面積的祕密</p></header>
+<nav class="chapter-nav"><strong>章節導覽</strong><a href="#warmup">暖身</a><a href="#s71">7-1 公式推導</a><a href="#s72">7-2 圓面積</a><a href="#s73">7-3 扇形面積</a><a href="#life">生活應用</a><a href="#review">重點整理</a><a href="#quiz">綜合練習</a><a href="#gift">資優加油站</a></nav>
+
+<section class="section" id="warmup"><div class="section-header"><div class="section-number" style="background:var(--orange)">暖身</div><div class="section-title"><h2>披薩與圓桌：大小跟著半徑變</h2><p>拖曳半徑，觀察圓面積如何增加</p></div></div><p>一張圓披薩或圓桌，鋪滿的平面大小就是<strong>圓面積</strong>。半徑變大，圖形和面積都會變大。</p><div class="interactive-area"><svg class="diagram" viewBox="0 0 520 230" aria-label="可調整半徑的圓形披薩"><circle id="warmCircle" cx="190" cy="115" r="60" fill="#ffe0a8" stroke="#f5a623" stroke-width="5"/><circle cx="190" cy="115" r="5" fill="#2c5f8a"/><line id="warmRadius" x1="190" y1="115" x2="250" y2="115" stroke="#2c5f8a" stroke-width="3"/><text x="190" y="28" text-anchor="middle" fill="#795548">圓形披薩</text><text id="warmRText" x="215" y="106" fill="#2c5f8a">r = 6 cm</text><circle cx="165" cy="90" r="5" fill="#e88eb5"/><circle cx="215" cy="140" r="5" fill="#e88eb5"/><text x="370" y="95" text-anchor="middle" fill="#2e7d32">面積</text><text id="warmAreaText" x="370" y="128" text-anchor="middle" font-size="22" fill="#2e7d32">113.04 cm²</text></svg><div class="range-line">半徑 <strong id="warmR">6</strong> 公分　<input id="warmRange" type="range" min="3" max="10" value="6"></div><div class="result" id="warmResult"></div></div></section>
+
+<section class="section" id="s71"><div class="section-header"><div class="section-number" style="background:var(--green)">7-1</div><div class="section-title"><h2>圓面積公式推導</h2><p>切成扇形，交錯重組成近似平行四邊形</p></div></div><p>把圓切成很多個大小相同的扇形，再把扇形一正一反交錯排列。片數越多，邊緣越接近平行線。</p><div class="interactive-area"><div class="split-wrap"><div class="split-card"><svg id="sliceSvg" class="diagram" viewBox="0 0 240 190" aria-label="切成扇形的圓"></svg><div>圓：<span id="pieceCount">8</span> 片</div></div><div class="split-card"><svg id="rebuildSvg" class="diagram" viewBox="0 0 240 190" aria-label="交錯重組的近似平行四邊形"></svg><div>交錯重組</div></div></div><div class="range-line">分割片數：<strong id="piecesLabel">8</strong>　<input id="piecesRange" type="range" min="0" max="3" step="1" value="1"></div><div class="steps"><span class="step-pill">① 底 ≈ 半圓周</span><span class="step-pill">② 高 = 半徑</span><span class="step-pill">③ 面積 = 底 × 高</span></div><div class="formula" id="deriveFormula">圓面積 ≈ 半圓周 × 半徑 = 半徑 × 3.14 × 半徑</div><button class="btn btn-green" id="animateBtn">播放交錯重組</button><div class="result" id="deriveResult">圓面積 = 半徑 × 半徑 × 3.14</div></div></section>
+
+<section class="section" id="s72"><div class="section-header"><div class="section-number" style="background:var(--blue)">7-2</div><div class="section-title"><h2>圓面積計算</h2><p>先找半徑，再套用 r × r × 3.14</p></div></div><div class="interactive-area"><svg class="diagram" viewBox="0 0 430 230" aria-label="可調整半徑的圓面積圖"><circle id="calcCircle" cx="215" cy="115" r="70" fill="#d9eef8" stroke="#2c5f8a" stroke-width="4"/><circle cx="215" cy="115" r="5" fill="#2c5f8a"/><line id="calcRadius" x1="215" y1="115" x2="285" y2="115" stroke="#ef5350" stroke-width="4"/><text id="calcRText" x="240" y="106" fill="#c62828">r = 7</text></svg><div class="range-line">半徑 <strong id="calcR">7</strong> 公分　<input id="calcRange" type="range" min="1" max="15" value="7"></div><div class="formula" id="calcFormula"></div></div><div class="interactive-area"><h3>小試身手</h3><p>輸入半徑，按下計算，看看你的步驟是否完整。</p><div class="input-row">半徑 <input id="areaInput" type="number" min="1" value="5"> 公分 <button class="btn btn-orange" id="areaBtn">計算面積</button></div><div class="feedback" id="areaFeedback"></div></div></section>
+
+<section class="section" id="s73"><div class="section-header"><div class="section-number" style="background:var(--purple)">7-3</div><div class="section-title"><h2>扇形面積</h2><p>整圓的幾分之幾，就是扇形的幾分之幾</p></div></div><div class="interactive-area"><svg class="diagram" viewBox="0 0 460 280" aria-label="淺色整圓與可調整角度的扇形"><circle cx="170" cy="135" r="100" fill="#eaf5f8" stroke="#b9dce8" stroke-width="3" stroke-dasharray="7 5"/><path id="sectorPath" fill="#f6d9ee" stroke="#9b59b6" stroke-width="4"/><line id="sectorR1" x1="170" y1="135" x2="170" y2="35" stroke="#2c5f8a" stroke-width="3"/><line id="sectorR2" x1="170" y1="135" x2="270" y2="135" stroke="#2c5f8a" stroke-width="3"/><circle cx="170" cy="135" r="5" fill="#2c5f8a"/><text x="170" y="260" text-anchor="middle" fill="#5d8998">淺色整圓 = 100%</text><text x="350" y="90" text-anchor="middle" fill="#654c91">扇形</text><text id="sectorPercent" x="350" y="125" text-anchor="middle" font-size="20" fill="#654c91">25%</text></svg><div class="range-line">圓心角 <strong id="angleLabel">90</strong>°　<input id="angleRange" type="range" min="0" max="360" value="90"></div><div class="formula" id="sectorFormula"></div><div class="result" id="sectorResult"></div></div></section>
+
+<section class="section" id="life"><div class="section-header"><div class="section-number" style="background:#f5846e">用</div><div class="section-title"><h2>生活應用：花圃鋪草與披薩分配</h2><p>用半徑和角度，規畫真正需要的面積</p></div></div><div class="interactive-area"><svg class="diagram" viewBox="0 0 460 250" aria-label="花圃中一塊扇形鋪草"><circle cx="175" cy="125" r="100" fill="#e6f3e2" stroke="#9acb91" stroke-width="3"/><path id="gardenPath" fill="#69b96d" fill-opacity=".8"/><circle cx="175" cy="125" r="4" fill="#2c5f8a"/><text x="175" y="242" text-anchor="middle" fill="#2e7d32">綠色是要鋪草的扇形區域</text></svg><div class="input-row">半徑 <input id="gardenR" type="number" min="1" value="8"> 公尺　角度 <input id="gardenD" type="number" min="1" max="360" value="120">° <button class="btn btn-green" id="gardenBtn">規畫面積</button></div><div class="result" id="gardenResult"></div></div></section>
+
+<section class="section" id="review"><div class="section-header"><div class="section-number" style="background:var(--orange)">記</div><div class="section-title"><h2>重點整理</h2><p>把公式放進數學工具箱</p></div></div><div class="concept-box"><strong>圓面積：</strong>圓面積 = 半徑 × 半徑 × 3.14。半徑要用同一種長度單位。</div><div class="concept-box"><strong>推導：</strong>圓切開重組後，底約等於半圓周（半徑 × 3.14），高等於半徑，所以面積 = 半徑 × 3.14 × 半徑。</div><div class="concept-box"><strong>扇形面積：</strong>圓面積 × 圓心角 ÷ 360。圓心角越大，占整圓比例越大。</div><div class="tip-box"><strong>檢查：</strong>面積單位要寫平方單位，例如 cm²、m²；計算一律使用 3.14。</div></section>
+
+<section class="section" id="quiz"><div class="section-header"><div class="section-number" style="background:var(--pink)">練</div><div class="section-title"><h2>綜合練習</h2><p>答對後立即看回饋</p></div></div><p>答對題數：<strong id="quizScore">0</strong> / <span id="quizTotal">5</span></p><div id="quizBox"></div><div class="completion" id="completion"><h2>🎉 太棒了！</h2><p>五題綜合練習全部答對，圓面積公式已經很熟練。</p></div></section>
+<section class="section" id="gift"><div class="section-header"><div class="section-number" style="background:#8e78bd">優</div><div class="section-title"><h2>資優加油站</h2><p>多想一步的圓形挑戰</p></div></div><p>先在心中列式，再輸入答案；每題都有可展開的解說。</p><div id="giftBox"></div><div class="completion" id="giftCompletion"><h2>🌟 挑戰完成！</h2><p>四題資優題都解開了。</p></div></section><footer>108 課綱 · 康軒版 六年級上學期數學 · 自學練習平台</footer></main><canvas id="confetti"></canvas>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),format=n=>Number.isFinite(Number(n))?Number(Number(n).toFixed(2)).toString():'0',rad=d=>d*Math.PI/180;
+let stars=0;const solved=new Set(),giftSolved=new Set();function addStar(k){if(!solved.has(k)){solved.add(k);stars++;$('star-display').textContent='★ '+stars;updateProgress()}}function updateProgress(){const p=Math.min(100,Math.round(solved.size/16*100));$('progress-fill').style.width=p+'%';$('progress-text').textContent=p+'%'}function feedback(id,ok,text){const e=$(id);e.className='feedback '+(ok?'correct':'wrong');e.textContent=(ok?'答對了！ ':'再想一想！ ')+text}
+function circlePath(cx,cy,r,d){if(d>=360)return 'M '+cx+' '+cy+' m -'+r+',0 a '+r+','+r+' 0 1,0 '+r*2+',0 a '+r+','+r+' 0 1,0 -'+r*2+',0';const e=rad(-90+d);return 'M'+cx+' '+cy+' L'+cx+' '+(cy-r)+' A'+r+' '+r+' 0 '+(d>180?1:0)+' 1 '+(cx+r*Math.cos(e))+' '+(cy+r*Math.sin(e))+' Z'}
+function updateWarm(){const r=+$('warmRange').value,a=r*r*3.14,px=r*10;$('warmR').textContent=r;$('warmCircle').setAttribute('r',px);$('warmRadius').setAttribute('x2',190+px);$('warmRText').textContent='r = '+r+' cm';$('warmAreaText').textContent=format(a)+' cm²';$('warmResult').textContent='這張圓披薩的面積 = '+r+' × '+r+' × 3.14 = '+format(a)+' 平方公分。';addStar('warm')}
+function drawPieces(n){const s=$('sliceSvg'),b=$('rebuildSvg');s.innerHTML='';b.innerHTML='';const cx=120,cy=95,r=70;for(let i=0;i<n;i++){const a=-Math.PI/2+i*2*Math.PI/n,e=a+2*Math.PI/n;const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d','M'+cx+' '+cy+' L'+(cx+r*Math.cos(a))+' '+(cy+r*Math.sin(a))+' A'+r+' '+r+' 0 0 1 '+(cx+r*Math.cos(e))+' '+(cy+r*Math.sin(e))+' Z');p.setAttribute('class','slice');s.appendChild(p);const q=document.createElementNS('http://www.w3.org/2000/svg','path');const w=140/n,h=60,x=50+i*w,y=i%2?35:95;q.setAttribute('d','M'+x+' '+y+' L'+(x+w)+' '+y+' L'+(x+w+8)+' '+(y+h)+' L'+(x+8)+' '+(y+h)+' Z');q.setAttribute('class','rebuild-piece '+(i%2?'alt':''));b.appendChild(q)}$('pieceCount').textContent=n;$('piecesLabel').textContent=n;const half=(r*3.14);$('deriveFormula').textContent='圓面積 ≈ 半圓周 × 半徑 = ('+format(half)+' × r) × r = r × r × 3.14';$('deriveResult').textContent='這個近似平行四邊形的底 ≈ 半圓周，底約 '+format(half)+' 單位；高 = 半徑。';addStar('derive')}
+function updateCalc(){const r=+$('calcRange').value,a=r*r*3.14;$('calcR').textContent=r;$('calcCircle').setAttribute('r',Math.min(105,r*10));$('calcRadius').setAttribute('x2',215+Math.min(105,r*10));$('calcRText').textContent='r = '+r;$('calcFormula').textContent='r × r × 3.14 = '+r+' × '+r+' × 3.14 = '+format(a)+' cm²';addStar('calc')}
+function updateSector(){const d=+$('angleRange').value,r=10,a=r*r*3.14,sa=a*d/360,g=Math.max(1,360/d),pct=format(d/360*100);$('angleLabel').textContent=d;$('sectorPath').setAttribute('d',circlePath(170,135,100,d));$('sectorR2').setAttribute('x2',170+100*Math.cos(rad(-90+d)));$('sectorR2').setAttribute('y2',135+100*Math.sin(rad(-90+d)));$('sectorPercent').textContent=pct+'%';$('sectorFormula').textContent='圓心角比例 = '+d+' ÷ 360 = '+pct+'%；圓面積 = 10 × 10 × 3.14 = 314 cm²';$('sectorResult').textContent='扇形面積 = 314 × '+d+' ÷ 360 = '+format(sa)+' cm²（約占整圓 '+pct+'%，也就是約 1 ÷ '+format(g)+'）。';addStar('sector')}
+function updateGarden(){const r=Math.max(0,+$('gardenR').value||0),d=Math.min(360,Math.max(0,+$('gardenD').value||0)),a=r*r*3.14*d/360;$('gardenPath').setAttribute('d',circlePath(175,125,100,d));$('gardenResult').textContent='花圃扇形面積 = '+r+' × '+r+' × 3.14 × '+d+' ÷ 360 = '+format(a)+' 平方公尺。';addStar('life')}
+const quiz=[['半徑 6 公分的圓，面積約多少？',['36','113.04','37.68'],1,'6 × 6 × 3.14 = 113.04。'],['圓面積公式中的「高」對應什麼？',['直徑','半徑','圓周率'],1,'重組後的高就是半徑。'],['半徑 10 公分、180°扇形的面積？',['157','314','62.8'],0,'314 × 180 ÷ 360 = 157。'],['半徑 4 公分、90°扇形占整圓幾分之幾？',['四分之一','二分之一','四分之三'],0,'90 ÷ 360 = 1/4。'],['圓面積 78.5 平方公分，半徑是多少？',['5','10','25'],0,'5 × 5 × 3.14 = 78.5。']];
+function renderQuiz(){quiz.forEach((q,i)=>{const c=document.createElement('div');c.className='quiz-card';c.innerHTML='<strong>第 '+(i+1)+' 題：</strong>'+q[0]+'<div class="quiz-options">'+q[1].map((x,j)=>'<button class="quiz-option" data-q="'+i+'" data-a="'+j+'">'+String.fromCharCode(65+j)+'．'+x+'</button>').join('')+'</div><div class="feedback" id="qf'+i+'"></div>';$('quizBox').appendChild(c)});$('quizBox').addEventListener('click',e=>{if(!e.target.dataset.q)return;const i=+e.target.dataset.q,j=+e.target.dataset.a,q=quiz[i],c=e.target.closest('.quiz-card');c.querySelectorAll('button').forEach(b=>b.disabled=true);e.target.classList.add(j===q[2]?'correct':'wrong');c.querySelectorAll('button')[q[2]].classList.add('correct');feedback('qf'+i,j===q[2],q[3]);if(j===q[2]){$('quizScore').textContent=+$('quizScore').textContent+1;addStar('q'+i)}if(quiz.every((_,x)=>solved.has('q'+x))){$('completion').classList.add('show');fireConfetti()}});$('quizTotal').textContent=quiz.length}
+const gifts=[['半徑增加 2 倍，圓面積變成幾倍？','4','面積和半徑的平方成正比，2 × 2 = 4 倍。'],['半徑 6 公分的 120°扇形面積？','37.68','6 × 6 × 3.14 × 120 ÷ 360 = 37.68 平方公分。'],['一個 90°扇形面積是 50.24 平方公分，整圓面積是多少？','200.96','90° 是整圓的四分之一，所以 50.24 × 4 = 200.96。'],['同半徑下，30°與 150°扇形面積比？','1:5','角度比就是面積比，30:150 化簡為 1:5。']];
+function renderGifts(){gifts.forEach((g,i)=>{const c=document.createElement('div');c.className='quiz-card';c.innerHTML='<strong>'+g[0]+'</strong><div class="challenge-answer"><label for="gift'+i+'">答案</label><input class="answer-input" id="gift'+i+'"><button class="btn btn-purple btn-sm" data-g="'+i+'">檢查</button></div><div class="feedback" id="gf'+i+'"></div><details><summary>展開解說</summary><div>'+g[2]+'</div></details>';$('giftBox').appendChild(c)});$('giftBox').addEventListener('click',e=>{if(e.target.dataset.g!==undefined){const i=+e.target.dataset.g,v=$('gift'+i).value.replace(/\s/g,'');const ok=v===gifts[i][1];feedback('gf'+i,ok,ok?'公式與答案正確！':'先確認半徑是否平方，以及角度比例。');if(ok){giftSolved.add(i);addStar('g'+i);if(giftSolved.size===4){$('giftCompletion').classList.add('show');fireConfetti()}}}})}
+function fireConfetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const p=Array.from({length:65},(_,i)=>({x:Math.random()*c.width,y:-20-Math.random()*200,v:2+Math.random()*3,c:['#f5846e','#f5a623','#69b96d','#6ec6f5','#b39ddb'][i%5]}));function go(){x.clearRect(0,0,c.width,c.height);let live=false;p.forEach(a=>{a.y+=a.v;a.x+=Math.sin(a.y/25);if(a.y<c.height)live=true;x.fillStyle=a.c;x.fillRect(a.x,a.y,7,10)});if(live)requestAnimationFrame(go)}go()}
+window.addEventListener('load',()=>{updateWarm();drawPieces(8);updateCalc();updateSector();updateGarden();renderQuiz();renderGifts();$('warmRange').addEventListener('input',updateWarm);$('piecesRange').addEventListener('input',e=>drawPieces([4,8,16,24][+e.target.value]));$('animateBtn').addEventListener('click',()=>{$('rebuildSvg').classList.add('animate');setTimeout(()=>$('rebuildSvg').classList.remove('animate'),800);addStar('animation')});$('calcRange').addEventListener('input',updateCalc);$('areaBtn').addEventListener('click',()=>{const r=+$('areaInput').value||0;feedback('areaFeedback',r>0,'面積 = '+r+' × '+r+' × 3.14 = '+format(r*r*3.14)+' 平方公分。');addStar('area')});$('angleRange').addEventListener('input',updateSector);$('gardenBtn').addEventListener('click',updateGarden)})
+</script></body></html>
