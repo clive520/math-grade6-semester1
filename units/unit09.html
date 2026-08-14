@@ -1,89 +1,187 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>放大圖、縮圖與比例尺 - 六上數學自學網</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
-      background: #f5f7fa;
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .container { max-width: 800px; margin: 0 auto; }
-    .back-link {
-      display: inline-block;
-      color: #2c5f8a;
-      text-decoration: none;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      padding: 8px 16px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .back-link:hover { background: #e8f0f8; }
-    header {
-      text-align: center;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      margin-bottom: 24px;
-    }
-    .unit-badge {
-      display: inline-block;
-      background: BADGE_COLOR;
-      color: white;
-      padding: 6px 20px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    header h1 { font-size: 2rem; color: #2c3e50; margin-bottom: 6px; }
-    header .tag { font-size: 0.95rem; color: #888; }
-    .content {
-      background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-    .content .coming-soon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .content p {
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.8;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #aaa;
-      font-size: 0.85rem;
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第9單元：放大圖、縮圖與比例尺 - 六上數學自學網</title>
+<style>
+:root{--primary:#2c5f8a;--light:#e8f4f8;--orange:#f5a623;--pink:#e88eb5;--green:#69b96d;--blue:#6ec6f5;--purple:#9b82c4;--red:#ef5350;--text:#333;--muted:#777;--bg:#f5f7fa;--success:#4caf50;--error:#ef5350}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:40px}.top-bar{position:sticky;top:0;z-index:10;background:#fffffff5;box-shadow:0 1px 6px #00000014}.top-inner{max-width:900px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px}.back-link{color:var(--primary);text-decoration:none;font-weight:700;background:var(--light);padding:7px 12px;border-radius:9px;white-space:nowrap;font-size:.9rem}.progress-wrap{flex:1;min-width:80px}.progress-label{font-size:.76rem;color:#888;margin-bottom:2px}.progress-bar{height:8px;background:#e3e3e3;border-radius:5px;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),#d45d8c);transition:width .4s}.stars{color:#f5b900;font-weight:700;white-space:nowrap}.container{max-width:820px;margin:auto;padding:24px 16px}.hero{text-align:center;padding:36px 22px;margin-bottom:22px;background:linear-gradient(135deg,#fff 0%,#fff1dc 100%);border-radius:20px;box-shadow:0 4px 20px #0000000f}.unit-badge{display:inline-block;color:#fff;background:#ab47bc;padding:5px 18px;border-radius:20px;font-weight:700;margin-bottom:10px}h1{color:#2c3e50;font-size:1.9rem;margin-bottom:5px}.tag{color:#888}.chapter-nav{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:22px;box-shadow:0 2px 10px #0000000d}.chapter-nav strong{color:var(--primary);margin-right:8px}.chapter-nav a{display:inline-block;color:var(--primary);text-decoration:none;background:#f4f8fb;padding:4px 9px;margin:3px;border-radius:8px;font-size:.9rem}.section{background:#fff;border-radius:20px;padding:27px 24px;margin-bottom:22px;box-shadow:0 2px 12px #0000000d;scroll-margin-top:75px}.section-header{display:flex;gap:12px;align-items:center;border-bottom:2px dashed #eee;padding-bottom:14px;margin-bottom:18px}.section-number{width:48px;height:45px;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}.section-title h2{color:#2c3e50;font-size:1.32rem}.section-title p{color:#888;font-size:.9rem}.concept-box{background:#f8faff;border-left:4px solid var(--primary);border-radius:12px;padding:14px 17px;margin:15px 0}.concept-box strong{color:var(--primary)}.tip-box{background:#fff8e1;border-left:4px solid var(--orange);border-radius:10px;padding:11px 15px;margin:12px 0;color:#6d5c28}.interactive-area{background:#fafafa;border-radius:16px;padding:19px;margin:17px 0}.btn{border:0;border-radius:10px;padding:9px 17px;color:#fff;cursor:pointer;font:600 1rem inherit;transition:transform .15s,box-shadow .15s}.btn:active{transform:scale(.98)}.btn:disabled{opacity:.55;cursor:not-allowed}.btn-primary{background:var(--primary)}.btn-green{background:var(--green)}.btn-blue{background:var(--blue)}.btn-purple{background:var(--purple)}.btn-orange{background:var(--orange)}.btn-sm{padding:6px 13px;font-size:.9rem}.btn-group{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}input,select{width:96px;padding:8px;border:2px solid #ddd;border-radius:9px;font:1rem inherit;text-align:center;background:#fff}input:focus{outline:none;border-color:var(--primary)}input[type=range]{width:min(390px,100%);accent-color:var(--purple);padding:0;border:0}.input-row{text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0;font-size:1.08rem}.range-line{text-align:center;margin:10px}.feedback{display:none;border-radius:10px;padding:10px 14px;margin-top:10px;font-weight:600}.feedback.correct{display:block;background:#e8f5e9;color:#2e7d32}.feedback.wrong{display:block;background:#ffebee;color:#c62828}.feedback.info{display:block;background:#e3f2fd;color:#1565c0}.diagram{width:100%;max-width:440px;height:auto;display:block;margin:8px auto}.diagram text{font-family:"Microsoft JhengHei",sans-serif}.formula{text-align:center;font-size:1.15rem;color:var(--primary);font-weight:700;margin:12px}.result{text-align:center;background:#fff8e1;border-radius:12px;padding:11px;color:#795548;font-weight:700;min-height:48px}.quiz-options{display:flex;flex-direction:column;gap:8px}.quiz-option{padding:11px 13px;border:2px solid #e0e0e0;border-radius:11px;background:#fff;text-align:left;cursor:pointer;font:1rem inherit}.quiz-option.correct{background:#e8f5e9;border-color:var(--success)}.quiz-option.wrong{background:#ffebee;border-color:var(--error)}.quiz-option:disabled{cursor:default}.quiz-card{background:#fafafa;border-radius:14px;padding:16px;margin:13px 0}.quiz-card>strong{display:block;margin-bottom:10px;font-size:1.02rem}.challenge-answer{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:10px 0}details{margin:11px 0}summary{cursor:pointer;background:var(--light);color:var(--primary);font-weight:700;padding:10px 14px;border-radius:10px}details>div{background:#f8faff;padding:13px 15px;border-radius:0 0 10px 10px}.completion{display:none;text-align:center;padding:27px;background:linear-gradient(135deg,#fff8e1,#e8f5e9);border-radius:20px;margin:22px 0}.completion.show{display:block}.completion h2{color:#2e7d32}#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99}footer{text-align:center;color:#aaa;font-size:.84rem;padding:24px}
+.photo-frame{margin:6px auto 0;max-width:320px;transition:height .25s}
+.photo-frame svg{display:block;width:100%;height:auto;margin:0 auto;transform-origin:50% 0;transition:transform .25s}
+.photo-tag{display:inline-block;margin-top:10px;padding:5px 16px;border-radius:16px;font-weight:700;color:#fff;background:var(--green);font-size:1.05rem}
+.photo-tag.shrink{background:var(--blue)}
+.photo-tag.same{background:#9e9e9e}
+.photo-tag.grow{background:#f5846e}
+.compare-grid{display:flex;gap:18px;align-items:flex-start}
+.compare-col{flex:1;min-width:0;text-align:center}
+.compare-col .cap{font-weight:700;color:var(--primary);margin-bottom:4px}
+.compare-col .cap small{display:block;color:#888;font-weight:400;font-size:.85rem}
+.hl-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.hl-controls .btn{background:#e3e3e3;color:#555}
+.hl-controls .btn.active{background:var(--purple);color:#fff}
+.map-stage{margin:10px 0}
+.map-stage svg{width:100%;height:auto;display:block}
+.map-info{text-align:center;font-weight:700;color:#2e7d32;margin:6px 0;font-size:1.02rem}
+.proportion-row{display:flex;align-items:center;gap:10px;margin:8px 0}
+.p-label{width:46px;font-weight:700;color:var(--primary);text-align:right;flex-shrink:0}
+.p-track{flex:1;height:18px;background:#eee;border-radius:9px;overflow:hidden}
+.p-fill{height:100%;width:0;border-radius:9px;transition:width .35s}
+.p-fill.map{background:var(--orange)}
+.p-fill.real{background:var(--green)}
+.p-val{width:150px;font-weight:700;color:#333;flex-shrink:0;font-size:.9rem}
+.grid-pair{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.grid-box{flex:1;min-width:250px;max-width:320px;text-align:center}
+.grid-box svg{width:100%;height:auto;display:block;background:#fff;border:1px solid #e0e0e0;border-radius:8px}
+.grid-box .cap{font-weight:700;color:var(--primary);margin-bottom:4px}
+.grid-box .cap small{display:block;color:#888;font-weight:400;font-size:.85rem}
+@keyframes pop{from{transform:scale(.1);opacity:.2}to{transform:scale(1);opacity:1}}
+.poly-pop{transform-box:fill-box;transform-origin:center;animation:pop .55s ease-out}
+@media(max-width:560px){.top-inner{padding:8px 10px}.back-link{font-size:.76rem;padding:6px 8px}.stars{font-size:.9rem}.container{padding:16px 10px}.section{padding:21px 15px}.hero{padding:28px 15px}h1{font-size:1.55rem}.section-title h2{font-size:1.15rem}.interactive-area{padding:12px}.chapter-nav a{font-size:.82rem}.compare-grid{flex-direction:column}.p-val{width:118px;font-size:.82rem}.grid-pair{gap:10px}.formula{font-size:1.02rem}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html" class="back-link">← 回到單元列表</a>
-    <header>
-      <div class="unit-badge" style="background: #ab47bc;">第 9 單元</div>
-      <h1>放大圖、縮圖與比例尺</h1>
-      <p class="tag">縮放、比例尺</p>
-    </header>
-    <div class="content">
-      <div class="coming-soon">🔍</div>
-      <p>內容建置中，敬請期待！</p>
-    </div>
-    <footer>
-      <p>108課綱 · 康軒版 六年級上學期數學 · 自學練習平台</p>
-    </footer>
-  </div>
-</body>
-</html>
+<div class="top-bar"><div class="top-inner"><a href="../index.html" class="back-link">&larr; 回單元列表</a><div class="progress-wrap"><div class="progress-label">學習進度 <span id="progress-text">0%</span></div><div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div></div><div class="stars" id="star-display">★ 0</div></div></div>
+<main class="container"><header class="hero"><div class="unit-badge">第 9 單元</div><h1>放大圖、縮圖與比例尺</h1><p class="tag">拖一拖、縮一縮，地圖上的距離這樣看</p></header>
+<nav class="chapter-nav"><strong>章節導覽</strong><a href="#warmup">暖身</a><a href="#s91">9-1 放大圖與縮圖</a><a href="#s92">9-2 比例尺的意義</a><a href="#s93">9-3 比例尺的應用</a><a href="#draw">畫圖練習</a><a href="#review">重點整理</a><a href="#quiz">綜合練習</a><a href="#gift">資優加油站</a></nav>
+
+<section class="section" id="warmup"><div class="section-header"><div class="section-number" style="background:var(--orange)">暖</div><div class="section-title"><h2>暖身：照片放大縮小</h2><p>拖曳滑桿，讓圖形真的變大變小</p></div></div>
+<p>底下是一張畫好的圖片。拖曳滑桿：超過 <strong>1 倍</strong>變成<strong>放大圖</strong>，低於 <strong>1 倍</strong>變成<strong>縮圖</strong>，正好 1 倍就是<strong>原圖</strong>大小。</p>
+<div class="interactive-area">
+<div class="photo-frame" id="photoFrame"><svg id="warmSceneSvg" class="diagram" viewBox="0 0 300 190" style="max-width:320px" role="img" aria-label="可以放大縮小的房子圖片">
+<defs><linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ed0f0"/><stop offset="1" stop-color="#dff3fd"/></linearGradient></defs>
+<rect width="300" height="140" fill="url(#skyGrad)"/><circle cx="255" cy="34" r="15" fill="#ffd54f"/><circle cx="255" cy="34" r="22" fill="#ffd54f" opacity=".35"/>
+<g fill="#fff" opacity=".92"><ellipse cx="82" cy="40" rx="18" ry="8"/><ellipse cx="100" cy="35" rx="13" ry="7"/><ellipse cx="68" cy="35" rx="11" ry="6"/></g>
+<rect y="140" width="300" height="50" fill="#a5d6a7"/>
+<rect x="60" y="95" width="90" height="60" fill="#ffe0a8" stroke="#c98a3c" stroke-width="3"/><polygon points="50,95 105,60 160,95" fill="#e57373" stroke="#c62828" stroke-width="2"/><rect x="100" y="120" width="22" height="35" fill="#8d6e63"/><circle cx="111" cy="137" r="2.4" fill="#ffd54f"/><rect x="72" y="108" width="20" height="18" fill="#bbdefb" stroke="#5c8bb0" stroke-width="2"/><rect x="120" y="108" width="20" height="18" fill="#bbdefb" stroke="#5c8bb0" stroke-width="2"/>
+<rect x="215" y="118" width="10" height="22" fill="#795548"/><circle cx="225" cy="104" r="21" fill="#66bb6a"/><circle cx="211" cy="112" r="13" fill="#81c784"/><circle cx="240" cy="112" r="13" fill="#81c784"/>
+<g fill="#8d6e63"><rect x="20" y="148" width="8" height="26"/><rect x="36" y="148" width="8" height="26"/><rect x="52" y="148" width="8" height="26"/><rect x="26" y="143" width="16" height="5"/><rect x="42" y="143" width="16" height="5"/></g>
+<text x="150" y="180" text-anchor="middle" font-size="11" fill="#4e7a3d">圖上尺寸：寬 6 公分 × 高 3.8 公分</text>
+</svg></div>
+<div class="photo-tag" id="warmTag">原圖大小（1 倍）</div>
+<div class="range-line">倍率 <strong id="warmK">1</strong> 倍（0.5～3 倍）<br><input id="warmRange" type="range" min="0.5" max="3" step="0.1" value="1" aria-label="圖片倍率"></div>
+<div class="result" id="warmResult">拖曳滑桿，觀察圖片和尺寸的變化。</div>
+</div></section>
+
+<section class="section" id="s91"><div class="section-header"><div class="section-number" style="background:var(--green)">9-1</div><div class="section-title"><h2>放大圖與縮圖</h2><p>對應邊成倍數，對應角相等</p></div></div>
+<p>形狀相同、大小不同的圖形互為<strong>放大圖</strong>或<strong>縮圖</strong>。放大時，每一條邊都乘以相同的倍率；<strong>對應角的大小不變</strong>。拖曳滑桿調整倍率，再用按鈕比一比對應邊、對應角。</p>
+<div class="interactive-area">
+<div class="compare-grid">
+<div class="compare-col"><div class="cap">原圖<small>長 3 公分 × 寬 2 公分</small></div>
+<svg class="diagram" viewBox="0 0 560 300" style="max-width:330px" role="img" aria-label="原圖長方形與可縮放的對照圖">
+<g id="gOrig"><rect x="15" y="100" width="60" height="40" fill="#d9eef8" stroke="#2c5f8a" stroke-width="3"/><path class="am" d="M15 100h9v9h-9Z" fill="none" stroke="#f5a623" stroke-width="3"/><path class="am" d="M66 100h9v9h-9Z" fill="none" stroke="#f5a623" stroke-width="3"/><path class="am" d="M15 131h9v9h-9Z" fill="none" stroke="#f5a623" stroke-width="3"/><path class="am" d="M66 131h9v9h-9Z" fill="none" stroke="#f5a623" stroke-width="3"/><text x="45" y="178" text-anchor="middle" font-size="14" fill="#2c5f8a">長 3 公分</text><text x="5" y="122" text-anchor="end" font-size="14" fill="#2c5f8a" transform="rotate(-90 5 120)">寬 2 公分</text><text x="45" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#333">原圖</text></g>
+<g id="gScaled"><rect id="scaleRect" x="250" y="100" width="120" height="80" fill="#fde9d9" stroke="#f5846e" stroke-width="3"/><path id="ams1" class="am" fill="none" stroke="#f5a623" stroke-width="3"/><path id="ams2" class="am" fill="none" stroke="#f5a623" stroke-width="3"/><path id="ams3" class="am" fill="none" stroke="#f5a623" stroke-width="3"/><path id="ams4" class="am" fill="none" stroke="#f5a623" stroke-width="3"/><text id="scaleW" x="310" y="205" text-anchor="middle" font-size="14" fill="#c65342">長 6 公分</text><text id="scaleH" x="238" y="140" text-anchor="end" font-size="14" fill="#c65342" transform="rotate(-90 238 140)">寬 4 公分</text><text id="scaleTitle" x="310" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#c65342">放大圖 ×2</text></g>
+<g class="hlw" style="display:none"><line x1="15" y1="100" x2="75" y2="100" stroke="#e53935" stroke-width="6"/><line x1="15" y1="140" x2="75" y2="140" stroke="#e53935" stroke-width="6"/><line id="hlw3" x1="250" y1="100" x2="370" y2="100" stroke="#e53935" stroke-width="6"/><line id="hlw4" x1="250" y1="180" x2="370" y2="180" stroke="#e53935" stroke-width="6"/></g>
+<g class="hlh" style="display:none"><line x1="15" y1="100" x2="15" y2="140" stroke="#e53935" stroke-width="6"/><line x1="75" y1="100" x2="75" y2="140" stroke="#e53935" stroke-width="6"/><line id="hlh3" x1="250" y1="100" x2="250" y2="180" stroke="#e53935" stroke-width="6"/><line id="hlh4" x1="370" y1="100" x2="370" y2="180" stroke="#e53935" stroke-width="6"/></g>
+</svg></div>
+<div class="compare-col"><div class="cap">變化後<small id="scaleSmall">長寬都乘 2</small></div>
+<p style="color:#c65342;font-weight:700;font-size:1.3rem" id="scaleBadge">× 2</p></div>
+</div>
+<div class="range-line">倍率 <strong id="s91K">2</strong> 倍（0.25～4 倍）<br><input id="s91Range" type="range" min="0.25" max="4" step="0.25" value="2" aria-label="放大圖倍率"></div>
+<div class="btn-group" style="justify-content:center"><button class="btn btn-sm" style="background:#b39ddb" id="s91Half">縮小一半</button><button class="btn btn-sm" style="background:#4caf50" id="s91Double">2 倍</button><button class="btn btn-sm" style="background:#4caf50" id="s91Triple">3 倍</button></div>
+<div class="hl-controls"><button class="btn btn-sm active" id="hlwBtn">對應邊：長</button><button class="btn btn-sm" id="hlhBtn">對應邊：寬</button><button class="btn btn-sm" id="hlaBtn">對應角</button></div>
+<div class="formula" id="s91Formula">放大後邊長 = 原邊長 × 倍率：3 × 2 = 6、2 × 2 = 4</div>
+<div class="result" id="s91HlInfo">按上方按鈕，分別觀察長邊、寬邊和角的對應關係。</div>
+</div>
+<div class="check-card"><p><strong>檢查 1：</strong>原圖長 3 公分、寬 2 公分，放大 4 倍後，長是幾公分？</p><div class="quiz-options" data-check="s91a" data-answer="0" data-explain="放大 4 倍就是把每一條邊都乘 4：3 × 4 = 12 公分，寬變成 2 × 4 = 8 公分。"><button class="quiz-option" data-a="0">A．12 公分</button><button class="quiz-option" data-a="1">B．6 公分</button><button class="quiz-option" data-a="2">C．8 公分</button></div><div class="feedback" id="chk-s91a"></div></div>
+<div class="check-card"><p><strong>檢查 2：</strong>關於放大圖與原圖的對應角，哪一個敘述正確？</p><div class="quiz-options" data-check="s91b" data-answer="1" data-explain="放大圖與原圖形狀相同，只改變大小，所以對應角都相等。"><button class="quiz-option" data-a="0">A．角度都變大</button><button class="quiz-option" data-a="1">B．對應角大小都相等</button><button class="quiz-option" data-a="2">C．角度都變小</button></div><div class="feedback" id="chk-s91b"></div></div>
+<div class="tip-box">記住：<strong>對應邊都乘相同的倍率</strong>、<strong>對應角大小不變</strong>，這是判斷放大圖、縮圖的重要規則。</div></section>
+
+<section class="section" id="s92"><div class="section-header"><div class="section-number" style="background:var(--blue)">9-2</div><div class="section-title"><h2>比例尺的意義</h2><p>圖上 1 公分 = 實際 1000 公分 = 10 公尺</p></div></div>
+<p>地圖會把實際距離縮小，<strong>比例尺</strong>告訴我們圖上距離與實際距離的關係。這張地圖的比例尺是 <strong>1：1000</strong>，也就是<strong>圖上 1 公分代表實際 1000 公分（10 公尺）</strong>。拖曳滑桿或輸入數字，看紅色標線走過圖上的距離，再換算成實際距離。</p>
+<div class="interactive-area">
+<div class="map-stage">
+<svg viewBox="0 0 460 230" role="img" aria-label="比例尺 1 比 1000 的公園地圖">
+<rect width="460" height="230" fill="#eef5e6" stroke="#9db98c" stroke-width="2"/>
+<rect x="24" y="18" width="56" height="40" fill="#e0d7c8" stroke="#b9ab94" stroke-width="2"/><rect x="38" y="30" width="10" height="10" fill="#fff"/><rect x="56" y="30" width="10" height="10" fill="#fff"/><rect x="38" y="48" width="10" height="10" fill="#fff"/><rect x="56" y="48" width="10" height="10" fill="#fff"/>
+<rect x="24" y="168" width="56" height="40" fill="#e0d7c8" stroke="#b9ab94" stroke-width="2"/><rect x="38" y="180" width="10" height="10" fill="#fff"/><rect x="56" y="180" width="10" height="10" fill="#fff"/><rect x="38" y="198" width="10" height="10" fill="#fff"/><rect x="56" y="198" width="10" height="10" fill="#fff"/>
+<rect x="330" y="18" width="70" height="46" fill="#e0d7c8" stroke="#b9ab94" stroke-width="2"/><rect x="342" y="30" width="10" height="10" fill="#fff"/><rect x="360" y="30" width="10" height="10" fill="#fff"/><rect x="378" y="30" width="10" height="10" fill="#fff"/><rect x="342" y="46" width="10" height="10" fill="#fff"/><rect x="360" y="46" width="10" height="10" fill="#fff"/>
+<rect x="60" y="150" width="130" height="58" fill="#cfe8c0" stroke="#8fbd7d" stroke-width="2"/><text x="125" y="168" text-anchor="middle" font-size="12" fill="#55804a">公園</text><circle cx="85" cy="182" r="6" fill="#66bb6a"/><circle cx="105" cy="192" r="6" fill="#66bb6a"/><circle cx="150" cy="180" r="6" fill="#66bb6a"/><circle cx="170" cy="194" r="6" fill="#66bb6a"/>
+<ellipse cx="392" cy="182" rx="42" ry="24" fill="#9bd1e8" stroke="#6aa9c9" stroke-width="2"/><text x="392" y="186" text-anchor="middle" font-size="12" fill="#33617c">湖泊</text>
+<rect x="0" y="105" width="460" height="20" fill="#ffffff" stroke="#d8d3c8" stroke-width="2"/>
+<line x1="50" y1="92" x2="50" y2="138" stroke="#c62828" stroke-width="4"/><text x="50" y="84" text-anchor="middle" font-size="13" fill="#c62828" font-weight="700">起點</text>
+<line id="mapTick" x1="250" y1="92" x2="250" y2="138" stroke="#e57373" stroke-width="5"/>
+<line x1="50" y1="112" x2="430" y2="112" stroke="#e0dbcf" stroke-width="3" stroke-dasharray="7 6"/>
+<line id="mapBar" x1="50" y1="112" x2="250" y2="112" stroke="#e57373" stroke-width="6" stroke-linecap="round"/>
+<text id="mapBarLabel" x="150" y="88" text-anchor="middle" font-size="14" fill="#c62828" font-weight="700">圖上 2 公分</text>
+<rect x="30" y="204" width="100" height="9" fill="#4a4a4a"/><line x1="30" y1="200" x2="30" y2="217" stroke="#4a4a4a" stroke-width="2"/><line x1="130" y1="200" x2="130" y2="217" stroke="#4a4a4a" stroke-width="2"/><text x="80" y="228" text-anchor="middle" font-size="12" fill="#555">圖上 1 公分 = 實際 10 公尺</text>
+<circle cx="424" cy="30" r="14" fill="#fff" stroke="#999" stroke-width="2"/><path d="M424 18l5 8h-10Z" fill="#e53935"/><text x="424" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#555">北</text>
+<text x="230" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#2c5f8a">比例尺 1：1000</text>
+</svg>
+</div>
+<div class="range-line">圖上距離 <strong id="s92Cm">2</strong> 公分（0.5～3.8 公分）<br><input id="s92Range" type="range" min="0.5" max="3.8" step="0.1" value="2" aria-label="圖上距離公分"></div>
+<div class="input-row"><label>或直接輸入 <input id="s92Input" type="number" min="0.5" max="3.8" step="0.1" value="2" aria-label="圖上距離公分輸入"> 公分</label></div>
+<div class="map-info" id="s92Info">圖上 1 公分 = 實際 1000 公分 = 10 公尺</div>
+<div class="result" id="s92Result">圖上 2 公分 = 實際 2000 公分 = 20 公尺</div>
+</div>
+<div class="concept-box"><strong>比例尺 1：1000：</strong>「圖上距離 1」對應「實際距離 1000」。圖上距離 × 1000 = 實際距離（公分），記得把公分換成公尺（÷100）。</div></section>
+
+<section class="section" id="s93"><div class="section-header"><div class="section-number" style="background:var(--purple)">9-3</div><div class="section-title"><h2>比例尺的應用</h2><p>圖上距離與實際距離互換</p></div></div>
+<p>選好比例尺，輸入數字後按按鈕：<strong>實際距離 = 圖上距離 × 比例尺</strong>；<strong>圖上距離 = 實際距離 ÷ 比例尺</strong>。下方長條圖會跟著比例一起伸長，代表「同樣長短，實地距離大得多」。</p>
+<div class="interactive-area">
+<div class="input-row"><label>比例尺 <select id="s93Scale" aria-label="選擇比例尺"><option value="1000" selected>1：1000</option><option value="5000">1：5000</option><option value="20000">1：20000</option></select></label></div>
+<div class="input-row"><label>圖上 <input id="s93Map" type="number" min="0" step="0.1" value="3" aria-label="圖上距離公分"> 公分</label><button class="btn btn-orange" id="s93MapBtn">求實際距離</button></div>
+<div class="input-row"><label>實際 <input id="s93Real" type="number" min="0" step="0.1" value="50" aria-label="實際距離公尺"> 公尺</label><button class="btn btn-green" id="s93RealBtn">求圖上距離</button></div>
+<div class="proportion-row"><span class="p-label">圖上</span><div class="p-track"><div class="p-fill map" id="pMapBar"></div></div><span class="p-val" id="pMapVal">圖上 3 公分</span></div>
+<div class="proportion-row"><span class="p-label">實際</span><div class="p-track"><div class="p-fill real" id="pRealBar"></div></div><span class="p-val" id="pRealVal">實際 30 公尺</span></div>
+<div class="result" id="s93Result">先按「求實際距離」或「求圖上距離」。</div>
+</div>
+<div class="check-card"><p><strong>檢查 1：</strong>比例尺 1：1000，圖上 3 公分代表實際幾公尺？</p><div class="quiz-options" data-check="s93a" data-answer="0" data-explain="3 × 1000 = 3000 公分，3000 ÷ 100 = 30 公尺。"><button class="quiz-option" data-a="0">A．30 公尺</button><button class="quiz-option" data-a="1">B．300 公尺</button><button class="quiz-option" data-a="2">C．3 公尺</button></div><div class="feedback" id="chk-s93a"></div></div>
+<div class="check-card"><p><strong>檢查 2：</strong>實際距離 250 公尺、比例尺 1：5000，圖上距離是幾公分？</p><div class="quiz-options" data-check="s93b" data-answer="0" data-explain="250 公尺 = 25000 公分，25000 ÷ 5000 = 5 公分。"><button class="quiz-option" data-a="0">A．5 公分</button><button class="quiz-option" data-a="1">B．50 公分</button><button class="quiz-option" data-a="2">C．2.5 公分</button></div><div class="feedback" id="chk-s93b"></div></div></section>
+
+<section class="section" id="draw"><div class="section-header"><div class="section-number" style="background:#f5846e">畫</div><div class="section-title"><h2>畫放大圖、縮圖練習</h2><p>在方格紙上，把圖形按倍率重新畫出來</p></div></div>
+<p>選一個圖形和倍率，按下「畫出結果」，右邊的方格紙會依倍率畫出<strong>放大圖</strong>或<strong>縮圖</strong>。每一格邊長代表 1 格單位。</p>
+<div class="interactive-area">
+<div class="input-row"><label>圖形 <select id="shapeSelect" aria-label="選擇圖形"><option value="rect" selected>長方形（4 × 3）</option><option value="lshape">L 形（4 × 3）</option></select></label><label>倍率 <select id="scaleSelect" aria-label="選擇倍率"><option value="0.5">縮小一半（0.5 倍）</option><option value="1" selected>原尺寸（1 倍）</option><option value="2">放大 2 倍</option><option value="3">放大 3 倍</option></select></label><button class="btn btn-purple" id="drawBtn">畫出結果</button></div>
+<div class="grid-pair">
+<div class="grid-box"><div class="cap">原圖<small id="origCap">長方形：長 4 格、高 3 格</small></div><svg viewBox="0 0 308 242" role="img" aria-label="原圖方格紙"><g class="lines"></g><g class="shapes"></g></svg></div>
+<div class="grid-box"><div class="cap">結果（<span id="resultK">1</span> 倍）<small id="newCap">新圖：長 4 格、高 3 格</small></div><svg viewBox="0 0 308 242" role="img" aria-label="結果方格紙"><g class="lines"></g><g class="shapes"></g></svg></div>
+</div>
+<div class="formula" id="drawFormula">新圖邊長 = 原圖邊長 × 倍率</div>
+<div class="result" id="drawResult">選好圖形與倍率，按下「畫出結果」吧！</div>
+</div>
+<div class="tip-box">畫放大圖時，<strong>每一條邊都乘同樣的倍率</strong>，位置也要對齊格子，畫出來的圖形才會和原圖形狀相同。</div></section>
+
+<section class="section" id="review"><div class="section-header"><div class="section-number" style="background:var(--orange)">記</div><div class="section-title"><h2>重點整理</h2><p>把縮放與比例尺放進數學工具箱</p></div></div>
+<div class="concept-box"><strong>放大圖與縮圖：</strong>形狀相同、大小不同；對應邊成相同倍率，對應角大小相等。</div>
+<div class="concept-box"><strong>倍率：</strong>放大 n 倍 → 每一條邊 × n；縮小為原圖的 1/n → 每一條邊 ÷ n。</div>
+<div class="concept-box"><strong>比例尺：</strong>比例尺 1：1000 表示圖上 1 公分代表實際 1000 公分 = 10 公尺。比例尺 = 圖上距離 ÷ 實際距離。</div>
+<div class="concept-box"><strong>換算：</strong>實際距離 = 圖上距離 × 比例尺；圖上距離 = 實際距離 ÷ 比例尺。注意先統一單位（公里、公尺、公分）。</div>
+<div class="tip-box"><strong>檢查：</strong>輸入要使用大於 0 的數字；答案顯示到小數點後兩位，避免一長串浮點小數。</div></section>
+
+<section class="section" id="quiz"><div class="section-header"><div class="section-number" style="background:var(--pink)">練</div><div class="section-title"><h2>綜合練習</h2><p>選出答案，立即收到回饋</p></div></div>
+<p>答對題數：<strong id="quizScore">0</strong> / <span id="quizTotal">5</span></p><div id="quizBox"></div>
+<div class="completion" id="completion"><h2>🎉 太棒了，綜合練習全答對！</h2><p>你已經能熟練運用放大圖、縮圖與比例尺。</p></div></section>
+
+<section class="section" id="gift"><div class="section-header"><div class="section-number" style="background:#8e78bd">優</div><div class="section-title"><h2>資優加油站</h2><p>挑戰需要多想一步的縮放與比例尺問題</p></div></div>
+<p>先列式再輸入答案，每題都有可展開的解說。</p><div id="giftBox"></div>
+<div class="completion" id="giftCompletion"><h2>🌟 挑戰完成！</h2><p>四題資優題都解開了，你的縮放推理很有力。</p></div></section>
+<footer>108 課綱 · 康軒版 六年級上學期數學 · 自學練習平台</footer></main><canvas id="confetti"></canvas>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),format=n=>Number.isFinite(Number(n))?Number(Number(n).toFixed(2)).toString():'0';
+let stars=0;const solved=new Set(),giftSolved=new Set();
+function addStar(k){if(!solved.has(k)){solved.add(k);stars++;$('star-display').textContent='★ '+stars;updateProgress()}}
+function updateProgress(){const p=Math.min(100,Math.round(solved.size/19*100));$('progress-fill').style.width=p+'%';$('progress-text').textContent=p+'%'}
+function feedback(id,ok,text){const e=$(id);e.className='feedback '+(ok?'correct':'wrong');e.textContent=(ok?'答對了！ ':'再想一想！ ')+text}
+const SHAPES={rect:[[0,0],[4,0],[4,3],[0,3]],lshape:[[0,0],[4,0],[4,1],[1,1],[1,3],[0,3]]};
+const SHAPE_NAMES={rect:'長方形',lshape:'L 形'};
+function updateWarm(){const svg=$('warmSceneSvg'),k=+$('warmRange').value,tag=$('warmTag');$('warmK').textContent=format(k);svg.style.transform='scale('+k+')';$('photoFrame').style.height=(svg.offsetHeight*k)+'px';tag.className='photo-tag'+(k<1?' shrink':(k>1?' grow':' same'));tag.textContent=k<1?'縮圖：原圖的 '+format(k)+' 倍':(k>1?'放大圖：原圖的 '+format(k)+' 倍':'原圖大小（1 倍）');$('warmResult').textContent='寬 6 公分 × '+format(k)+' = '+format(6*k)+' 公分；高 3.8 公分 × '+format(k)+' = '+format(3.8*k)+' 公分。';addStar('warm')}
+function updateScale(){const k=+$('s91Range').value,w=60*k,h=40*k;$('s91K').textContent=format(k);$('scaleRect').setAttribute('width',w);$('scaleRect').setAttribute('height',h);$('scaleTitle').textContent=k===1?'原尺寸（相同）':(k>1?'放大圖 ×'+format(k):'縮圖 ×'+format(k));$('scaleBadge').textContent='× '+format(k);$('scaleSmall').textContent='長寬都乘 '+format(k);$('scaleW').setAttribute('x',250+w/2);$('scaleW').setAttribute('y',100+h+22);$('scaleW').textContent='長 '+format(3*k)+' 公分';$('scaleH').setAttribute('y',100+h/2);$('scaleH').setAttribute('transform','rotate(-90 238 '+format(100+h/2)+')');$('scaleH').textContent='寬 '+format(2*k)+' 公分';const corners=[[250,100],[250+w,100],[250,100+h],[250+w,100+h]];for(let i=0;i<4;i++){$('ams'+(i+1)).setAttribute('d','M'+corners[i][0]+' '+corners[i][1]+'h9v9h-9Z')}$('hlw3').setAttribute('x2',250+w);$('hlw4').setAttribute('x1',250);$('hlw4').setAttribute('x2',250+w);$('hlw4').setAttribute('y1',100+h);$('hlw4').setAttribute('y2',100+h);$('hlh3').setAttribute('y2',100+h);$('hlh4').setAttribute('x1',250+w);$('hlh4').setAttribute('x2',250+w);$('hlh4').setAttribute('y2',100+h);$('s91Formula').textContent='放大後邊長 = 原邊長 × 倍率：3 × '+format(k)+' = '+format(3*k)+'、2 × '+format(k)+' = '+format(2*k);addStar('s91')}
+let hlMode='w';
+function setHl(mode){hlMode=mode;document.querySelectorAll('.hlw,.hlh,.am').forEach(g=>g.style.display='none');if(mode==='w'){document.querySelectorAll('.hlw').forEach(g=>g.style.display='block');$('s91HlInfo').textContent='對應長邊：原圖 3 公分 → '+format(3*+$('s91Range').value)+' 公分，兩條對應邊平行且長度成倍數。'}else if(mode==='h'){document.querySelectorAll('.hlh').forEach(g=>g.style.display='block');$('s91HlInfo').textContent='對應寬邊：原圖 2 公分 → '+format(2*+$('s91Range').value)+' 公分，對應邊都放大（或縮小）相同倍率。'}else{document.querySelectorAll('.am').forEach(g=>g.style.display='block');$('s91HlInfo').textContent='對應角：原圖的每個角 = 變化後圖形的對應角 = 90°，角度完全相等。'}$('hlwBtn').classList.toggle('active',mode==='w');$('hlhBtn').classList.toggle('active',mode==='h');$('hlaBtn').classList.toggle('active',mode==='a')}
+function updateMap(){const cm=Math.max(0.5,Math.min(3.8,+$('s92Range').value)),d=cm*100,x=50+d;$('s92Cm').textContent=format(cm);$('s92Input').value=cm;$('mapTick').setAttribute('x1',x);$('mapTick').setAttribute('x2',x);$('mapBar').setAttribute('x2',x);$('mapBarLabel').setAttribute('x',50+d/2);$('mapBarLabel').textContent='圖上 '+format(cm)+' 公分';$('s92Result').textContent='圖上 '+format(cm)+' 公分 = 實際 '+format(cm*1000)+' 公分 = '+format(cm*10)+' 公尺。';addStar('s92')}
+function updateBars(cm,realM,scale){const mapMax=5,realMax=scale/20;const pm=Math.min(100,cm/mapMax*100),pr=Math.min(100,realM/realMax*100);$('pMapBar').style.width=pm+'%';$('pRealBar').style.width=pr+'%';$('pMapVal').textContent='圖上 '+format(cm)+' 公分';$('pRealVal').textContent='實際 '+format(realM)+' 公尺'}
+function calcMapToReal(){const cm=Math.max(0,+$('s93Map').value||0),scale=+$('s93Scale').value,realM=cm*scale/100;updateBars(cm,realM,scale);$('s93Result').textContent='實際距離 = 圖上 '+format(cm)+' × '+scale+' = '+format(cm*scale)+' 公分 = '+format(realM)+' 公尺。';addStar('s93c')}
+function calcRealToMap(){const m=Math.max(0,+$('s93Real').value||0),scale=+$('s93Scale').value,cm=m*100/scale;updateBars(cm,m,scale);$('s93Result').textContent='圖上距離 = 實際 '+format(m)+' 公尺 = '+format(m*100)+' 公分 ÷ '+scale+' = '+format(cm)+' 公分。';addStar('s93d')}
+function drawGrid(svg){const lines=svg.querySelector('.lines');lines.replaceChildren();const ns='http://www.w3.org/2000/svg';for(let i=0;i<=14;i++){const l=document.createElementNS(ns,'line');l.setAttribute('x1',i*22);l.setAttribute('y1',0);l.setAttribute('x2',i*22);l.setAttribute('y2',242);l.setAttribute('stroke','#e6e6e6');l.setAttribute('stroke-width','1');lines.appendChild(l)}for(let j=0;j<=11;j++){const l=document.createElementNS(ns,'line');l.setAttribute('x1',0);l.setAttribute('y1',j*22);l.setAttribute('x2',308);l.setAttribute('y2',j*22);l.setAttribute('stroke','#e6e6e6');l.setAttribute('stroke-width','1');lines.appendChild(l)}}
+function drawOrig(){const name=$('shapeSelect').value,pts=SHAPES[name],ns='http://www.w3.org/2000/svg',g=document.querySelectorAll('.grid-box')[0].querySelector('.shapes');g.replaceChildren();const poly=document.createElementNS(ns,'polygon');poly.setAttribute('points',pts.map(p=>p[0]*22+','+p[1]*22).join(' '));poly.setAttribute('fill','#d9eef8');poly.setAttribute('stroke','#2c5f8a');poly.setAttribute('stroke-width','3');g.appendChild(poly);$('origCap').textContent=SHAPE_NAMES[name]+'：長 4 格、高 3 格';updateNewCap()}
+function updateNewCap(){const k=+$('scaleSelect').value,$r=$('resultK');$r.textContent=format(k);$('newCap').textContent='新圖：長 '+format(4*k)+' 格、高 '+format(3*k)+' 格';$('drawFormula').textContent='新圖邊長 = 原圖邊長 × 倍率：4 × '+format(k)+' = '+format(4*k)+' 格、3 × '+format(k)+' = '+format(3*k)+' 格'}
+function drawNew(){const btn=$('drawBtn');if(btn.disabled)return;const k=+$('scaleSelect').value,pts=SHAPES[$('shapeSelect').value],ns='http://www.w3.org/2000/svg',g=document.querySelectorAll('.grid-box')[1].querySelector('.shapes');g.replaceChildren();const poly=document.createElementNS(ns,'polygon');poly.setAttribute('points',pts.map(p=>format(p[0]*22*k)+','+format(p[1]*22*k)).join(' '));poly.setAttribute('fill','#fde9d9');poly.setAttribute('stroke','#e57373');poly.setAttribute('stroke-width','3');poly.classList.add('poly-pop');g.appendChild(poly);$('drawResult').textContent=k===1?'原尺寸：圖形大小不變。':(k>1?'放大 '+format(k)+' 倍：每一條邊都變成原來的 '+format(k)+' 倍。':'縮小為原圖的 '+format(k)+' 倍：每一條邊都變成原來的 '+format(k)+' 倍。');btn.disabled=true;btn.textContent='繪製中…';setTimeout(()=>{btn.disabled=false;btn.textContent='再畫一次';addStar('draw')},650)}
+const quiz=[['把長 4 公分、寬 3 公分的長方形放大 2 倍，放大後的長和寬各是多少？',['8 公分、6 公分','6 公分、5 公分','4 公分、3 公分'],0,'4 × 2 = 8、3 × 2 = 6，每一條對應邊都乘 2。'],['長 9 公分的邊在縮圖中變為 3 公分，這是縮小幾倍？',['3 倍','6 倍','27 倍'],0,'9 ÷ 3 = 3，縮圖是原圖的 1/3。'],['比例尺 1：1000，圖上 5 公分代表實際多少公尺？',['5 公尺','50 公尺','500 公尺'],1,'5 × 1000 = 5000 公分 = 50 公尺。'],['比例尺 1：5000，實際距離 200 公尺，圖上距離是多少公分？',['4 公分','40 公分','2.5 公分'],0,'200 公尺 = 20000 公分，20000 ÷ 5000 = 4 公分。'],['關於放大圖與原圖，哪一句話正確？',['對應角會變大','對應角相等、對應邊成倍數','形狀不一定相同'],1,'放大圖與原圖形狀相同，對應角相等，對應邊都放大同樣倍數。']];
+function renderQuiz(){const box=$('quizBox');$('quizTotal').textContent=quiz.length;quiz.forEach((q,i)=>{const c=document.createElement('div');c.className='quiz-card';c.innerHTML='<strong>第 '+(i+1)+' 題：</strong>'+q[0]+'<div class="quiz-options">'+q[1].map((x,j)=>'<button class="quiz-option" data-q="'+i+'" data-a="'+j+'">'+String.fromCharCode(65+j)+'．'+x+'</button>').join('')+'</div><div class="feedback" id="qf'+i+'"></div>';box.appendChild(c)});box.addEventListener('click',e=>{if(e.target.dataset.q===undefined)return;const i=+e.target.dataset.q,j=+e.target.dataset.a,q=quiz[i],c=e.target.closest('.quiz-card');c.querySelectorAll('button').forEach(b=>b.disabled=true);e.target.classList.add(j===q[2]?'correct':'wrong');c.querySelectorAll('button')[q[2]].classList.add('correct');feedback('qf'+i,j===q[2],q[3]);if(j===q[2]){$('quizScore').textContent=+$('quizScore').textContent+1;addStar('q'+i)}if(quiz.every((_,x)=>solved.has('q'+x))){$('completion').classList.add('show');fireConfetti()}})}
+const gifts=[['長 5 公分、寬 4 公分的長方形放大 2 倍，放大後的面積是多少平方公分？','80','原面積 5 × 4 = 20 平方公分；放大 2 倍後每條邊 ×2，面積變成 ×4：20 × 4 = 80 平方公分。'],['比例尺 1：25000 的地圖上，量得兩地相距 4 公分，實際距離是幾公里？','1','4 × 25000 = 100000 公分 = 1000 公尺 = 1 公里。'],['原圖的邊長 12 公分，縮圖的對應邊長 3 公分，縮圖是原圖的幾倍？','0.25','3 ÷ 12 = 0.25，也就是原圖的 1/4。'],['放大圖裡 90° 的角，縮圖中對應的角是幾度？','90','對應角大小相等：縮小只改變邊長，不改變角度。']];
+function numEq(input,expected){const t=String(input).trim();let v;if(t.includes('/')){const p=t.split('/');v=p.length===2&&+p[1]?+p[0]/+p[1]:NaN}else{v=+t}return Number.isFinite(v)&&Number.isFinite(+expected)&&Math.abs(v-(+expected))<1e-6}
+function renderGifts(){const box=$('giftBox');gifts.forEach((g,i)=>{const c=document.createElement('div');c.className='quiz-card';c.innerHTML='<strong>'+(i+1)+'．'+g[0]+'</strong><div class="challenge-answer"><label for="gift'+i+'">答案</label><input class="answer-input" id="gift'+i+'"><button class="btn btn-purple btn-sm" data-g="'+i+'">檢查</button></div><div class="feedback" id="gf'+i+'"></div><details><summary>展開解說</summary><div>'+g[2]+'</div></details>';box.appendChild(c)});box.addEventListener('click',e=>{if(e.target.dataset.g===undefined)return;const i=+e.target.dataset.g,v=$('gift'+i).value,ok=numEq(v,gifts[i][1]);feedback('gf'+i,ok,ok?'公式與答案正確！':'先確認單位是否統一，再檢查倍率與面積的關係。');if(ok){giftSolved.add(i);addStar('g'+i);if(giftSolved.size===4){$('giftCompletion').classList.add('show');fireConfetti()}}})}
+function fireConfetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const p=Array.from({length:60},(_,i)=>({x:Math.random()*c.width,y:-20-Math.random()*100,v:2+Math.random()*3,c:['#f5846e','#f5a623','#69b96d','#6ec6f5','#b39ddb'][i%5]}));function go(){x.clearRect(0,0,c.width,c.height);let live=false;p.forEach(a=>{a.y+=a.v;a.x+=Math.sin(a.y/25);if(a.y<c.height)live=true;x.fillStyle=a.c;x.fillRect(a.x,a.y,7,10)});if(live)requestAnimationFrame(go)}go()}
+window.addEventListener('load',()=>{updateWarm();updateScale();setHl('w');updateMap();updateBars(3,30,1000);drawGrid(document.querySelectorAll('.grid-box')[0].querySelector('svg'));drawGrid(document.querySelectorAll('.grid-box')[1].querySelector('svg'));drawOrig();updateNewCap();renderQuiz();renderGifts();$('warmRange').addEventListener('input',updateWarm);$('s91Range').addEventListener('input',updateScale);$('s91Half').addEventListener('click',()=>{$('s91Range').value=0.5;updateScale()});$('s91Double').addEventListener('click',()=>{$('s91Range').value=2;updateScale()});$('s91Triple').addEventListener('click',()=>{$('s91Range').value=3;updateScale()});$('hlwBtn').addEventListener('click',()=>setHl('w'));$('hlhBtn').addEventListener('click',()=>setHl('h'));$('hlaBtn').addEventListener('click',()=>setHl('a'));$('s92Range').addEventListener('input',updateMap);$('s92Input').addEventListener('input',()=>{$('s92Range').value=Math.max(0.5,Math.min(3.8,+$('s92Input').value||0.5));updateMap()});$('s93MapBtn').addEventListener('click',calcMapToReal);$('s93RealBtn').addEventListener('click',calcRealToMap);$('s93Scale').addEventListener('change',()=>updateBars(Math.max(0,+$('s93Map').value||0),Math.max(0,+$('s93Real').value||0),+$('s93Scale').value));$('shapeSelect').addEventListener('change',drawOrig);$('scaleSelect').addEventListener('change',updateNewCap);$('drawBtn').addEventListener('click',drawNew);document.querySelectorAll('.quiz-options[data-check]').forEach(box=>box.addEventListener('click',e=>{if(e.target.dataset.a===undefined)return;const key=box.dataset.check,correct=+box.dataset.answer,a=+e.target.dataset.a;box.querySelectorAll('button').forEach(b=>b.disabled=true);e.target.classList.add(a===correct?'correct':'wrong');box.querySelectorAll('button')[correct].classList.add('correct');feedback('chk-'+key,a===correct,box.dataset.explain);if(a===correct)addStar(key)}))})
+</script></body></html>
