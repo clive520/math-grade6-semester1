@@ -1359,6 +1359,13 @@
       $('app-q2').value = '';
       $('app-q2-fb').className = 'feedback';
     }
+    function mixedFracHTML(f){
+      const w=Math.floor(f.num/f.den), r=f.num%f.den;
+      let s='';
+      if(w>0) s+=w+' ';
+      if(r>0) s+=fracHTML(r,f.den);
+      return s.trim() || '0';
+    }
     function generateApp3(){
       while(true){
         const Wl=randInt(2,4),bl=randInt(2,9),nl=randInt(1,bl-1);
@@ -1367,7 +1374,7 @@
         const area=mulFrac(L,W);
         if(area.num<=60&&area.den<=20) { currentApp3={L:{W:Wl,n:nl,d:bl},W:{W:Ww,n:nw,d:bw},area}; break; }
       }
-      $('app-q3-text').innerHTML = `長方形菜園面積是 ${currentApp3.area.W} ${fracHTML(currentApp3.area.n, currentApp3.area.d)} 平方公尺，長是 ${currentApp3.L.W} ${fracHTML(currentApp3.L.n, currentApp3.L.d)} 公尺，寬是多少公尺？`;
+      $('app-q3-text').innerHTML = `長方形菜園面積是 ${mixedFracHTML(currentApp3.area)} 平方公尺，長是 ${currentApp3.L.W} ${fracHTML(currentApp3.L.n, currentApp3.L.d)} 公尺，寬是多少公尺？`;
       $('app-q3').value = '';
       $('app-q3-fb').className = 'feedback';
     }
