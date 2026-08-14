@@ -122,7 +122,7 @@
 <section class="section" id="s93"><div class="section-header"><div class="section-number" style="background:var(--purple)">9-3</div><div class="section-title"><h2>比例尺的應用</h2><p>圖上距離與實際距離互換</p></div></div>
 <p>選好比例尺，輸入數字後按按鈕：<strong>實際距離 = 圖上距離 × 比例尺</strong>；<strong>圖上距離 = 實際距離 ÷ 比例尺</strong>。</p>
 <div class="interactive-area">
-<div class="input-row"><label>比例尺 <select id="s93Scale" aria-label="選擇比例尺"><option value="1000" selected>1：1000</option><option value="5000">1：5000</option><option value="20000">1：20000</option></select></label></div>
+<div class="input-row"><label>比例尺 <select id="s93Scale" aria-label="選擇比例尺"><option value="100">1：100</option><option value="500">1：500</option><option value="1000" selected>1：1000</option><option value="5000">1：5000</option><option value="10000">1：10000</option><option value="25000">1：25000</option><option value="50000">1：50000</option><option value="100000">1：100000</option></select></label></div>
 <div class="input-row"><label>圖上 <input id="s93Map" type="number" min="0" step="0.1" value="3" aria-label="圖上距離公分"> 公分</label><button class="btn btn-orange" id="s93MapBtn">求實際距離</button></div>
 <div class="input-row"><label>實際 <input id="s93RealCm" type="number" readonly value="5000" aria-label="實際距離公分"> 公分 ＝ 實際 <input id="s93Real" type="number" min="0" step="0.1" value="50" aria-label="實際距離公尺"> 公尺 ＝ 實際 <input id="s93RealKm" type="number" readonly value="0.05" aria-label="實際距離公里"> 公里</label><button class="btn btn-green" id="s93RealBtn">求圖上距離</button></div>
 <div class="result" id="s93Result">先按「求實際距離」或「求圖上距離」。</div>
