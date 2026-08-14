@@ -706,20 +706,20 @@
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">🧮 同分母除法練習</h3>
         <div class="problem-card">
-          <div class="problem-text">有一條長 <span class="fraction"><span class="num">6</span><span class="den">7</span></span> 公尺的彩繩，每 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> 公尺做成一個中國結，一共可以做成幾個？</div>
+          <div class="problem-text" id="same-q1-text">有一條長 <span class="fraction"><span class="num">6</span><span class="den">7</span></span> 公尺的彩繩，每 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> 公尺做成一個中國結，一共可以做成幾個？</div>
           <img src="./images/unit02_practice_knots.png" alt="6/7 公尺彩繩每 2/7 公尺做一個中國結的圖解" style="max-width:100%; border-radius:12px; margin:12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <div class="problem-answer" style="justify-content:center;">
-            <span class="fraction"><span class="num">6</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">2</span><span class="den">7</span></span> ＝ <input type="number" id="same-q1" placeholder="?"> 個
-            <button class="btn btn-sm btn-primary" onclick="checkSameQ1()">檢查</button>
+            <span id="same-q1-expr"><span class="fraction"><span class="num">6</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">2</span><span class="den">7</span></span></span> ＝ <input type="number" id="same-q1" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ1()">檢查</button> <button class="btn btn-sm" onclick="generateSameQ1()">🔄 換一題</button>
           </div>
           <div id="same-q1-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
-          <div class="problem-text">一塊重 <span class="fraction"><span class="num">15</span><span class="den">16</span></span> 公斤的麵團，每 <span class="fraction"><span class="num">3</span><span class="den">16</span></span> 公斤做一個披薩，一共可以做幾個？</div>
+          <div class="problem-text" id="same-q2-text">一塊重 <span class="fraction"><span class="num">15</span><span class="den">16</span></span> 公斤的麵團，每 <span class="fraction"><span class="num">3</span><span class="den">16</span></span> 公斤做一個披薩，一共可以做幾個？</div>
           <img src="./images/unit02_practice_pizzas.png" alt="15/16 公斤麵團每 3/16 公斤做一個披薩的圖解" style="max-width:100%; border-radius:12px; margin:12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <div class="problem-answer" style="justify-content:center;">
-            <span class="fraction"><span class="num">15</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">16</span></span> ＝ <input type="number" id="same-q2" placeholder="?"> 個
-            <button class="btn btn-sm btn-primary" onclick="checkSameQ2()">檢查</button>
+            <span id="same-q2-expr"><span class="fraction"><span class="num">15</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">16</span></span></span> ＝ <input type="number" id="same-q2" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ2()">檢查</button> <button class="btn btn-sm" onclick="generateSameQ2()">🔄 換一題</button>
           </div>
           <div id="same-q2-fb" class="feedback"></div>
         </div>
@@ -727,21 +727,21 @@
 
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">🎀 緞帶長度比一比</h3>
-        <p>藍色緞帶長 <span class="fraction"><span class="num">7</span><span class="den">5</span></span> 公尺，綠色緞帶長 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公尺。</p>
+        <p id="ribbon-text">藍色緞帶長 <span class="fraction"><span class="num">7</span><span class="den">5</span></span> 公尺，綠色緞帶長 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公尺。</p>
         <div id="ribbon-compare" style="margin:16px 0;"></div>
         <div id="ribbon-visual" style="margin:16px 0;"></div>
         <div class="problem-card">
           <div class="problem-text">藍色緞帶長是綠色緞帶長的幾倍？</div>
           <div class="problem-answer" style="justify-content:center;">
-            <span class="fraction"><span class="num">7</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ＝ <input type="text" id="same-q3" placeholder="?" style="width:70px;"> 倍
-            <button class="btn btn-sm btn-primary" onclick="checkSameQ3()">檢查</button>
+            <span id="same-q3-expr"><span class="fraction"><span class="num">7</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span></span> ＝ <input type="text" id="same-q3" placeholder="?" style="width:70px;"> 倍
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ3()">檢查</button> <button class="btn btn-sm" onclick="generateRibbon()">🔄 換一題</button>
           </div>
           <div id="same-q3-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
           <div class="problem-text">綠色緞帶長是藍色緞帶長的幾倍？</div>
           <div class="problem-answer" style="justify-content:center;">
-            <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">5</span></span> ＝ <input type="text" id="same-q4" placeholder="?" style="width:70px;"> 倍
+            <span id="same-q4-expr"><span class="fraction"><span class="num">4</span><span class="den">5</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">5</span></span></span> ＝ <input type="text" id="same-q4" placeholder="?" style="width:70px;"> 倍
             <button class="btn btn-sm btn-primary" onclick="checkSameQ4()">檢查</button>
           </div>
           <div id="same-q4-fb" class="feedback"></div>
@@ -815,18 +815,18 @@
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 異分母除法練習</h3>
         <div class="problem-card">
-          <div class="problem-text"><span class="fraction"><span class="num">5</span><span class="den">9</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">11</span></span> ＝ ?</div>
+          <div class="problem-text" id="diff-q1-text"><span class="fraction"><span class="num">5</span><span class="den">9</span></span> ÷ <span class="fraction"><span class="num">7</span><span class="den">11</span></span> ＝ ?</div>
           <div class="problem-answer" style="justify-content:center;">
             答案：<input type="text" id="diff-q1" placeholder="?" style="width:70px;">
-            <button class="btn btn-sm btn-primary" onclick="checkDiffQ1()">檢查</button>
+            <button class="btn btn-sm btn-primary" onclick="checkDiffQ1()">檢查</button> <button class="btn btn-sm" onclick="generateDiff1()">🔄 換一題</button>
           </div>
           <div id="diff-q1-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
-          <div class="problem-text">6 <span class="fraction"><span class="num">2</span><span class="den">3</span></span> ÷ <span class="fraction"><span class="num">15</span><span class="den">7</span></span> ＝ ?</div>
+          <div class="problem-text" id="diff-q2-text">6 <span class="fraction"><span class="num">2</span><span class="den">3</span></span> ÷ <span class="fraction"><span class="num">15</span><span class="den">7</span></span> ＝ ?</div>
           <div class="problem-answer" style="justify-content:center;">
             答案：<input type="text" id="diff-q2" placeholder="?" style="width:70px;">
-            <button class="btn btn-sm btn-primary" onclick="checkDiffQ2()">檢查</button>
+            <button class="btn btn-sm btn-primary" onclick="checkDiffQ2()">檢查</button> <button class="btn btn-sm" onclick="generateDiff2()">🔄 換一題</button>
           </div>
           <div id="diff-q2-fb" class="feedback"></div>
         </div>
@@ -852,15 +852,15 @@
 
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">🏃 接力賽跑</h3>
-        <p>在長 2 公里的接力賽跑中，每一位選手跑 <span class="fraction"><span class="num">1</span><span class="den">5</span></span> 公里，每隊需要幾位選手？</p>
+        <p id="relay-text">在長 2 公里的接力賽跑中，每一位選手跑 <span class="fraction"><span class="num">1</span><span class="den">5</span></span> 公里，每隊需要幾位選手？</p>
         <div class="tape" id="relay-tape"><div class="tape-fill" style="width:100%;"></div></div>
         <div id="relay-labels" style="position:relative; height:30px;"></div>
         <div class="btn-group" style="justify-content:center;">
           <button class="btn btn-primary" onclick="showRelay()">幫選手排位置</button>
         </div>
         <div class="problem-answer" style="justify-content:center; margin-top:14px;">
-          2 ÷ <span class="fraction"><span class="num">1</span><span class="den">5</span></span> ＝ <input type="number" id="relay-ans" placeholder="?"> 位
-          <button class="btn btn-sm btn-primary" onclick="checkRelay()">檢查</button>
+          <span id="relay-expr">2 ÷ <span class="fraction"><span class="num">1</span><span class="den">5</span></span></span> ＝ <input type="number" id="relay-ans" placeholder="?"> 位
+          <button class="btn btn-sm btn-primary" onclick="checkRelay()">檢查</button> <button class="btn btn-sm" onclick="generateRelay()">🔄 換一題</button>
         </div>
         <div id="relay-fb" class="feedback"></div>
       </div>
@@ -868,26 +868,26 @@
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">✏️ 應用題練習</h3>
         <div class="problem-card">
-          <div class="problem-text">媽媽買 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公斤的芭樂花了 48 元，1 公斤芭樂賣多少元？</div>
+          <div class="problem-text" id="app-q1-text">媽媽買 <span class="fraction"><span class="num">4</span><span class="den">5</span></span> 公斤的芭樂花了 48 元，1 公斤芭樂賣多少元？</div>
           <div class="problem-answer" style="justify-content:center;">
-            48 ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span> ＝ <input type="number" id="app-q1" placeholder="?"> 元
-            <button class="btn btn-sm btn-primary" onclick="checkAppQ1()">檢查</button>
+            <span id="app-q1-expr">48 ÷ <span class="fraction"><span class="num">4</span><span class="den">5</span></span></span> ＝ <input type="number" id="app-q1" placeholder="?"> 元
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ1()">檢查</button> <button class="btn btn-sm" onclick="generateApp1()">🔄 換一題</button>
           </div>
           <div id="app-q1-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
-          <div class="problem-text">幸福國小六年級女學生占全年級的 <span class="fraction"><span class="num">8</span><span class="den">15</span></span>，女學生有 72 人，六年級共有多少人？</div>
+          <div class="problem-text" id="app-q2-text">幸福國小六年級女學生占全年級的 <span class="fraction"><span class="num">8</span><span class="den">15</span></span>，女學生有 72 人，六年級共有多少人？</div>
           <div class="problem-answer" style="justify-content:center;">
-            72 ÷ <span class="fraction"><span class="num">8</span><span class="den">15</span></span> ＝ <input type="number" id="app-q2" placeholder="?"> 人
-            <button class="btn btn-sm btn-primary" onclick="checkAppQ2()">檢查</button>
+            <span id="app-q2-expr">72 ÷ <span class="fraction"><span class="num">8</span><span class="den">15</span></span></span> ＝ <input type="number" id="app-q2" placeholder="?"> 人
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ2()">檢查</button> <button class="btn btn-sm" onclick="generateApp2()">🔄 換一題</button>
           </div>
           <div id="app-q2-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
-          <div class="problem-text">長方形菜園面積是 8 <span class="fraction"><span class="num">3</span><span class="den">4</span></span> 平方公尺，長是 3 <span class="fraction"><span class="num">1</span><span class="den">8</span></span> 公尺，寬是多少公尺？</div>
+          <div class="problem-text" id="app-q3-text">長方形菜園面積是 8 <span class="fraction"><span class="num">3</span><span class="den">4</span></span> 平方公尺，長是 3 <span class="fraction"><span class="num">1</span><span class="den">8</span></span> 公尺，寬是多少公尺？</div>
           <div class="problem-answer" style="justify-content:center;">
             答案：<input type="text" id="app-q3" placeholder="?" style="width:70px;"> 公尺
-            <button class="btn btn-sm btn-primary" onclick="checkAppQ3()">檢查</button>
+            <button class="btn btn-sm btn-primary" onclick="checkAppQ3()">檢查</button> <button class="btn btn-sm" onclick="generateApp3()">🔄 換一題</button>
           </div>
           <div id="app-q3-fb" class="feedback"></div>
         </div>
@@ -988,10 +988,10 @@
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">🧮 試試看</h3>
         <div class="problem-card">
-          <div class="problem-text">媽媽榨了 2 公升的柳丁汁，分裝在容量 <span class="fraction"><span class="num">3</span><span class="den">5</span></span> 公升的杯子裡，最多可以裝滿幾杯？還剩下幾公升？</div>
+          <div class="problem-text" id="rem-text">媽媽榨了 2 公升的柳丁汁，分裝在容量 <span class="fraction"><span class="num">3</span><span class="den">5</span></span> 公升的杯子裡，最多可以裝滿幾杯？還剩下幾公升？</div>
           <div class="problem-answer" style="justify-content:center;">
             裝滿 <input type="number" id="rem-q1" placeholder="?" style="width:60px;"> 杯，剩下 <input type="text" id="rem-q2" placeholder="?" style="width:60px;"> 公升
-            <button class="btn btn-sm btn-primary" onclick="checkRemainderQ()">檢查</button>
+            <button class="btn btn-sm btn-primary" onclick="checkRemainderQ()">檢查</button> <button class="btn btn-sm" onclick="generateRem()">🔄 換一題</button>
           </div>
           <div id="rem-fb" class="feedback"></div>
         </div>
@@ -1031,35 +1031,35 @@
       </div>
 
       <div class="problem-card">
-        <div class="problem-text">1. 一個水壺容量是 3 公升，一個杯子容量是 <span class="fraction"><span class="num">3</span><span class="den">8</span></span> 公升，水壺容量是杯子的幾倍？</div>
+        <div class="problem-text" id="rev-q1-text">1. 一個水壺容量是 3 公升，一個杯子容量是 <span class="fraction"><span class="num">3</span><span class="den">8</span></span> 公升，水壺容量是杯子的幾倍？</div>
         <div class="problem-answer">
           答案：<input type="number" id="rev-q1" placeholder="?"> 倍
-          <button class="btn btn-sm btn-primary" onclick="checkReviewQ1()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ1()">檢查</button> <button class="btn btn-sm" onclick="generateRev1()">🔄 換一題</button>
         </div>
         <div id="rev-q1-fb" class="feedback"></div>
       </div>
 
       <div class="problem-card">
-        <div class="problem-text">2. 哥哥買了一條長 <span class="fraction"><span class="num">11</span><span class="den">5</span></span> 公尺的鐵絲，花了 18 元，長 1 公尺的鐵絲售價幾元？</div>
+        <div class="problem-text" id="rev-q2-text">2. 哥哥買了一條長 <span class="fraction"><span class="num">11</span><span class="den">5</span></span> 公尺的鐵絲，花了 18 元，長 1 公尺的鐵絲售價幾元？</div>
         <div class="problem-answer">
           答案：<input type="number" id="rev-q2" placeholder="?"> 元
-          <button class="btn btn-sm btn-primary" onclick="checkReviewQ2()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ2()">檢查</button> <button class="btn btn-sm" onclick="generateRev2()">🔄 換一題</button>
         </div>
         <div id="rev-q2-fb" class="feedback"></div>
       </div>
 
       <div class="problem-card">
-        <div class="problem-text">3. 下面哪一個算式的商比 <span class="fraction"><span class="num">8</span><span class="den">9</span></span> 大？（多選）</div>
+        <div class="problem-text" id="rev-compare-text">3. 下面哪一個算式的商比 <span class="fraction"><span class="num">8</span><span class="den">9</span></span> 大？（多選）</div>
         <div class="quiz-options" id="rev-compare-options"></div>
-        <div class="btn-group"><button class="btn btn-primary" onclick="checkReviewCompare()">檢查答案</button></div>
+        <div class="btn-group"><button class="btn btn-primary" onclick="checkReviewCompare()">檢查答案</button><button class="btn btn-sm" onclick="generateRev3()">🔄 換一題</button></div>
         <div id="rev-compare-fb" class="feedback"></div>
       </div>
 
       <div class="problem-card">
-        <div class="problem-text">4. 把 <span class="fraction"><span class="num">49</span><span class="den">21</span></span> 化成最簡分數。</div>
+        <div class="problem-text" id="rev-q4-text">4. 把 <span class="fraction"><span class="num">49</span><span class="den">21</span></span> 化成最簡分數。</div>
         <div class="problem-answer">
           答案：<input type="text" id="rev-q4" placeholder="?" style="width:70px;">
-          <button class="btn btn-sm btn-primary" onclick="checkReviewQ4()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkReviewQ4()">檢查</button> <button class="btn btn-sm" onclick="generateRev4()">🔄 換一題</button>
         </div>
         <div id="rev-q4-fb" class="feedback"></div>
       </div>
@@ -1067,15 +1067,15 @@
       <div class="problem-card">
         <div class="problem-text">5. 下面的計算過程中，哪一個步驟開始算錯？把它圈出來並訂正。</div>
         <div style="background:white; border-radius:10px; padding:16px; margin:10px 0; font-family:monospace; line-height:2;">
-          <span class="fraction"><span class="num">1</span><span class="den">3</span></span> ÷ 6<span class="fraction"><span class="num">1</span><span class="den">2</span></span><br>
-          ＝ <span class="fraction"><span class="num">1</span><span class="den">3</span></span> ÷ <span class="fraction"><span class="num">13</span><span class="den">2</span></span>　　（步驟一）<br>
+          <span id="err-text"><span class="fraction"><span class="num">1</span><span class="den">3</span></span> ÷ 6<span class="fraction"><span class="num">1</span><span class="den">2</span></span></span><br>
+          ＝ <span id="err-step1"><span class="fraction"><span class="num">1</span><span class="den">3</span></span> ÷ <span class="fraction"><span class="num">13</span><span class="den">2</span></span></span>　　（步驟一）<br>
           ＝ 3<span class="fraction"><span class="num">1</span><span class="den">3</span></span> × <span class="fraction"><span class="num">2</span><span class="den">13</span></span>　　（步驟二）<br>
-          ＝ <span class="fraction"><span class="num">6</span><span class="den">13</span></span>
+          ＝ <span id="err-wrong-ans"><span class="fraction"><span class="num">6</span><span class="den">13</span></span></span>
         </div>
         <div class="problem-answer" style="flex-direction:column; align-items:flex-start;">
           <div>錯誤步驟：<select id="err-step"><option value="">請選擇</option><option value="1">步驟一</option><option value="2">步驟二</option></select></div>
           <div style="margin-top:8px;">正確答案：<input type="text" id="err-ans" placeholder="?" style="width:70px;">
-          <button class="btn btn-sm btn-primary" onclick="checkErrorCorrection()">檢查</button></div>
+          <button class="btn btn-sm btn-primary" onclick="checkErrorCorrection()">檢查</button> <button class="btn btn-sm" onclick="generateErr()">🔄 換一題</button></div>
         </div>
         <div id="err-fb" class="feedback"></div>
       </div>
@@ -1100,7 +1100,7 @@
 
       <div class="problem-card">
         <div class="problem-text"><strong>挑戰 1：除法巧算</strong><br>觀察下面這道題，有沒有比「兩個除法分開算」更快的方法？</div>
-        <div style="text-align:center; font-size:1.3rem; margin:16px 0; line-height:2;">
+        <div style="text-align:center; font-size:1.3rem; margin:16px 0; line-height:2;" id="gift-q1-text">
           4 <span class="fraction"><span class="num">5</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">1</span><span class="den">7</span></span> ＋ 2 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">1</span><span class="den">7</span></span> ＝ ?
         </div>
         <div class="tip-box">
@@ -1108,10 +1108,10 @@
         </div>
         <div class="problem-answer" style="justify-content:center;">
           答案：<input type="number" id="gift-q1" placeholder="?" style="width:80px;">
-          <button class="btn btn-sm btn-primary" onclick="checkGiftQ1()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkGiftQ1()">檢查</button> <button class="btn btn-sm" onclick="generateGift1()">🔄 換一題</button>
         </div>
         <div id="gift-q1-fb" class="feedback"></div>
-        <details><summary>看解析</summary><div class="solution-content">
+        <details><summary>看解析</summary><div class="solution-content" id="gift-q1-sol">
           利用「(a ＋ b) ÷ c ＝ a ÷ c ＋ b ÷ c」的性質：<br>
           原式 ＝ (4 <span class="fraction"><span class="num">5</span><span class="den">7</span></span> ＋ 2 <span class="fraction"><span class="num">2</span><span class="den">7</span></span>) ÷ <span class="fraction"><span class="num">1</span><span class="den">7</span></span><br>
           ＝ 7 ÷ <span class="fraction"><span class="num">1</span><span class="den">7</span></span><br>
@@ -1120,26 +1120,23 @@
       </div>
 
       <div class="problem-card">
-        <div class="problem-text"><strong>挑戰 2：計算看反了</strong><br>小美在計算「一個數 ÷ <span class="fraction"><span class="num">3</span><span class="den">4</span></span>」時，不小心看成「一個數 × <span class="fraction"><span class="num">3</span><span class="den">4</span></span>」，結果得到 <span class="fraction"><span class="num">9</span><span class="den">16</span></span>。正確的答案應該是多少？</div>
+        <div class="problem-text"><strong>挑戰 2：計算看反了</strong><br><span id="gift-q2-text">小美在計算「一個數 ÷ <span class="fraction"><span class="num">3</span><span class="den">4</span></span>」時，不小心看成「一個數 × <span class="fraction"><span class="num">3</span><span class="den">4</span></span>」，結果得到 <span class="fraction"><span class="num">9</span><span class="den">16</span></span>。正確的答案應該是多少？</span></div>
         <div class="problem-answer" style="justify-content:center;">
           正確答案：<input type="text" id="gift-q2" placeholder="?" style="width:70px;">
-          <button class="btn btn-sm btn-primary" onclick="checkGiftQ2()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkGiftQ2()">檢查</button> <button class="btn btn-sm" onclick="generateGift2()">🔄 換一題</button>
         </div>
         <div id="gift-q2-fb" class="feedback"></div>
-        <details><summary>看解析</summary><div class="solution-content">
-          先從錯誤的算式找出「那個數」：<br>
-          一個數 × <span class="fraction"><span class="num">3</span><span class="den">4</span></span> ＝ <span class="fraction"><span class="num">9</span><span class="den">16</span></span><br>
-          所以那個數 ＝ <span class="fraction"><span class="num">9</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">4</span></span> ＝ <span class="fraction"><span class="num">3</span><span class="den">4</span></span><br>
-          正確答案 ＝ <span class="fraction"><span class="num">3</span><span class="den">4</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">4</span></span> ＝ <strong>1</strong>
+        <details><summary>看解析</summary><div class="solution-content" id="gift-q2-sol">
+          先從錯誤的算式找出「那個數」。
         </div></details>
       </div>
 
       <div class="problem-card">
         <div class="problem-text"><strong>挑戰 3：規律求和</strong><br>觀察下面的規律，再算出答案。</div>
-        <div style="text-align:center; font-size:1.1rem; margin:16px 0; line-height:2;">
+        <div style="text-align:center; font-size:1.1rem; margin:16px 0; line-height:2;" id="gift-q3-pattern">
           <span class="fraction"><span class="num">1</span><span class="den">2</span></span> ＝ 1 － <span class="fraction"><span class="num">1</span><span class="den">2</span></span>　　<span class="fraction"><span class="num">1</span><span class="den">6</span></span> ＝ <span class="fraction"><span class="num">1</span><span class="den">2</span></span> － <span class="fraction"><span class="num">1</span><span class="den">3</span></span>　　<span class="fraction"><span class="num">1</span><span class="den">12</span></span> ＝ <span class="fraction"><span class="num">1</span><span class="den">3</span></span> － <span class="fraction"><span class="num">1</span><span class="den">4</span></span>
         </div>
-        <div style="text-align:center; font-size:1.2rem; font-weight:700; margin:16px 0;">
+        <div style="text-align:center; font-size:1.2rem; font-weight:700; margin:16px 0;" id="gift-q3-sum">
           <span class="fraction"><span class="num">1</span><span class="den">2</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">6</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">12</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">20</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">30</span></span> ＝ ?
         </div>
         <div class="btn-group" style="justify-content:center;">
@@ -1148,24 +1145,20 @@
         <div id="telescope-visual" style="margin:14px 0;"></div>
         <div class="problem-answer" style="justify-content:center;">
           答案：<input type="text" id="gift-q3" placeholder="?" style="width:70px;">
-          <button class="btn btn-sm btn-primary" onclick="checkGiftQ3()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkGiftQ3()">檢查</button> <button class="btn btn-sm" onclick="generateGift3()">🔄 換一題</button>
         </div>
         <div id="gift-q3-fb" class="feedback"></div>
       </div>
 
       <div class="problem-card">
-        <div class="problem-text"><strong>挑戰 4：找出原來的分數</strong><br>一個分數，分子加分母等於 36。如果分子加 5、分母減 5，新的分數會等於 <span class="fraction"><span class="num">1</span><span class="den">2</span></span>。原來的分數是多少？</div>
+        <div class="problem-text"><strong>挑戰 4：找出原來的分數</strong><br><span id="gift-q4-text">一個分數，分子加分母等於 36。如果分子加 5、分母減 5，新的分數會等於 <span class="fraction"><span class="num">1</span><span class="den">2</span></span>。原來的分數是多少？</span></div>
         <div class="problem-answer" style="justify-content:center;">
           原來的分數：<input type="text" id="gift-q4" placeholder="?" style="width:70px;">
-          <button class="btn btn-sm btn-primary" onclick="checkGiftQ4()">檢查</button>
+          <button class="btn btn-sm btn-primary" onclick="checkGiftQ4()">檢查</button> <button class="btn btn-sm" onclick="generateGift4()">🔄 換一題</button>
         </div>
         <div id="gift-q4-fb" class="feedback"></div>
-        <details><summary>看解析</summary><div class="solution-content">
-          設原來的分數是 <span class="fraction"><span class="num">a</span><span class="den">b</span></span>。<br>
-          a ＋ b ＝ 36，且 <span class="fraction"><span class="num">a＋5</span><span class="den">b－5</span></span> ＝ <span class="fraction"><span class="num">1</span><span class="den">2</span></span><br>
-          由 <span class="fraction"><span class="num">a＋5</span><span class="den">b－5</span></span> ＝ <span class="fraction"><span class="num">1</span><span class="den">2</span></span> 得到 2(a＋5) ＝ b－5，所以 b ＝ 2a＋15。<br>
-          代入 a＋b＝36：a＋(2a＋15)＝36，3a＝21，a＝7，b＝29。<br>
-          所以原來的分數是 <strong><span class="fraction"><span class="num">7</span><span class="den">29</span></span></strong>。
+        <details><summary>看解析</summary><div class="solution-content" id="gift-q4-sol">
+          設原來的分數是 <span class="fraction"><span class="num">a</span><span class="den">b</span></span>。
         </div></details>
       </div>
 
@@ -1269,6 +1262,232 @@
     // 畫分數
     function fracHTML(n,d){ return `<span class="fraction"><span class="num">${n}</span><span class="den">${d}</span></span>`; }
     function mixedHTML(w,n,d){ return `<span class="fraction mixed"><span class="whole">${w}</span><span class="num">${n}</span><span class="den">${d}</span></span>`; }
+
+    // ===== 隨機題目生成器 =====
+    function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+    let currentSame1 = null, currentSame2 = null, currentRibbon = null;
+    let currentDiff1 = null, currentDiff2 = null;
+    let currentRelay = null, currentApp1 = null, currentApp2 = null, currentApp3 = null;
+    let currentRem = null;
+    let currentRev1 = null, currentRev2 = null, currentRev4 = null, currentErr = null;
+    let currentGift1 = null, currentGift2 = null, currentGift3 = null, currentGift4 = null;
+
+    function genSamePair(){
+      while(true){
+        const b=randInt(2,5), q=randInt(2,6), pq=b*q;
+        const d=randInt(pq+1, Math.min(15, pq+6));
+        if(d<=15) return {a:pq, b, d, q};
+      }
+    }
+    function generateSameQ1(){
+      currentSame1 = genSamePair();
+      $('same-q1-text').innerHTML = `有一條長 ${fracHTML(currentSame1.a, currentSame1.d)} 公尺的彩繩，每 ${fracHTML(currentSame1.b, currentSame1.d)} 公尺做成一個中國結，一共可以做成幾個？`;
+      $('same-q1-expr').innerHTML = `${fracHTML(currentSame1.a, currentSame1.d)} ÷ ${fracHTML(currentSame1.b, currentSame1.d)}`;
+      $('same-q1').value = '';
+      $('same-q1-fb').className = 'feedback';
+    }
+    function generateSameQ2(){
+      currentSame2 = genSamePair();
+      $('same-q2-text').innerHTML = `一塊重 ${fracHTML(currentSame2.a, currentSame2.d)} 公斤的麵團，每 ${fracHTML(currentSame2.b, currentSame2.d)} 公斤做一個披薩，一共可以做幾個？`;
+      $('same-q2-expr').innerHTML = `${fracHTML(currentSame2.a, currentSame2.d)} ÷ ${fracHTML(currentSame2.b, currentSame2.d)}`;
+      $('same-q2').value = '';
+      $('same-q2-fb').className = 'feedback';
+    }
+    function generateRibbon(){
+      while(true){
+        const d=randInt(3,12);
+        const cand=[];
+        for(let x=2;x<=12;x++)for(let y=1;y<x;y++){if(gcd(x,y)===1)cand.push([x,y]);}
+        const [a,b]=cand[randInt(0,cand.length-1)];
+        if(a<=d*2) { currentRibbon={blue:a, green:b, d}; break; }
+      }
+      $('ribbon-text').innerHTML = `藍色緞帶長 ${fracHTML(currentRibbon.blue, currentRibbon.d)} 公尺，綠色緞帶長 ${fracHTML(currentRibbon.green, currentRibbon.d)} 公尺。`;
+      $('same-q3-expr').innerHTML = `${fracHTML(currentRibbon.blue, currentRibbon.d)} ÷ ${fracHTML(currentRibbon.green, currentRibbon.d)}`;
+      $('same-q4-expr').innerHTML = `${fracHTML(currentRibbon.green, currentRibbon.d)} ÷ ${fracHTML(currentRibbon.blue, currentRibbon.d)}`;
+      $('same-q3').value = ''; $('same-q4').value = '';
+      $('same-q3-fb').className = 'feedback'; $('same-q4-fb').className = 'feedback';
+      initRibbonCompare();
+    }
+    function genDiff1(){
+      while(true){
+        const a=randInt(2,9),b=randInt(2,9),c=randInt(2,9),d=randInt(2,9);
+        const r=simplify({num:a*d, den:b*c});
+        if(Math.abs(r.num)<=40&&r.den<=40&&r.den!==1&&r.num!==0&&Math.abs(r.num)/r.den<=4) return {a,b,c,d,r};
+      }
+    }
+    function generateDiff1(){
+      currentDiff1 = genDiff1();
+      $('diff-q1-text').innerHTML = `${fracHTML(currentDiff1.a, currentDiff1.b)} ÷ ${fracHTML(currentDiff1.c, currentDiff1.d)} ＝ ?`;
+      $('diff-q1').value = '';
+      $('diff-q1-fb').className = 'feedback';
+    }
+    function generateDiff2(){
+      while(true){
+        const W=randInt(2,6),b=randInt(2,8),a=randInt(1,b-1),c=randInt(2,9),d=randInt(2,9);
+        const total={num:W*b+a, den:b};
+        const r=divFrac(total,{num:c,den:d});
+        if(Math.abs(r.num)<=60&&r.den<=40&&r.den!==1&&Math.abs(r.num)/r.den<=6) { currentDiff2={W,a,b,c,d,r}; break; }
+      }
+      $('diff-q2-text').innerHTML = `${mixedHTML(currentDiff2.W, currentDiff2.a, currentDiff2.b)} ÷ ${fracHTML(currentDiff2.c, currentDiff2.d)} ＝ ?`;
+      $('diff-q2').value = '';
+      $('diff-q2-fb').className = 'feedback';
+    }
+    function generateRelay(){
+      const d=randInt(2,6), N=randInt(2,4);
+      currentRelay = {N, d, ans:N*d};
+      $('relay-text').innerHTML = `在長 ${currentRelay.N} 公里的接力賽跑中，每一位選手跑 ${fracHTML(1, currentRelay.d)} 公里，每隊需要幾位選手？`;
+      $('relay-expr').innerHTML = `${currentRelay.N} ÷ ${fracHTML(1, currentRelay.d)}`;
+      $('relay-ans').value = '';
+      $('relay-fb').className = 'feedback';
+      showRelay();
+    }
+    function generateApp1(){
+      while(true){
+        const b=randInt(2,8),a=randInt(1,b-1),q=randInt(2,12);
+        if(gcd(a,b)===1) { currentApp1={a,b,price:b*q,total:a*q}; break; }
+      }
+      $('app-q1-text').innerHTML = `媽媽買 ${fracHTML(currentApp1.a, currentApp1.b)} 公斤的芭樂花了 ${currentApp1.total} 元，1 公斤芭樂賣多少元？`;
+      $('app-q1-expr').innerHTML = `${currentApp1.total} ÷ ${fracHTML(currentApp1.a, currentApp1.b)}`;
+      $('app-q1').value = '';
+      $('app-q1-fb').className = 'feedback';
+    }
+    function generateApp2(){
+      const b=randInt(3,10),a=randInt(1,b-1),q=randInt(4,15);
+      currentApp2={a,b,part:a*q,total:b*q};
+      $('app-q2-text').innerHTML = `幸福國小六年級女學生占全年級的 ${fracHTML(currentApp2.a, currentApp2.b)}，女學生有 ${currentApp2.part} 人，六年級共有多少人？`;
+      $('app-q2-expr').innerHTML = `${currentApp2.part} ÷ ${fracHTML(currentApp2.a, currentApp2.b)}`;
+      $('app-q2').value = '';
+      $('app-q2-fb').className = 'feedback';
+    }
+    function generateApp3(){
+      while(true){
+        const Wl=randInt(2,4),bl=randInt(2,9),nl=randInt(1,bl-1);
+        const Ww=randInt(2,5),bw=randInt(2,9),nw=randInt(1,bw-1);
+        const L={num:Wl*bl+nl,den:bl}, W={num:Ww*bw+nw,den:bw};
+        const area=mulFrac(L,W);
+        if(area.num<=60&&area.den<=20) { currentApp3={L:{W:Wl,n:nl,d:bl},W:{W:Ww,n:nw,d:bw},area}; break; }
+      }
+      $('app-q3-text').innerHTML = `長方形菜園面積是 ${mixedHTML(currentApp3.area.W, currentApp3.area.n, currentApp3.area.d)} 平方公尺，長是 ${mixedHTML(currentApp3.L.W, currentApp3.L.n, currentApp3.L.d)} 公尺，寬是多少公尺？`;
+      $('app-q3').value = '';
+      $('app-q3-fb').className = 'feedback';
+    }
+    function generateRem(){
+      while(true){
+        const b=randInt(3,9),a=randInt(1,b-1),q=randInt(2,4);
+        const Nmin=Math.ceil(q*a/b), Nmax=Math.ceil((q+1)*a/b)-1;
+        if(Nmax>=Nmin){
+          const N=randInt(Nmin,Math.min(Nmax,6));
+          const r=simplify({num:N*b-q*a, den:b});
+          if(r.num>0&&r.den<=12&&N<=6) { currentRem={N,a,b,q,r}; break; }
+        }
+      }
+      $('rem-text').innerHTML = `媽媽榨了 ${currentRem.N} 公升的柳丁汁，分裝在容量 ${fracHTML(currentRem.a, currentRem.b)} 公升的杯子裡，最多可以裝滿幾杯？還剩下幾公升？`;
+      $('rem-q1').value = ''; $('rem-q2').value = '';
+      $('rem-fb').className = 'feedback';
+    }
+    function generateRev1(){
+      const b=randInt(2,9),a=randInt(1,b-1),ans=b*randInt(1,4),N=ans*a/b;
+      currentRev1={a,b,N,ans};
+      $('rev-q1-text').innerHTML = `一個水壺容量是 ${currentRev1.N} 公升，一個杯子容量是 ${fracHTML(currentRev1.a, currentRev1.b)} 公升，水壺容量是杯子的幾倍？`;
+      $('rev-q1').value = '';
+      $('rev-q1-fb').className = 'feedback';
+    }
+    function generateRev2(){
+      while(true){
+        const b=randInt(2,9),a=randInt(b+1,b*3),N=randInt(8,30);
+        if(gcd(a,b)!==1) continue;
+        const r=simplify({num:N*b,den:a});
+        if(r.den!==1&&r.num<=60&&r.den<=30) { currentRev2={a,b,N,r}; break; }
+      }
+      $('rev-q2-text').innerHTML = `哥哥買了一條長 ${fracHTML(currentRev2.a, currentRev2.b)} 公尺的鐵絲，花了 ${currentRev2.N} 元，長 1 公尺的鐵絲售價幾元？`;
+      $('rev-q2').value = '';
+      $('rev-q2-fb').className = 'feedback';
+    }
+    function generateRev4(){
+      while(true){
+        const n=randInt(2,10),m=randInt(2,12),k=randInt(2,7);
+        if(gcd(m,n)===1&&m*k<=60&&n*k<=60&&m!==n) { currentRev4={m,n,k}; break; }
+      }
+      $('rev-q4-text').innerHTML = `把 ${fracHTML(currentRev4.m*currentRev4.k, currentRev4.n*currentRev4.k)} 化成最簡分數。`;
+      $('rev-q4').value = '';
+      $('rev-q4-fb').className = 'feedback';
+    }
+    function generateRev3(){
+      const b=randInt(2,9),a=randInt(1,b-1);
+      if(gcd(a,b)!==1) return generateRev3();
+      const less=[2,3,4,5].map(x=>({num:x,den:x+1}));
+      const lessPair=less[randInt(0,less.length-1)];
+      const greater=[3,4,5,7].map(x=>({num:x+1,den:x}));
+      const gt1=greater[randInt(0,greater.length-1)], gt2=greater[randInt(0,greater.length-1)];
+      const fe=fracHTML;
+      compareOptions = [
+        {expr:`${fe(a,b)} ÷ ${fe(gt1.num, gt1.den)}`, ok:false},
+        {expr:`${fe(a,b)} ÷ ${fe(a,b)}`, ok:true},
+        {expr:`${fe(a,b)} ÷ ${fe(lessPair.num, lessPair.den)}`, ok:true},
+        {expr:`${fe(a,b)} ÷ ${fe(gt2.num, gt2.den)}`, ok:false}
+      ];
+      $('rev-compare-text').innerHTML = `下面哪一個算式的商比 ${fe(a,b)} 大？（多選）`;
+      initReviewCompare();
+    }
+    function generateErr(){
+      while(true){
+        const b=randInt(3,9),a=randInt(1,b-1),d=randInt(2,8),W=randInt(2,6),c=randInt(1,d-1);
+        const divisor=W*d+c;
+        const r=simplify({num:a*d, den:b*divisor});
+        if(r.den<=60&&r.den!==1&&r.num!==0) { currentErr={a,b,W,c,d,r}; break; }
+      }
+      $('err-text').innerHTML = `${fracHTML(currentErr.a, currentErr.b)} ÷ ${mixedHTML(currentErr.W, currentErr.c, currentErr.d)}`;
+      $('err-step1').innerHTML = `${fracHTML(currentErr.a, currentErr.b)} ÷ ${fracHTML(currentErr.W*currentErr.d+currentErr.c, currentErr.d)}`;
+      $('err-wrong-ans').innerHTML = `${fracHTML(currentErr.b*currentErr.d, currentErr.a*(currentErr.W*currentErr.d+currentErr.c))}`;
+      $('err-ans').value = '';
+      $('err-step').value = '';
+      $('err-fb').className = 'feedback';
+    }
+    function generateGift1(){
+      const d=randInt(3,9),W1=randInt(2,5),W2=randInt(1,4),n1=randInt(1,d-1),n2=randInt(1,d-1);
+      currentGift1={d,W1,W2,n1,n2,ans:(W1+W2)*d+n1+n2};
+      $('gift-q1-text').innerHTML = `${mixedHTML(currentGift1.W1, currentGift1.n1, currentGift1.d)} ÷ ${fracHTML(1, currentGift1.d)} ＋ ${mixedHTML(currentGift1.W2, currentGift1.n2, currentGift1.d)} ÷ ${fracHTML(1, currentGift1.d)} ＝ ?`;
+      $('gift-q1-sol').innerHTML = `原式 ＝ (${mixedHTML(currentGift1.W1, currentGift1.n1, currentGift1.d)} ＋ ${mixedHTML(currentGift1.W2, currentGift1.n2, currentGift1.d)}) ÷ ${fracHTML(1, currentGift1.d)}<br>＝ ${currentGift1.W1+currentGift1.W2} ${fracHTML(currentGift1.n1+currentGift1.n2, currentGift1.d)} ÷ ${fracHTML(1, currentGift1.d)}<br>＝ ${(currentGift1.W1+currentGift1.W2)*currentGift1.d+currentGift1.n1+currentGift1.n2} ÷ 1 ＝ <strong>${currentGift1.ans}</strong>`;
+      $('gift-q1').value = '';
+      $('gift-q1-fb').className = 'feedback';
+    }
+    function generateGift2(){
+      while(true){
+        const b=randInt(2,9),a=randInt(1,b-1),q=randInt(2,9),p=randInt(1,q-1);
+        if(gcd(a,b)===1&&gcd(p,q)===1){
+          const wrong=mulFrac({num:a,den:b},{num:p,den:q});
+          const correct=divFrac({num:a,den:b},{num:p,den:q});
+          if(wrong.den<=20&&correct.den<=20&&correct.num!==0) { currentGift2={a,b,p,q,wrong,correct}; break; }
+        }
+      }
+      $('gift-q2-text').innerHTML = `小美在計算「一個數 ÷ ${fracHTML(currentGift2.p, currentGift2.q)}」時，不小心看成「一個數 × ${fracHTML(currentGift2.p, currentGift2.q)}」，結果得到 ${fracHTML(currentGift2.wrong.num, currentGift2.wrong.den)}。正確的答案應該是多少？`;
+      $('gift-q2-sol').innerHTML = `一個數 × ${fracHTML(currentGift2.p, currentGift2.q)} ＝ ${fracHTML(currentGift2.wrong.num, currentGift2.wrong.den)}<br>所以那個數 ＝ ${fracHTML(currentGift2.wrong.num, currentGift2.wrong.den)} ÷ ${fracHTML(currentGift2.p, currentGift2.q)} ＝ ${fracHTML(currentGift2.a, currentGift2.b)}<br>正確答案 ＝ ${fracHTML(currentGift2.a, currentGift2.b)} ÷ ${fracHTML(currentGift2.p, currentGift2.q)} ＝ <strong>${toMixedStr(currentGift2.correct)}</strong>`;
+      $('gift-q2').value = '';
+      $('gift-q2-fb').className = 'feedback';
+    }
+    function generateGift3(){
+      const n=randInt(1,6),m=randInt(3,5);
+      const ans=simplify({num:m,den:n*(n+m)});
+      currentGift3={n,m,ans};
+      $('gift-q3-pattern').innerHTML = [1,2,3].map(i=>`${fracHTML(1,n+i-1)} ＝ ${fracHTML(1,n+i-1)} － ${fracHTML(1,n+i)}`).join('　　');
+      $('gift-q3-sum').innerHTML = Array.from({length:m},(_,i)=>fracHTML(1,(n+i)*(n+i+1))).join(' ＋ ') + ' ＝ ?';
+      $('gift-q3').value = '';
+      $('gift-q3-fb').className = 'feedback';
+    }
+    function generateGift4(){
+      while(true){
+        const p=1,q=randInt(2,3),S=randInt(24,60),d=randInt(3,7);
+        const num=q*S+(q+p)*d, den=q+p;
+        if(num%den===0){
+          const b=num/den, a=S-b;
+          if(a>0&&b>a) { currentGift4={p,q,S,d,a,b}; break; }
+        }
+      }
+      $('gift-q4-text').innerHTML = `一個分數，分子加分母等於 ${currentGift4.S}。如果分子加 ${currentGift4.d}、分母減 ${currentGift4.d}，新的分數會等於 ${fracHTML(currentGift4.p, currentGift4.q)}。原來的分數是多少？`;
+      $('gift-q4-sol').innerHTML = `設原來的分數是 ${fracHTML('a','b')}。<br>a ＋ b ＝ ${currentGift4.S}，且 ${fracHTML('a＋'+currentGift4.d,'b－'+currentGift4.d)} ＝ ${fracHTML(currentGift4.p, currentGift4.q)}<br>解出 a ＝ ${currentGift4.a}，b ＝ ${currentGift4.b}。<br>所以原來的分數是 <strong>${fracHTML(currentGift4.a, currentGift4.b)}</strong>。`;
+      $('gift-q4').value = '';
+      $('gift-q4-fb').className = 'feedback';
+    }
 
     // ===== 暖身：巧克力 =====
     function initChocoGrid(){
@@ -1407,70 +1626,72 @@
         $('same1-result').innerHTML = `${fracHTML(7,8)} 公尺裡面有 7 個 ${fracHTML(1,8)} 公尺。<br>${fracHTML(7,8)} ÷ ${fracHTML(1,8)} ＝ 7 ÷ 1 ＝ <strong>7</strong> 個手環`;
       }, 800);
     }
-    function checkSameQ1(){ checkFracInput('same-q1','3','same-q1-fb'); }
-    function checkSameQ2(){ checkFracInput('same-q2','5','same-q2-fb'); }
+    function checkSameQ1(){ checkFracInput('same-q1', String(currentSame1.q), 'same-q1-fb'); }
+    function checkSameQ2(){ checkFracInput('same-q2', String(currentSame2.q), 'same-q2-fb'); }
     function checkSameQ3(){
-      const ok = checkFracInput('same-q3','7/4','same-q3-fb');
+      const ok = checkFracInput('same-q3', currentRibbon.blue + '/' + currentRibbon.green, 'same-q3-fb');
       if (ok) showRibbonVisual('q3');
     }
     function checkSameQ4(){
-      const ok = checkFracInput('same-q4','4/7','same-q4-fb');
+      const ok = checkFracInput('same-q4', currentRibbon.green + '/' + currentRibbon.blue, 'same-q4-fb');
       if (ok) showRibbonVisual('q4');
     }
     function initRibbonCompare(){
       const wrap = $('ribbon-compare');
+      const B = currentRibbon.blue, G = currentRibbon.green, D = currentRibbon.d;
       wrap.innerHTML = `
-        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--blue); border-radius:2px;"></span> 藍色緞帶 ${fracHTML(7,5)} 公尺</div>
-        <div class="bar-wrap"><div class="bar-fill" style="width:${(7/5)/(7/5)*100}%;">7/5</div></div>
-        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--green); border-radius:2px;"></span> 綠色緞帶 ${fracHTML(4,5)} 公尺</div>
-        <div class="bar-wrap"><div class="bar-fill" style="width:${(4/5)/(7/5)*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">4/5</div></div>
+        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--blue); border-radius:2px;"></span> 藍色緞帶 ${fracHTML(B,D)} 公尺</div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:100%;">${B}/${D}</div></div>
+        <div style="margin:8px 0;"><span style="display:inline-block; width:12px; height:12px; background:var(--green); border-radius:2px;"></span> 綠色緞帶 ${fracHTML(G,D)} 公尺</div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${(G/B)*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">${G}/${D}</div></div>
       `;
       $('ribbon-visual').innerHTML = `<div class="hint" style="text-align:center;">👇 輸入正確答案後，這裡會出現圖解輔助說明</div>`;
     }
     function showRibbonVisual(type){
+      const B=currentRibbon.blue, G=currentRibbon.green, D=currentRibbon.d;
       const wrap = $('ribbon-visual');
       if (type === 'q3'){
         // 藍色 7/5 是綠色 4/5 的幾倍
         // 用相同單位長度 1/5 公尺對齊兩條緞帶，清楚看出倍數關係
         wrap.innerHTML = `
           <div class="ribbon-stack">
-            <div class="ribbon-stack-title">圖解：${fracHTML(7,5)} 是 ${fracHTML(4,5)} 的幾倍？</div>
+            <div class="ribbon-stack-title">圖解：${fracHTML(B,D)} 是 ${fracHTML(G,D)} 的幾倍？</div>
 
             <div class="ribbon-row">
-              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(4,5)} 公尺</div>
+              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(G,D)} 公尺</div>
               <div class="ribbon-bar-wrap">
-                <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
-                  <span>1 倍 ＝ ${fracHTML(4,5)} 公尺</span>
-                  ${[1,2,3].map(i => `<div class="ribbon-segment" style="left:${i/4*100}%;"></div>`).join('')}
+                <div class="ribbon-bar" style="width:${G/B*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
+                  <span>1 倍 ＝ ${fracHTML(G,D)} 公尺</span>
+                  ${Array.from({length:G-1},(_,k)=>k+1).map(i => `<div class="ribbon-segment" style="left:${i/G*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
 
             <div class="ribbon-row">
-              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(7,5)} 公尺</div>
+              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(B,D)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan)); padding-left:0;">
-                  <div style="width:${4/7*100}%; height:100%; background:linear-gradient(90deg,var(--green),#4caf50); display:flex; align-items:center; justify-content:center; border-right:2px dashed white;">
+                  <div style="width:${G/B*100}%; height:100%; background:linear-gradient(90deg,var(--green),#4caf50); display:flex; align-items:center; justify-content:center; border-right:2px dashed white;">
                     1 倍
                   </div>
-                  <div style="width:${3/7*100}%; height:100%; background:linear-gradient(90deg,#a5d6a7,#81c784); display:flex; align-items:center; justify-content:center;">
-                    ${fracHTML(3,4)} 倍
+                  <div style="width:${(B-G)/B*100}%; height:100%; background:linear-gradient(90deg,#a5d6a7,#81c784); display:flex; align-items:center; justify-content:center;">
+                    ${fracHTML(B-G,G)} 倍
                   </div>
-                  ${[1,2,3,4,5,6].map(i => `<div class="ribbon-segment" style="left:${i/7*100}%;"></div>`).join('')}
+                  ${Array.from({length:B-1},(_,k)=>k+1).map(i => `<div class="ribbon-segment" style="left:${i/B*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
 
             <div class="ribbon-legend">
-              <span><span class="dot" style="background:linear-gradient(90deg,var(--green),#4caf50);"></span>1 個綠色緞帶（${fracHTML(4,5)} 公尺）</span>
-              <span><span class="dot" style="background:linear-gradient(90deg,#a5d6a7,#81c784);"></span>多出的 ${fracHTML(3,4)} 個綠色緞帶（${fracHTML(3,5)} 公尺）</span>
+              <span><span class="dot" style="background:linear-gradient(90deg,var(--green),#4caf50);"></span>1 個綠色緞帶（${fracHTML(G,D)} 公尺）</span>
+              <span><span class="dot" style="background:linear-gradient(90deg,#a5d6a7,#81c784);"></span>多出的 ${fracHTML(B-G,G)} 個綠色緞帶（${fracHTML(B-G,D)} 公尺）</span>
             </div>
 
             <div style="text-align:center; margin-top:16px; color:#2c3e50; font-weight:600; line-height:1.8;">
-              把 1 公尺都分成 5 等分，每一小格都是 ${fracHTML(1,5)} 公尺。<br>
-              綠色緞帶有 4 格，藍色緞帶有 7 格。<br>
-              7 格 ÷ 4 格 ＝ ${fracHTML(7,4)}<br>
-              所以 ${fracHTML(7,5)} ÷ ${fracHTML(4,5)} ＝ ${fracHTML(7,4)}（倍）
+              把 1 公尺都分成 D 等分，每一小格都是 ${fracHTML(1,D)} 公尺。<br>
+              綠色緞帶有 G 格，藍色緞帶有 B 格。<br>
+              B 格 ÷ G 格 ＝ ${fracHTML(B,G)}<br>
+              所以 ${fracHTML(B,D)} ÷ ${fracHTML(G,D)} ＝ ${fracHTML(B,G)}（倍）
             </div>
           </div>
         `;
@@ -1478,32 +1699,32 @@
         // 綠色 4/5 是藍色 7/5 的幾分之幾
         wrap.innerHTML = `
           <div class="ribbon-stack">
-            <div class="ribbon-stack-title">圖解：${fracHTML(4,5)} 是 ${fracHTML(7,5)} 的幾分之幾？</div>
+            <div class="ribbon-stack-title">圖解：${fracHTML(G,D)} 是 ${fracHTML(B,D)} 的幾分之幾？</div>
 
             <div class="ribbon-row">
-              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(7,5)} 公尺</div>
+              <div class="ribbon-label">藍色緞帶<br>＝ ${fracHTML(B,D)} 公尺</div>
               <div class="ribbon-bar-wrap">
                 <div class="ribbon-bar" style="width:100%; background:linear-gradient(90deg,var(--blue),var(--cyan));">
-                  <span>全部 ＝ ${fracHTML(7,5)} 公尺 ＝ 7 格</span>
-                  ${[1,2,3,4,5,6].map(i => `<div class="ribbon-segment" style="left:${i/7*100}%;"></div>`).join('')}
+                  <span>全部 ＝ ${fracHTML(B,D)} 公尺 ＝ B 格</span>
+                  ${Array.from({length:B-1},(_,k)=>k+1).map(i => `<div class="ribbon-segment" style="left:${i/B*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
 
             <div class="ribbon-row">
-              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(4,5)} 公尺</div>
+              <div class="ribbon-label">綠色緞帶<br>＝ ${fracHTML(G,D)} 公尺</div>
               <div class="ribbon-bar-wrap">
-                <div class="ribbon-bar" style="width:${4/7*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
-                  <span>部分 ＝ ${fracHTML(4,5)} 公尺 ＝ 4 格</span>
-                  ${[1,2,3].map(i => `<div class="ribbon-segment" style="left:${i/4*100}%;"></div>`).join('')}
+                <div class="ribbon-bar" style="width:${G/B*100}%; background:linear-gradient(90deg,var(--green),#4caf50);">
+                  <span>部分 ＝ ${fracHTML(G,D)} 公尺 ＝ G 格</span>
+                  ${Array.from({length:G-1},(_,k)=>k+1).map(i => `<div class="ribbon-segment" style="left:${i/G*100}%;"></div>`).join('')}
                 </div>
               </div>
             </div>
 
             <div style="text-align:center; margin-top:16px; color:#2c3e50; font-weight:600; line-height:1.8;">
-              把 1 公尺都分成 5 等分，綠色佔 4 格，藍色佔 7 格。<br>
-              4 格 ÷ 7 格 ＝ ${fracHTML(4,7)}<br>
-              所以 ${fracHTML(4,5)} ÷ ${fracHTML(7,5)} ＝ ${fracHTML(4,7)}（倍）
+              把 1 公尺都分成 D 等分，綠色佔 G 格，藍色佔 B 格。<br>
+              G 格 ÷ B 格 ＝ ${fracHTML(G,B)}<br>
+              所以 ${fracHTML(G,D)} ÷ ${fracHTML(B,D)} ＝ ${fracHTML(G,B)}（倍）
             </div>
           </div>
         `;
@@ -1548,24 +1769,22 @@
       $('area-carrot').style.gridTemplateColumns = 'repeat(4,28px)';
       $('area-result').innerHTML = `${fracHTML(1,4)} ＝ ${fracHTML(3,12)}，${fracHTML(1,3)} ＝ ${fracHTML(4,12)}。<br>${fracHTML(1,4)} ÷ ${fracHTML(1,3)} ＝ ${fracHTML(3,12)} ÷ ${fracHTML(4,12)} ＝ 3 ÷ 4 ＝ <strong>${fracHTML(3,4)}</strong> 倍`;
     }
-    function checkDiffQ1(){ checkFracInput('diff-q1','55/63','diff-q1-fb'); }
-    function checkDiffQ2(){ checkFracInput('diff-q2','28/9','diff-q2-fb'); }
+    function checkDiffQ1(){ checkFracInput('diff-q1', currentDiff1.r.num + '/' + currentDiff1.r.den, 'diff-q1-fb'); }
+    function checkDiffQ2(){ checkFracInput('diff-q2', currentDiff2.r.num + '/' + currentDiff2.r.den, 'diff-q2-fb'); }
 
     // ===== 2-4 應用 =====
     function showRelay(){
       const tape = $('relay-tape');
       const labels = $('relay-labels');
-      // 清除之前新增的標記（保留原本的 tape-fill）
       tape.querySelectorAll('.relay-marker').forEach(m => m.remove());
       labels.innerHTML = '';
-      // 每隔 2 位選手標一次數字：0、2、4、6、8、10
-      for (let i = 0; i <= 5; i++){
-        const pct = i/5*100;
-        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i*2}</div>`;
+      const total = currentRelay.ans;
+      for (let i = 0; i <= total; i += 2){
+        const pct = i/total*100;
+        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i}</div>`;
       }
-      // 標出 10 位選手的位置
-      for (let i=1;i<=10;i++){
-        const pct = i/10*100;
+      for (let i=1;i<=total;i++){
+        const pct = i/total*100;
         const mark = document.createElement('div');
         mark.className = 'relay-marker';
         mark.style.cssText = `position:absolute; left:${pct}%; top:10px; transform:translateX(-50%); width:20px; height:20px; background:var(--accent); border-radius:50%; color:white; font-size:0.7rem; display:flex; align-items:center; justify-content:center;`;
@@ -1573,10 +1792,10 @@
         tape.appendChild(mark);
       }
     }
-    function checkRelay(){ checkFracInput('relay-ans','10','relay-fb'); }
-    function checkAppQ1(){ checkFracInput('app-q1','60','app-q1-fb'); }
-    function checkAppQ2(){ checkFracInput('app-q2','135','app-q2-fb'); }
-    function checkAppQ3(){ checkFracInput('app-q3','14/5','app-q3-fb'); }
+    function checkRelay(){ checkFracInput('relay-ans', String(currentRelay.ans), 'relay-fb'); }
+    function checkAppQ1(){ checkFracInput('app-q1', String(currentApp1.price), 'app-q1-fb'); }
+    function checkAppQ2(){ checkFracInput('app-q2', String(currentApp2.total), 'app-q2-fb'); }
+    function checkAppQ3(){ checkFracInput('app-q3', currentApp3.W.W + ' ' + currentApp3.W.n + '/' + currentApp3.W.d, 'app-q3-fb'); }
 
     // ===== 2-5 關係 =====
     function showRelationTapes(){
@@ -1611,22 +1830,18 @@
     function checkRemainderQ(){
       const c = $('rem-q1').value.trim();
       const r = $('rem-q2').value.trim();
-      if (c === '3' && (r === '1/5' || r === '2/10' || r === '0.2')){
-        showFeedback('rem-fb', true, '正確！2 ÷ 3/5 ＝ 10/3 ＝ 3 1/3，裝滿 3 杯，剩下 1/3 杯，即 3/5 × 1/3 ＝ 1/5 公升。');
+      const expR = toMixedStr(currentRem.r);
+      if (c === String(currentRem.q) && fracEqual(parseFrac(r), currentRem.r)){
+        showFeedback('rem-fb', true, '正確！' + currentRem.N + ' ÷ ' + currentRem.a + '/' + currentRem.b + ' 裝滿 ' + currentRem.q + ' 杯，剩下 ' + expR + ' 公升。');
       } else {
-        showFeedback('rem-fb', false, '再試一次。注意「剩下的 1/3 杯」不是 1/3 公升，要再乘以 3/5。');
+        showFeedback('rem-fb', false, '再試一次。裝滿 ' + currentRem.q + ' 杯，剩下 ' + expR + ' 公升。');
       }
     }
 
     // ===== 綜合練習 =====
-    function checkReviewQ1(){ checkFracInput('rev-q1','8','rev-q1-fb'); }
-    function checkReviewQ2(){ checkFracInput('rev-q2','90/11','rev-q2-fb'); }
-    const compareOptions = [
-      {expr:'8/9 ÷ 9/8', ok:false},
-      {expr:'8/9 ÷ 8/9', ok:true},
-      {expr:'8/9 ÷ 1/2', ok:true},
-      {expr:'8/9 ÷ 5/4', ok:false}
-    ];
+    function checkReviewQ1(){ checkFracInput('rev-q1', String(currentRev1.ans), 'rev-q1-fb'); }
+    function checkReviewQ2(){ checkFracInput('rev-q2', currentRev2.r.num + '/' + currentRev2.r.den, 'rev-q2-fb'); }
+    let compareOptions = [];
     let compareSelected = new Set();
     function initReviewCompare(){
       const wrap = $('rev-compare-options');
@@ -1652,18 +1867,19 @@
       if (ok) showFeedback('rev-compare-fb', true, '正確！除數 < 1 時商比被除數大。');
       else showFeedback('rev-compare-fb', false, '再想想看：除數小於 1 時，商會比被除數大。');
     }
-    function checkReviewQ4(){ checkFracInput('rev-q4','7/3','rev-q4-fb'); }
+    function checkReviewQ4(){ checkFracInput('rev-q4', currentRev4.m + '/' + currentRev4.n, 'rev-q4-fb'); }
     function checkErrorCorrection(){
       const step = $('err-step').value;
       const ans = $('err-ans').value.trim();
       const correctStep = '2';
-      const correctAns = '2/39';
+      const correctAns = currentErr.r.num + '/' + currentErr.r.den;
+      const divisor = currentErr.W*currentErr.d+currentErr.c;
       if (step === correctStep && fracEqual(parseFrac(ans), parseFrac(correctAns))){
-        showFeedback('err-fb', true, '正確！步驟二錯了：被除數 1/3 應該保持不變，除數 13/2 顛倒成 2/13，所以應該是 1/3 × 2/13 ＝ 2/39。');
+        showFeedback('err-fb', true, '正確！步驟二錯了：被除數 ' + currentErr.a + '/' + currentErr.b + ' 應該保持不變，除數 ' + divisor + '/' + currentErr.d + ' 顛倒成 ' + currentErr.d + '/' + divisor + '，所以應該是 ' + correctAns + '。');
       } else if (step !== correctStep){
         showFeedback('err-fb', false, '步驟一是對的（帶分數化成假分數）。請再檢查步驟二。');
       } else {
-        showFeedback('err-fb', false, '步驟二判斷對了，但答案還要再算一次。提示：被除數 1/3 保持不變，除數 13/2 顛倒成 2/13。');
+        showFeedback('err-fb', false, '步驟二判斷對了，但答案還要再算一次。提示：被除數 ' + currentErr.a + '/' + currentErr.b + ' 保持不變，除數 ' + divisor + '/' + currentErr.d + ' 顛倒成 ' + currentErr.d + '/' + divisor + '。');
       }
     }
 
@@ -1676,29 +1892,37 @@
       }
     }
     function checkGiftQ1(){
-      const ok = checkFracInput('gift-q1','49','gift-q1-fb');
+      const ok = checkFracInput('gift-q1', String(currentGift1.ans), 'gift-q1-fb');
       if (ok) { giftSolved.add(1); checkGiftCompletion(); }
     }
     function checkGiftQ2(){
-      const ok = checkFracInput('gift-q2','1','gift-q2-fb');
+      const ok = checkFracInput('gift-q2', toMixedStr(currentGift2.correct), 'gift-q2-fb');
       if (ok) { giftSolved.add(2); checkGiftCompletion(); }
     }
     function showTelescope(){
+      const n = currentGift3.n, m = currentGift3.m;
+      let inner = '';
+      for(let k=n;k<=n+m-1;k++){
+        inner += `(${fracHTML(1,k)} － ${fracHTML(1,k+1)})`;
+        if(k<n+m-1) inner += ' ＋ ';
+      }
+      let cancelled = inner;
+      for(let k=n+1;k<=n+m-1;k++){
+        cancelled = cancelled.replace(`${fracHTML(1,k)} － ${fracHTML(1,k)} ＋ `, `<span style="text-decoration:line-through; color:#999;">${fracHTML(1,k)}</span> － <span style="text-decoration:line-through; color:#999;">${fracHTML(1,k)}</span> ＋ `);
+      }
       $('telescope-visual').innerHTML = `
         <div style="background:#f8faff; border-radius:12px; padding:16px; line-height:2; text-align:center; font-size:1.05rem;">
-          <span class="fraction"><span class="num">1</span><span class="den">2</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">6</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">12</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">20</span></span> ＋ <span class="fraction"><span class="num">1</span><span class="den">30</span></span><br>
-          ＝ (1 － <span class="fraction"><span class="num">1</span><span class="den">2</span></span>) ＋ (<span class="fraction"><span class="num">1</span><span class="den">2</span></span> － <span class="fraction"><span class="num">1</span><span class="den">3</span></span>) ＋ (<span class="fraction"><span class="num">1</span><span class="den">3</span></span> － <span class="fraction"><span class="num">1</span><span class="den">4</span></span>) ＋ (<span class="fraction"><span class="num">1</span><span class="den">4</span></span> － <span class="fraction"><span class="num">1</span><span class="den">5</span></span>) ＋ (<span class="fraction"><span class="num">1</span><span class="den">5</span></span> － <span class="fraction"><span class="num">1</span><span class="den">6</span></span>)<br>
-          ＝ 1 － <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">2</span></span></span> ＋ <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">2</span></span></span> － <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">3</span></span></span> ＋ <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">3</span></span></span> － <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">4</span></span></span> ＋ <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">4</span></span></span> － <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">5</span></span></span> ＋ <span style="text-decoration:line-through; color:#999;"><span class="fraction"><span class="num">1</span><span class="den">5</span></span></span> － <span class="fraction"><span class="num">1</span><span class="den">6</span></span><br>
-          ＝ 1 － <span class="fraction"><span class="num">1</span><span class="den">6</span></span> ＝ <span class="fraction"><span class="num">5</span><span class="den">6</span></span>
+          ${inner}<br>
+          ＝ 1/${n} － 1/${n+m} ＝ <strong>${toMixedStr(currentGift3.ans)}</strong>
         </div>
       `;
     }
     function checkGiftQ3(){
-      const ok = checkFracInput('gift-q3','5/6','gift-q3-fb');
+      const ok = checkFracInput('gift-q3', currentGift3.ans.num + '/' + currentGift3.ans.den, 'gift-q3-fb');
       if (ok) { giftSolved.add(3); checkGiftCompletion(); }
     }
     function checkGiftQ4(){
-      const ok = checkFracInput('gift-q4','7/29','gift-q4-fb');
+      const ok = checkFracInput('gift-q4', currentGift4.a + '/' + currentGift4.b, 'gift-q4-fb');
       if (ok) { giftSolved.add(4); checkGiftCompletion(); }
     }
 
@@ -1708,10 +1932,27 @@
       initBoxGrid();
       showBoxFraction(1);
       showSameDenom1();
-      initRibbonCompare();
+      generateSameQ1();
+      generateSameQ2();
+      generateRibbon();
+      generateDiff1();
+      generateDiff2();
+      generateRelay();
+      generateApp1();
+      generateApp2();
+      generateApp3();
+      generateRem();
+      generateRev1();
+      generateRev2();
+      generateRev3();
+      generateRev4();
+      generateErr();
+      generateGift1();
+      generateGift2();
+      generateGift3();
+      generateGift4();
       showBottles(1,1,2);
       initSimplestQuiz();
-      initReviewCompare();
       initConfetti();
     };
 
