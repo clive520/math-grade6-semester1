@@ -1333,7 +1333,7 @@
       $('diff-q2-fb').className = 'feedback';
     }
     function generateRelay(){
-      const d=randInt(2,6), N=randInt(2,4);
+      const d=randInt(2,6), N=randInt(2,3);
       currentRelay = {N, d, ans:N*d};
       $('relay-text').innerHTML = `在長 ${currentRelay.N} 公里的接力賽跑中，每一位選手跑 ${fracHTML(1, currentRelay.d)} 公里，每隊需要幾位選手？`;
       $('relay-expr').innerHTML = `${currentRelay.N} ÷ ${fracHTML(1, currentRelay.d)}`;
@@ -1778,16 +1778,16 @@
       const labels = $('relay-labels');
       tape.querySelectorAll('.relay-marker').forEach(m => m.remove());
       labels.innerHTML = '';
-      const total = currentRelay.ans;
+      const total = currentRelay ? currentRelay.ans : 10;
       for (let i = 0; i <= total; i += 2){
         const pct = i/total*100;
-        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i}</div>`;
+        labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i} 公里</div>`;
       }
       for (let i=1;i<=total;i++){
-        const pct = i/total*100;
+        const pct = (i-1)/total*100;
         const mark = document.createElement('div');
         mark.className = 'relay-marker';
-        mark.style.cssText = `position:absolute; left:${pct}%; top:10px; transform:translateX(-50%); width:20px; height:20px; background:var(--accent); border-radius:50%; color:white; font-size:0.7rem; display:flex; align-items:center; justify-content:center;`;
+        mark.style.cssText = `position:absolute; left:${pct}%; top:50%; transform:translate(-50%,-50%); width:24px; height:24px; background:var(--accent); border-radius:50%; color:white; font-size:0.78rem; font-weight:700; display:flex; align-items:center; justify-content:center; z-index:3; box-shadow:0 1px 4px rgba(0,0,0,0.35);`;
         mark.textContent = i;
         tape.appendChild(mark);
       }
