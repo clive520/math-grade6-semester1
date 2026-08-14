@@ -706,20 +706,20 @@
       <div class="interactive-area">
         <h3 style="margin-bottom:10px; color:#2c3e50;">🧮 同分母除法練習</h3>
         <div class="problem-card">
-          <div class="problem-text" id="same-q1-text">有一條長 <span class="fraction"><span class="num">6</span><span class="den">7</span></span> 公尺的彩繩，每 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> 公尺做成一個中國結，一共可以做成幾個？</div>
+          <div class="problem-text">有一條長 <span class="fraction"><span class="num">6</span><span class="den">7</span></span> 公尺的彩繩，每 <span class="fraction"><span class="num">2</span><span class="den">7</span></span> 公尺做成一個中國結，一共可以做成幾個？</div>
           <img src="./images/unit02_practice_knots.png" alt="6/7 公尺彩繩每 2/7 公尺做一個中國結的圖解" style="max-width:100%; border-radius:12px; margin:12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <div class="problem-answer" style="justify-content:center;">
-            <span id="same-q1-expr"><span class="fraction"><span class="num">6</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">2</span><span class="den">7</span></span></span> ＝ <input type="number" id="same-q1" placeholder="?"> 個
-            <button class="btn btn-sm btn-primary" onclick="checkSameQ1()">檢查</button> <button class="btn btn-sm" onclick="generateSameQ1()">🔄 換一題</button>
+            <span class="fraction"><span class="num">6</span><span class="den">7</span></span> ÷ <span class="fraction"><span class="num">2</span><span class="den">7</span></span> ＝ <input type="number" id="same-q1" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ1()">檢查</button>
           </div>
           <div id="same-q1-fb" class="feedback"></div>
         </div>
         <div class="problem-card">
-          <div class="problem-text" id="same-q2-text">一塊重 <span class="fraction"><span class="num">15</span><span class="den">16</span></span> 公斤的麵團，每 <span class="fraction"><span class="num">3</span><span class="den">16</span></span> 公斤做一個披薩，一共可以做幾個？</div>
+          <div class="problem-text">一塊重 <span class="fraction"><span class="num">15</span><span class="den">16</span></span> 公斤的麵團，每 <span class="fraction"><span class="num">3</span><span class="den">16</span></span> 公斤做一個披薩，一共可以做幾個？</div>
           <img src="./images/unit02_practice_pizzas.png" alt="15/16 公斤麵團每 3/16 公斤做一個披薩的圖解" style="max-width:100%; border-radius:12px; margin:12px 0; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
           <div class="problem-answer" style="justify-content:center;">
-            <span id="same-q2-expr"><span class="fraction"><span class="num">15</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">16</span></span></span> ＝ <input type="number" id="same-q2" placeholder="?"> 個
-            <button class="btn btn-sm btn-primary" onclick="checkSameQ2()">檢查</button> <button class="btn btn-sm" onclick="generateSameQ2()">🔄 換一題</button>
+            <span class="fraction"><span class="num">15</span><span class="den">16</span></span> ÷ <span class="fraction"><span class="num">3</span><span class="den">16</span></span> ＝ <input type="number" id="same-q2" placeholder="?"> 個
+            <button class="btn btn-sm btn-primary" onclick="checkSameQ2()">檢查</button>
           </div>
           <div id="same-q2-fb" class="feedback"></div>
         </div>
@@ -1626,8 +1626,8 @@
         $('same1-result').innerHTML = `${fracHTML(7,8)} 公尺裡面有 7 個 ${fracHTML(1,8)} 公尺。<br>${fracHTML(7,8)} ÷ ${fracHTML(1,8)} ＝ 7 ÷ 1 ＝ <strong>7</strong> 個手環`;
       }, 800);
     }
-    function checkSameQ1(){ checkFracInput('same-q1', String(currentSame1.q), 'same-q1-fb'); }
-    function checkSameQ2(){ checkFracInput('same-q2', String(currentSame2.q), 'same-q2-fb'); }
+    function checkSameQ1(){ checkFracInput('same-q1', '3', 'same-q1-fb'); }
+    function checkSameQ2(){ checkFracInput('same-q2', '5', 'same-q2-fb'); }
     function checkSameQ3(){
       const ok = checkFracInput('same-q3', currentRibbon.blue + '/' + currentRibbon.green, 'same-q3-fb');
       if (ok) showRibbonVisual('q3');
@@ -1932,8 +1932,6 @@
       initBoxGrid();
       showBoxFraction(1);
       showSameDenom1();
-      generateSameQ1();
-      generateSameQ2();
       generateRibbon();
       generateDiff1();
       generateDiff2();
