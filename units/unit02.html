@@ -1333,10 +1333,10 @@
       $('diff-q2-fb').className = 'feedback';
     }
     function generateRelay(){
-      const d=randInt(2,6), N=randInt(2,3);
-      currentRelay = {N, d, ans:N*d};
-      $('relay-text').innerHTML = `在長 ${currentRelay.N} 公里的接力賽跑中，每一位選手跑 ${fracHTML(1, currentRelay.d)} 公里，每隊需要幾位選手？`;
-      $('relay-expr').innerHTML = `${currentRelay.N} ÷ ${fracHTML(1, currentRelay.d)}`;
+      const d=randInt(2,6);
+      currentRelay = {N:3, d, ans:3*d};
+      $('relay-text').innerHTML = `在長 3 公里的接力賽跑中，每一位選手跑 ${fracHTML(1, currentRelay.d)} 公里，每隊需要幾位選手？`;
+      $('relay-expr').innerHTML = `3 ÷ ${fracHTML(1, currentRelay.d)}`;
       $('relay-ans').value = '';
       $('relay-fb').className = 'feedback';
       showRelay();
@@ -1785,9 +1785,9 @@
       const labels = $('relay-labels');
       tape.querySelectorAll('.relay-marker').forEach(m => m.remove());
       labels.innerHTML = '';
-      const total = currentRelay ? currentRelay.ans : 10;
-      for (let i = 0; i <= total; i += 2){
-        const pct = i/total*100;
+      const total = currentRelay ? currentRelay.ans : 9;
+      for (let i = 0; i <= 3; i++){
+        const pct = i/3*100;
         labels.innerHTML += `<div class="tape-label" style="left:${pct}%;">${i} 公里</div>`;
       }
       for (let i=1;i<=total;i++){
