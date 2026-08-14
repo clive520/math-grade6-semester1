@@ -1833,18 +1833,20 @@
     // ===== 數學想一想：有餘數 =====
     function showRemainder(){
       const tape = $('soy-tape');
-      tape.innerHTML = '';
+      tape.innerHTML = '<div class="tape"><div class="tape-fill" style="width:70%;"></div></div>';
+      const fill = tape.querySelector('.tape-fill');
+      fill.style.display = 'flex';
       const segs = [
-        {w:'28.57%', text:'1瓶', c:'var(--blue)'},
-        {w:'28.57%', text:'1瓶', c:'var(--blue)'},
-        {w:'28.57%', text:'1瓶', c:'var(--blue)'},
-        {w:'14.29%', text:'半瓶', c:'var(--accent)'}
+        {w:'28.57%', text:'1瓶'},
+        {w:'28.57%', text:'1瓶'},
+        {w:'28.57%', text:'1瓶'},
+        {w:'14.29%', text:'半瓶'}
       ];
       segs.forEach(s => {
         const div = document.createElement('div');
-        div.style.cssText = `display:inline-block; width:${s.w}; height:30px; border-radius:6px; text-align:center; line-height:30px; color:white; font-weight:700; font-size:0.8rem; background:${s.c};`;
+        div.style.cssText = `height:100%; width:${s.w}; border-right:1px solid rgba(255,255,255,0.8); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:0.8rem;`;
         div.textContent = s.text;
-        tape.appendChild(div);
+        fill.appendChild(div);
       });
       $('remainder-result').innerHTML = `${fracHTML(7,10)} ÷ ${fracHTML(2,10)} ＝ ${fracHTML(7,2)} ＝ 3${fracHTML(1,2)}（瓶）<br>裝滿 <strong>3</strong> 瓶，剩下 ${fracHTML(1,2)} 瓶，也就是 ${fracHTML(2,10)} × ${fracHTML(1,2)} ＝ <strong>${fracHTML(1,10)}</strong> 公升`;
     }
