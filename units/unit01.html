@@ -824,7 +824,7 @@
       </div>
 
       <div class="problem-card">
-        <div class="problem-text"><strong>挑戰 2：因數個數大作戰</strong><br><span id="fc-num">360</span> 這個數，質因數分解是 <span id="fc-prime">2³ × 3² × 5¹</span>。你知道 <span id="fc-num">360</span> 一共有幾個因數嗎？</div>
+        <div class="problem-text"><strong>挑戰 2：因數個數大作戰</strong><br><span id="fc-num">360</span> 這個數，質因數分解是 <span id="fc-prime">2³ × 3² × 5¹</span>。你知道 <span id="fc-num2">360</span> 一共有幾個因數嗎？</div>
         <div class="problem-answer"><span id="fc-eq">360</span> 有 <input type="number" id="divisors-360"> 個因數 <button class="btn btn-sm btn-primary" onclick="checkDivisors360()">檢查</button> <button class="btn btn-sm" onclick="generateFactorCount()">🔄 換一題</button></div>
         <div id="divisors-360-fb" class="feedback"></div>
         <details><summary>提示</summary><div class="solution-content">質因數分解中，每個質因數的「次數＋1」相乘，就是因數個數。</div></details>
@@ -1045,6 +1045,7 @@
         if (n <= 2000 && count >= 8 && count <= 40) {
           currentFC = { n, exps, count, primes: chosen };
           $('fc-num').textContent = n;
+          $('fc-num2').textContent = n;
           $('fc-eq').textContent = n;
           $('fc-prime').textContent = chosen.map((p, i) => p + superscript(exps[i])).join(' × ');
           $('divisors-360').value = '';
